@@ -1,9 +1,8 @@
 
 class Core:
     def __init__(self):
-        self.run_game = True
+        pass
 
-    def run_game(self):
-        while self.run_game:
-            # update game
-            print('running_game')
+    def update_game(self):
+        # main update function
+        print('update_game')
