@@ -1,0 +1,17 @@
+{
+
+  "stick":
+  {
+    "name": "Schtick",
+    "use": "weapon",
+    "description": "Schtick is indeed weapon..."
+  },
+
+  "lamp":
+  {
+    "name": "Lamp",
+    "use": "consumable",
+    "description": "Laemp..."
+  }
+
+}

@@ -1,0 +1,16 @@
+{
+  "enemy_weapons":
+  {
+    "placeholder_weapon":
+    {
+      "tag": "placeholder_weapon",
+      "name": "Placeholder Weapon",
+      "item_type": "weapon",
+      "weapon_type": "blunt",
+      "tier": 1,
+      "damage": [5,7],
+      "value": 7,
+      "stackable": false
+    }
+  }
+}
