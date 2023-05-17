@@ -4,11 +4,20 @@
     "tag": "placeholder_enemy",
     "name": "Enemy Placeholder",
     "type": "None",
-    "weapon_equipped": "placeholder_weapon",
+    "default_weapon": "placeholder_weapon",
     "base_stats":
     {
       "hpMax": 20,
       "atk": [2,5]
+    },
+    "stat_multipliers":
+    {
+      "atk_multiplier": 1.00
+    },
+    "level_up_multipliers":
+    {
+      "hpMax_multiplier": 1.10,
+      "atk_m_multiplier": 1.02
     }
   }
 }

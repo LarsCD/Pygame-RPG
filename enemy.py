@@ -6,21 +6,51 @@ class Enemy:
         self.tag = metadata['tag']
         self.name = metadata['name']
         self.type = metadata['type']
+        # level up data
+        self.level = 0
+        self.hpMax_multiplier = metadata['level_up_multipliers']['hpMax_multiplier']
+        self.atk_m_multiplier = metadata['level_up_multipliers']['atk_m_multiplier']
         # stats data
         self.hp = metadata['base_stats']['hpMax']
         self.hpMax = self.hp
         self.atk = metadata['base_stats']['atk']
+        # stat multipliers
+        self.atk_multiplier = metadata['stat_multipliers']['atk_multiplier']
+        # states
         self.state_alive = True
         # inventory data
-        self.weapon_equiped = None
+        self.default_weapon = metadata['default_weapon']
+        self.weapon_equipped = None
 
     # inventory methods
+    def default_config(self):
+        self.hp = self.hpMax
+
     def equip_weapon(self, item_weapon_object):
         item_weapon_object.isEquiped = True
-        self.weapon_equiped = item_weapon_object
+        self.weapon_equipped = item_weapon_object
 
     def unequip_weapon(self):
-        self.weapon_equiped = None
+        self.weapon_equipped = None
+
+    # level methods
+    def level_up(self, levels):
+        for _ in range(levels):
+            self.level_up_stats()
+
+    def level_up_stats(self):
+        self.level += 1
+        hpMax_old = self.hpMax
+        self.hpMax = round(self.hpMax*self.hpMax_multiplier)
+        hpAdd = self.hpMax-hpMax_old
+        self.hp += hpAdd
+        self.atk_multiplier *= self.atk_m_multiplier
+        print(f"-------------\n"
+              f"{self.name} leveled up!\n"
+              f"Level: {self.level}\n"
+              f"Max HP: {self.hpMax} +{hpAdd}\n"
+              f"Attack: {self.attack_weapon()}")
+
 
     # health methods
     def heal(self, healing):
@@ -46,7 +76,10 @@ class Enemy:
         return damage
 
     def attack_weapon(self):
-        damage = self.weapon_equiped.use()
+        if self.weapon_equipped == None:
+            damage = self.attack_bare()
+        else:
+            damage = round(self.weapon_equipped.use()*self.atk_multiplier)
         return damage
 
 

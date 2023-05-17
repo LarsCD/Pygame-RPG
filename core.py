@@ -16,9 +16,14 @@ class Core:
         data = self.DataLoader.load_data('data/items/dev_items.json')
         enemy_data = self.DataLoader.load_data('data/enemy/enemies.json')
         weapon_data = self.DataLoader.load_data('data/items/weapons.json')
-        enemy_object = self.Entity.create_enemy(enemy_data['placeholder_enemy'])
-        item_weapon_object = self.Entity.create_weapon_item(weapon_data['enemy_weapons']['placeholder_weapon'])
-        print(f'enemy: {enemy_object.name}')
-        enemy_object.equip_weapon(item_weapon_object)
-        print(f'weapon: {item_weapon_object.name}')
-        print(f'damage: {enemy_object.attack_weapon()}')
+
+        enemy_object_1 = self.Entity.create_enemy(enemy_data['placeholder_enemy'])
+        enemy_object_2 = self.Entity.create_enemy(enemy_data['placeholder_enemy'])
+        weapon_object = self.Entity.create_weapon_item(weapon_data['enemy_weapons'][enemy_object_1.default_weapon])
+
+        enemy_object_1.equip_weapon(weapon_object)
+
+        enemy_object_1.name = 'Enemy 1'
+        enemy_object_2.name  = 'Enemy 2'
+        enemy_object_1.level_up(20)
+        enemy_object_2.level_up(5)
