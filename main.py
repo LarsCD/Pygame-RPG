@@ -3,7 +3,6 @@ from dev.dev_logger import DevLogger
 
 class Main:
     def __init__(self):
-        self.DevLogger = DevLogger()
         self.core = Core()
         self.run_game = True
 

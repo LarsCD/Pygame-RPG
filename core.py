@@ -13,7 +13,6 @@ class Core:
     def update_game(self):
         # main update function
         self.logger.log(logging.INFO, 'update_game')
-        data = self.DataLoader.load_data('data/items/dev_items.json')
         enemy_data = self.DataLoader.load_data('data/enemy/enemies.json')
         weapon_data = self.DataLoader.load_data('data/items/weapons.json')
 
