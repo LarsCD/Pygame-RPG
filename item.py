@@ -12,7 +12,7 @@ class Weapon:
         self.damage = metadata['damage']
         self.tier = metadata['tier']
         self.value = metadata['value']
-        self.stackable = metadata['stackable']
+        self.is_stackable = metadata['is_stackable']
         self.id = 0
         self.isEquipped = False
 

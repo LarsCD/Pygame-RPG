@@ -11,6 +11,7 @@ class Core:
         self.DataLoader = DataLoader()
         self.Entity = Entity()
 
+
     def update_game(self):
         # main update function
         item_data = {}
@@ -30,9 +31,12 @@ class Core:
 
         enemy_object_1 = self.Entity.create_enemy(enemy_data['placeholder_enemy'])
         enemy_object_2 = self.Entity.create_enemy(enemy_data['placeholder_enemy'])
-        weapon_object = self.Entity.create_weapon_item(weapon_data['enemy_weapons'][enemy_object_1.default_weapon])
+        weapon_object_1 = self.Entity.create_weapon_item(weapon_data['enemy_weapons'][enemy_object_1.default_weapon])
+        weapon_object_2 = self.Entity.create_weapon_item(weapon_data['enemy_weapons']['placeholder_weapon'])
 
-        player_object.give_item()
+        player_object.give_item(weapon_object_1)
+        player_object.give_item(weapon_object_2)
+        player_object.remove_item('placeholder_weapon', 'weapon')
 
         # enemy_object_1.equip_weapon(weapon_object)
         #
@@ -40,4 +44,13 @@ class Core:
         # enemy_object_2.name  = 'Enemy 2'
         # enemy_object_1.level_up(20)
         # enemy_object_2.level_up(5)
-        print(player_object.__class__)
+        print(player_object.hp)
+        player_object.take_damage(23)
+        print(player_object.hp)
+        player_object.heal(3)
+        print(player_object.hp)
+        player_object.heal_full()
+        print(player_object.hp)
+        player_object.take_damage(100)
+
+

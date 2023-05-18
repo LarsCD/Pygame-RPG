@@ -10,7 +10,7 @@
       "tier": 1,
       "damage": [5,7],
       "value": 7,
-      "stackable": false
+      "is_stackable": false
     }
   }
 }
