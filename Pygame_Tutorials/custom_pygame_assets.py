@@ -1,12 +1,13 @@
 import pygame
 
 class Lable:
-    def __init__(self, text: str, size: int, text_color: str, clicked_color: str, possition: tuple, is_centered=False, is_clickable=True, bold_text=False):
+    def __init__(self, text: str, size: int, text_color: str, clicked_color: str, hover_color: str, possition: tuple, is_centered=False, is_clickable=True, bold_text=False):
         self.text = text
         self.size = size
         self.color = text_color
         self.def_color = text_color
         self.clicked_color = clicked_color
+        self.hover_color = hover_color
         self.pos = possition
         if bold_text:
             self.font = 'fonts/dogicapixelbold.ttf'
@@ -22,10 +23,12 @@ class Lable:
             self.rect.topleft = self.pos
         self.clickable = is_clickable
         self.clicked = False
+        self.hover = False
 
 
     def draw_text(self, surface):
         action = False
+        self.hover = False
 
         if not self.clickable:
             surface.blit(self.text_surface, (self.rect.x, self.rect.y))
@@ -35,6 +38,7 @@ class Lable:
 
         # check mouse over and clicked conditions
         if self.rect.collidepoint(pos):
+            self.hover = True
             if self.clicked == True:
                 if pygame.mouse.get_pressed()[0] == 0:
                     self.clicked = False
@@ -51,8 +55,12 @@ class Lable:
             self.color = self.clicked_color
             self.text_surface = self.font_text.render(self.text, False, self.color)
         else:
-            self.color = self.def_color
-            self.text_surface = self.font_text.render(self.text, False, self.color)
+            if self.hover:
+                self.color = self.hover_color
+                self.text_surface = self.font_text.render(self.text, False, self.color)
+            else:
+                self.color = self.def_color
+                self.text_surface = self.font_text.render(self.text, False, self.color)
 
         # display on screen
         surface.blit(self.text_surface, (self.rect.x, self.rect.y))
