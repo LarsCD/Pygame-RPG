@@ -1,8 +1,0 @@
-{
-  "tag": "player",
-  "base_stats":
-  {
-    "hp": 100,
-    "hpMax": 100
-  }
-}

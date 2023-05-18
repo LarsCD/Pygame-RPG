@@ -1,0 +1,7 @@
+[2023-05-18 21:25:56,181]: INFO: Core: update_game
+[2023-05-18 21:25:56,182]: INFO: DataLoader: Loading 'data/enemy/enemy_data.json'
+[2023-05-18 21:25:56,183]: INFO: DataLoader: Successfully loaded 'data/enemy/enemy_data.json'
+[2023-05-18 21:25:56,183]: INFO: DataLoader: Loading 'data/items/weapon_data.json'
+[2023-05-18 21:25:56,183]: INFO: DataLoader: Successfully loaded 'data/items/weapon_data.json'
+[2023-05-18 21:25:56,183]: INFO: DataLoader: Loading 'data/player_classes/class_data.json'
+[2023-05-18 21:25:56,184]: INFO: DataLoader: Successfully loaded 'data/player_classes/class_data.json'

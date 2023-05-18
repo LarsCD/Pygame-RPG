@@ -13,6 +13,7 @@ class Weapon:
         self.tier = metadata['tier']
         self.value = metadata['value']
         self.stackable = metadata['stackable']
+        self.id = 0
         self.isEquipped = False
 
     def use(self):

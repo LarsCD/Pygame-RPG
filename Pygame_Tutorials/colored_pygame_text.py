@@ -15,7 +15,7 @@ pygame.init()
 run = True
 
 text_button = custom_pygame_assets.Lable('Test', 40, 'white', 'green', (W/2, H/2), is_centered=True, is_clickable=True, bold_text=True)
-text_lable_1 = custom_pygame_assets.Lable('Version: 0.7.1', 15, 'white', 'green', (5, 5), is_clickable=False)
+text_lable_1 = custom_pygame_assets.Lable('Version: 0.0.1', 15, 'white', 'green', (5, 5), is_clickable=False)
 text_lable_2 = custom_pygame_assets.Lable('HP ', 20, 'white', 'purple', (5, 135), bold_text=True)
 text_lable_3 = custom_pygame_assets.Lable('[//////////////.....]', 20, 'red', 'white', (50, 135))
 
