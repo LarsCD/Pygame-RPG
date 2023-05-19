@@ -8,7 +8,7 @@ class Main:
 
     def main_loop(self):
         while self.run_game == True:
-            self.core.update_game()
+            self.core.start_game()
             self.run_game = False
 
 if __name__ == '__main__':

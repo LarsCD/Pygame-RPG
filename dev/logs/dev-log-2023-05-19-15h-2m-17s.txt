@@ -1,0 +1,10 @@
+[2023-05-19 15:02:18,148]: INFO: Core: update_game
+[2023-05-19 15:02:18,148]: INFO: DataLoader: Loading 'data/enemy/enemy_data.json'
+[2023-05-19 15:02:18,148]: INFO: DataLoader: Successfully loaded 'data/enemy/enemy_data.json'
+[2023-05-19 15:02:18,148]: INFO: DataLoader: Loading 'data/items/weapon_data.json'
+[2023-05-19 15:02:18,152]: INFO: DataLoader: Successfully loaded 'data/items/weapon_data.json'
+[2023-05-19 15:02:18,152]: INFO: DataLoader: Loading 'data/player_classes/class_data.json'
+[2023-05-19 15:02:18,152]: INFO: DataLoader: Successfully loaded 'data/player_classes/class_data.json'
+[2023-05-19 15:02:18,153]: DEBUG: Player: placeholder_weapon added to inventory player: sorcerer_class
+[2023-05-19 15:02:18,153]: WARNING: Player: placeholder_weapon cannot be added to inventory player: sorcerer_class (not stackable)
+[2023-05-19 15:02:18,153]: DEBUG: Player: placeholder_weapon removed from inventory player: sorcerer_class
