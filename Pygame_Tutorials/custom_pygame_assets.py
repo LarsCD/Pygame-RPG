@@ -24,10 +24,11 @@ class Lable:
         self.clickable = is_clickable
         self.clicked = False
         self.hover = False
+        self.action = False
 
 
     def draw_text(self, surface):
-        action = False
+        self.action = False
         self.hover = False
 
         if not self.clickable:
@@ -42,7 +43,7 @@ class Lable:
             if self.clicked == True:
                 if pygame.mouse.get_pressed()[0] == 0:
                     self.clicked = False
-                    action = True
+                    self.action = True
             elif pygame.mouse.get_pressed()[0] == 1 and self.clicked == False:
                 self.clicked = True
         else:
@@ -64,4 +65,4 @@ class Lable:
 
         # display on screen
         surface.blit(self.text_surface, (self.rect.x, self.rect.y))
-        return action
+        return self.action

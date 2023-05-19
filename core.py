@@ -3,7 +3,7 @@ from dev.dev_logger import DevLogger
 from data_loader import DataLoader
 from entity import Entity
 from sys import getsizeof
-
+from game import Main_Menu
 
 class Core:
     def __init__(self):
@@ -38,19 +38,8 @@ class Core:
         player_object.give_item(weapon_object_2)
         player_object.remove_item('placeholder_weapon', 'weapon')
 
-        # enemy_object_1.equip_weapon(weapon_object)
-        #
-        # enemy_object_1.name = 'Enemy 1'
-        # enemy_object_2.name  = 'Enemy 2'
-        # enemy_object_1.level_up(20)
-        # enemy_object_2.level_up(5)
-        print(player_object.hp)
-        player_object.take_damage(23)
-        print(player_object.hp)
-        player_object.heal(3)
-        print(player_object.hp)
-        player_object.heal_full()
-        print(player_object.hp)
-        player_object.take_damage(100)
+        main_menu_metadata = ((1000, 600), 'fonts/dogicapixel.ttf', 'fonts/dogicapixelbold.ttf', 'white', 'gray', 'green')
+        Main = Main_Menu(*main_menu_metadata)
+        Main.game_loop()
 
 
