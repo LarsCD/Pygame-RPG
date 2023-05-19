@@ -1,6 +1,8 @@
 import pygame
 from Pygame_Tutorials.custom_pygame_assets import Lable
 from game_loop import Game_Loop
+import logging
+from dev.dev_logger import DevLogger
 
 
 class Game_Main:
@@ -34,9 +36,15 @@ class Game_Main:
 
         # SCENE LABELS
         self.static_text_lables = []
+        self.background = pygame.image.load("assets/image/background.png")
 
-        # MAIN GAME LOOP
-        self.Game_Loop = Game_Loop(self)
+        # DISPLAYS
+        self.Game_Loop = Game_Loop(self) # MAIN GAME LOOP
+        self.Options = Options(self)
+        self.About = About(self)
+
+        # DEV
+        self.logger = DevLogger(Game_Main)
 
 
     def main_menu_loop(self):
@@ -49,24 +57,31 @@ class Game_Main:
                               ((self.DISPLAY_WIDTH / 2), (self.DISPLAY_HEIGHT / 2)+60), is_centered=True)
         about_label = Lable('ABOUT', 40, self.lable_col, self.lable_click_col, self.lable_hover_col,
                               ((self.DISPLAY_WIDTH / 2), (self.DISPLAY_HEIGHT / 2) + 105), is_centered=True)
+        exit_label = Lable('EXIT', 30, self.lable_col, self.lable_click_col, (153, 0, 28),
+                            (int(self.DISPLAY_WIDTH / 2), int(self.DISPLAY_HEIGHT*0.9)), is_centered=True)
         while self.running:
+            self.window.blit(self.background, (0, 0))
             self.check_quit_event()
 
-            self.set_background_color()
+            # self.set_background_color()
             self.draw_static_text_labels()
 
 
             if play_label.draw_text(self.window):
                 # click play
                 # RUN MAIN GAME LOOP
-                print('PLAY GAME')
+                self.logger.log(logging.INFO, f'starting Game_Loop')
                 self.Game_Loop.main_loop()
             if options_label.draw_text(self.window):
                 # click options
-                print('OPTIONS')
+                self.logger.log(logging.INFO, f'starting Options')
+                self.Options.main_loop()
             if about_label.draw_text(self.window):
                 # click options
-                print('ABOUT')
+                self.logger.log(logging.INFO, f'starting About')
+                self.About.main_loop()
+            if exit_label.draw_text(self.window):
+                self.running = False
 
             self.window.blit(self.window, (0,0))
             pygame.display.update()
@@ -80,10 +95,13 @@ class Game_Main:
             self.window.fill(self.default_bg_color)
 
     def build_static_text_lables(self):
-        title_label = Lable('RPG3: MAIN MENU', 25, self.lable_col, self.lable_click_col, self.lable_hover_col, (2, 2),
+        title_label = Lable('MAIN MENU', 25, self.lable_col, self.lable_click_col, self.lable_hover_col, (200, 30),
                             is_clickable=False)
+        about_7 = Lable('BY: LarsCD', 25, 'white', self.lable_click_col, self.lable_hover_col, (200, int(self.DISPLAY_HEIGHT*0.93)),
+                        is_clickable=False)
         # package labels
         self.static_text_lables.append(title_label)
+        self.static_text_lables.append(about_7)
 
     def draw_static_text_labels(self):
         for label in self.static_text_lables:
@@ -94,13 +112,154 @@ class Game_Main:
             if event.type == pygame.QUIT:
                 self.running, self.playing = False, False
 
+
+
 class Options:
-    def __init__(self):
-        pass
+    def __init__(self, Game_Main):
+        self.Game_Main = Game_Main
+        self.run_display = True
+
+        # SCENE COLORS
+        self.default_bg_color = self.Game_Main.default_bg_color
+        self.bg_color = self.Game_Main.bg_color
+
+        # SCENE LABELS
+        self.static_text_lables = []
+
+        # DEV
+        self.logger = DevLogger(Options)
+
+    def main_loop(self):
+        self.run_display = True
+        self.build_static_text_lables()
+        back_label = Lable('MAIN MENU', 20, 'white', 'gray', (153, 0, 28),
+                                        ((self.Game_Main.DISPLAY_WIDTH / 2), (self.Game_Main.DISPLAY_HEIGHT / 2) + 240),
+                                        is_centered=True, is_clickable=True)
+        reso_3 = Lable('1280x720', 25, self.Game_Main.lable_col, self.Game_Main.lable_click_col, self.Game_Main.lable_hover_col,(200, 180))
+
+        while self.run_display:
+            self.Game_Main.window.blit(self.Game_Main.background, (0, 0))
+            self.check_quit_event()
+
+
+            # self.set_background_color()
+            self.draw_static_text_labels()
+
+            if back_label.draw_text(self.Game_Main.window):
+                self.run_display = False
+                self.logger.log(logging.INFO, f'exiting Options')
+            if reso_3.draw_text(self.Game_Main.window):
+                Game_Main.DISPLAY_WIDTH, Game_Main.DISPLAY_HEIGHT = (1280, 720)
+                self.logger.log(logging.INFO, f'resolution changed: 1280x720')
+
+            pygame.display.update()
+            self.Game_Main.clock.tick(self.Game_Main.fps)
+
+
+    def set_background_color(self):
+        if self.bg_color != None:
+            self.Game_Main.window.fill(self.bg_color)
+        else:
+            self.Game_Main.window.fill(self.default_bg_color)
+
+    def build_static_text_lables(self):
+        title_label = Lable('OPTIONS', 25, self.Game_Main.lable_col, self.Game_Main.lable_click_col, self.Game_Main.lable_hover_col, (200, 30),
+                            is_clickable=False)
+        reso_label = Lable('RESOLUTION: ', 25, self.Game_Main.lable_col, self.Game_Main.lable_click_col, self.Game_Main.lable_hover_col, (200, 145),
+                            is_clickable=False)
+        # package labels
+        self.static_text_lables.append(title_label)
+        self.static_text_lables.append(reso_label)
+
+    def draw_static_text_labels(self):
+        for label in self.static_text_lables:
+            label.draw_text(self.Game_Main.window)
+
+    def check_quit_event(self):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                self.run_display = False
 
 
 
+class About:
+    def __init__(self, Game_Main):
+        self.Game_Main = Game_Main
+        self.run_display = True
 
+        # SCENE COLORS
+        self.default_bg_color = self.Game_Main.default_bg_color
+        self.bg_color = self.Game_Main.bg_color
 
+        # SCENE LABELS
+        self.static_text_lables = []
+        self.title = 'ABOUT'
 
+        # DEV
+        self.logger = DevLogger(About)
 
+    def main_loop(self):
+        self.run_display = True
+        self.build_static_text_lables()
+        back_label = Lable('MAIN MENU', 20, 'white', 'gray', (153, 0, 28),
+                           ((self.Game_Main.DISPLAY_WIDTH / 2), (self.Game_Main.DISPLAY_HEIGHT / 2) + 240),
+                           is_centered=True, is_clickable=True)
+
+        while self.run_display:
+            self.Game_Main.window.blit(self.Game_Main.background, (0, 0))
+            self.check_quit_event()
+
+            # self.set_background_color()
+            self.draw_static_text_labels()
+
+            if back_label.draw_text(self.Game_Main.window):
+                self.run_display = False
+                self.logger.log(logging.INFO, f'exiting About')
+
+            pygame.display.update()
+            self.Game_Main.clock.tick(self.Game_Main.fps)
+
+    def set_background_color(self):
+        if self.bg_color != None:
+            self.Game_Main.window.fill(self.bg_color)
+        else:
+            self.Game_Main.window.fill(self.default_bg_color)
+
+    def build_static_text_lables(self):
+        def_color = self.Game_Main.lable_hover_col
+        black = (0, 0, 0)
+        title_label = Lable(self.title, 25, self.Game_Main.lable_col, self.Game_Main.lable_click_col,
+                            self.Game_Main.lable_hover_col, (200, 30),
+                            is_clickable=False)
+        about_1 = Lable('This is an RPG game where you play as a ', 25, def_color, black, black, (200, 120),
+                            is_clickable=False)
+        about_2 = Lable('character exploring the world and fighting', 25, def_color, black, black, (200, 150),
+                        is_clickable=False)
+        about_3 = Lable('enemies. For now you can only play as a select ', 25, def_color, black, black, (200, 180),
+                        is_clickable=False)
+        about_4 = Lable('few classes like Knight and Sorcerer. More ', 25, def_color, black, black, (200, 210),
+                        is_clickable=False)
+        about_5 = Lable('content will be added to enhance the ', 25, def_color, black, black, (200, 240),
+                        is_clickable=False)
+        about_6 = Lable('gaming experience.', 25, def_color, black, black, (200, 270),
+                        is_clickable=False)
+        about_7 = Lable('BY: LarsCD', 25, 'white', black, black, (200, int(self.Game_Main.DISPLAY_HEIGHT*0.93)),
+                        is_clickable=False)
+        # package labels
+        self.static_text_lables.append(title_label)
+        self.static_text_lables.append(about_1)
+        self.static_text_lables.append(about_2)
+        self.static_text_lables.append(about_3)
+        self.static_text_lables.append(about_4)
+        self.static_text_lables.append(about_5)
+        self.static_text_lables.append(about_6)
+        self.static_text_lables.append(about_7)
+
+    def draw_static_text_labels(self):
+        for label in self.static_text_lables:
+            label.draw_text(self.Game_Main.window)
+
+    def check_quit_event(self):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                self.run_display = False

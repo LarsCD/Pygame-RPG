@@ -39,7 +39,7 @@ class Core:
         player_object.remove_item('placeholder_weapon', 'weapon')
 
 
-        game_metadata = ((1000, 600), 'fonts/dogicapixel.ttf', 'fonts/dogicapixelbold.ttf', 'white', 'gray', 'green')
+        game_metadata = ((1280, 720), 'fonts/dogicapixel.ttf', 'fonts/dogicapixelbold.ttf', 'white', 'gray', (102, 255, 227))
 
         game = Game_Main(*game_metadata)
         game.main_menu_loop()

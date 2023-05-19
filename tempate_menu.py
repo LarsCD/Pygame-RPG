@@ -1,9 +1,6 @@
-import pygame
-from Pygame_Tutorials.custom_pygame_assets import Lable
-import logging
-from dev.dev_logger import DevLogger
 
-class Game_Loop:
+
+class Menu_Name:
     def __init__(self, Game_Main):
         self.Game_Main = Game_Main
         self.run_display = True
@@ -14,19 +11,14 @@ class Game_Loop:
 
         # SCENE LABELS
         self.static_text_lables = []
-
-        # DEV
-        self.logger = DevLogger(Game_Loop)
-
+        self.title = 'MENU NAME'
 
     def main_loop(self):
-        # MAIN GAME LOOP
-        # EVERYTHING GAME LOOP RELATED GOES HERE
         self.run_display = True
         self.build_static_text_lables()
-        back_label = Lable('MAIN MENU', 20, 'white', 'gray', (153, 0, 28),
-                                        ((self.Game_Main.DISPLAY_WIDTH / 2), (self.Game_Main.DISPLAY_HEIGHT / 2) + 240),
-                                        is_centered=True, is_clickable=True)
+        back_label = Lable('BACK', 20, 'white', 'gray', 'red',
+                           ((self.Game_Main.DISPLAY_WIDTH / 2), (self.Game_Main.DISPLAY_HEIGHT / 2) + 240),
+                           is_centered=True, is_clickable=True)
 
         while self.run_display:
             self.check_quit_event()
@@ -36,12 +28,9 @@ class Game_Loop:
 
             if back_label.draw_text(self.Game_Main.window):
                 self.run_display = False
-                self.logger.log(logging.INFO, f'exiting Game_Loop')
 
             pygame.display.update()
             self.Game_Main.clock.tick(self.Game_Main.fps)
-
-
 
     def set_background_color(self):
         if self.bg_color != None:
@@ -50,11 +39,11 @@ class Game_Loop:
             self.Game_Main.window.fill(self.default_bg_color)
 
     def build_static_text_lables(self):
-        play_label = Lable('PLAYING GAME...', 40, 'white', 'gray', 'green',
-                           (self.Game_Main.DISPLAY_WIDTH / 2, self.Game_Main.DISPLAY_HEIGHT / 2),
-                           is_centered=True, is_clickable=False)
+        title_label = Lable(self.title, 25, self.Game_Main.lable_col, self.Game_Main.lable_click_col,
+                            self.Game_Main.lable_hover_col, (5, 5),
+                            is_clickable=False)
         # package labels
-        self.static_text_lables.append(play_label)
+        self.static_text_lables.append(title_label)
 
     def draw_static_text_labels(self):
         for label in self.static_text_lables:
