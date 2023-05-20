@@ -17,5 +17,6 @@ class DataLoader:
         except Exception:
             self.logger.log(logging.ERROR, f'Failure loading \'{path}\'> {traceback.print_exc()}')
         else:
-            self.logger.log(logging.INFO, f'Successfully loaded \'{path}\'')
+            pass
+            # self.logger.log(logging.INFO, f'Successfully loaded \'{path}\'')
         return data

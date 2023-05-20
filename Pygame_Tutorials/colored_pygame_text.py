@@ -1,6 +1,6 @@
 import pygame
-import time
-import custom_pygame_assets
+from assets import custom_pygame_assets
+
 W, H = 1000, 600
 fps = 60
 
@@ -14,7 +14,7 @@ pygame.init()
 
 run = True
 
-text_button = custom_pygame_assets.Lable('Test', 40, 'purple', 'gray', 'white', (W/1.5, H/1.5), is_centered=True, is_clickable=True, bold_text=True)
+text_button = custom_pygame_assets.Lable('Test', 40, 'purple', 'gray', 'white', (W / 1.5, H / 1.5), is_centered=True, is_clickable=True, bold_text=True)
 text_lable_1 = custom_pygame_assets.Lable('Version: 0.0.1', 15, 'gray', 'gray', 'white', (5, 5), is_clickable=False)
 text_lable_2 = custom_pygame_assets.Lable('HP ', 20, 'purple', 'gray', 'white', (5, 100), bold_text=False)
 text_lable_3 = custom_pygame_assets.Lable('[//////////////.....]', 20, 'red', 'white', 'blue', (50, 100), is_clickable=False)

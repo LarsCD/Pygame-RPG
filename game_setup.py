@@ -1,15 +1,18 @@
 import pygame
-from Pygame_Tutorials.custom_pygame_assets import Lable
+from assets.custom_pygame_assets import Lable, Screen_Effect
 from game_loop import Game_Loop
 import logging
 from dev.dev_logger import DevLogger
+import time
 
 
-class Game_Main:
+class Game_Setup:
     def __init__(self, resolution: tuple, default_font: str, bold_font: str, lable_col: tuple,
                  lable_click_col: tuple, lable_hover_col: tuple, bg_color: tuple=None):
         # PYGAME
         pygame.init()
+        self.game_name = 'RPG3'
+        pygame.display.set_caption(self.game_name)
         self.clock = pygame.time.Clock()
 
         # GENERAL FLAGS
@@ -44,7 +47,7 @@ class Game_Main:
         self.About = About(self)
 
         # DEV
-        self.logger = DevLogger(Game_Main)
+        self.logger = DevLogger(Game_Setup)
 
 
     def main_menu_loop(self):
@@ -59,6 +62,7 @@ class Game_Main:
                               ((self.DISPLAY_WIDTH / 2), (self.DISPLAY_HEIGHT / 2) + 105), is_centered=True)
         exit_label = Lable('EXIT', 30, self.lable_col, self.lable_click_col, (153, 0, 28),
                             (int(self.DISPLAY_WIDTH / 2), int(self.DISPLAY_HEIGHT*0.9)), is_centered=True)
+        fader_effect = Screen_Effect()
         while self.running:
             self.window.blit(self.background, (0, 0))
             self.check_quit_event()
@@ -71,17 +75,26 @@ class Game_Main:
                 # click play
                 # RUN MAIN GAME LOOP
                 self.logger.log(logging.INFO, f'starting Game_Loop')
+                fader_effect.fade_to_color(self.window, 10, (self.default_bg_color))
                 self.Game_Loop.main_loop()
+                fader_effect.fade_to_color(self.window, 10, (self.default_bg_color))
             if options_label.draw_text(self.window):
                 # click options
                 self.logger.log(logging.INFO, f'starting Options')
+                fader_effect.fade_to_color(self.window, 1, (self.default_bg_color))
                 self.Options.main_loop()
+                fader_effect.fade_to_color(self.window, 1, (self.default_bg_color))
             if about_label.draw_text(self.window):
                 # click options
                 self.logger.log(logging.INFO, f'starting About')
+                fader_effect.fade_to_color(self.window, 1, (self.default_bg_color))
                 self.About.main_loop()
+                fader_effect.fade_to_color(self.window, 1, (self.default_bg_color))
             if exit_label.draw_text(self.window):
+                fader_effect.fade_to_color(self.window, 0.5, (self.default_bg_color))
                 self.running = False
+
+
 
             self.window.blit(self.window, (0,0))
             pygame.display.update()
@@ -149,7 +162,7 @@ class Options:
                 self.run_display = False
                 self.logger.log(logging.INFO, f'exiting Options')
             if reso_3.draw_text(self.Game_Main.window):
-                Game_Main.DISPLAY_WIDTH, Game_Main.DISPLAY_HEIGHT = (1280, 720)
+                Game_Setup.DISPLAY_WIDTH, Game_Setup.DISPLAY_HEIGHT = (1280, 720)
                 self.logger.log(logging.INFO, f'resolution changed: 1280x720')
 
             pygame.display.update()

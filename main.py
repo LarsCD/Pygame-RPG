@@ -1,4 +1,4 @@
-from core import Core
+from setup import Core
 from dev.dev_logger import DevLogger
 
 class Main:

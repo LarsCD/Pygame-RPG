@@ -1,4 +1,5 @@
 import pygame
+import time
 
 class Lable:
     def __init__(self, text: str, size: int, text_color: str, clicked_color: str, hover_color: str, possition: tuple, is_centered=False, is_clickable=True, bold_text=False):
@@ -66,3 +67,43 @@ class Lable:
         # display on screen
         surface.blit(self.text_surface, (self.rect.x, self.rect.y))
         return self.action
+
+
+class Screen_Effect:
+    def __init__(self):
+        pass
+
+    def fade_to_color(self, surface, duration: float, color: tuple, pos: tuple=(0,0), size: tuple=(1280, 720)):
+        fade_speed = (1 / (255 / duration))*3
+        gradient = 5
+        my_image = pygame.Surface((50, 50), pygame.SRCALPHA)
+        for i in range(255):
+            n = i*gradient + i
+            if n >= 128:
+                break
+            s = pygame.Surface(size)  # the size of your rect
+            s.set_alpha(n)  # alpha level
+            s.fill(color)  # this fills the entire surface
+            surface.blit(s, pos)  # (0,0) are the top-left coordinates
+
+            pygame.display.update()
+            # time.sleep(fade_speed)
+            pygame.time.Clock().tick(60)
+
+
+    def fade_to_screen(self, surface, duration: float, pos: tuple, size: tuple):
+        fade_speed = (1 / (255 / duration)) * 3
+        gradient = 5
+        my_image = pygame.Surface((50, 50), pygame.SRCALPHA)
+        for i in range(255):
+            n = i * gradient + i
+            if n >= 128:
+                break
+            s = pygame.Surface(size)  # the size of your rect
+            s.set_alpha(128-n)  # alpha level
+            s.fill(color)  # this fills the entire surface
+            surface.blit(s, pos)  # (0,0) are the top-left coordinates
+
+            pygame.display.update()
+            # time.sleep(fade_speed)
+            pygame.time.Clock().tick(60)

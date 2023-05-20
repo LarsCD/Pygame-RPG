@@ -1,0 +1,17 @@
+[2023-05-20 13:48:25,574]: INFO: Game_Setup: starting Game_Loop
+[2023-05-20 13:48:25,991]: INFO: Game_Loop: start Game.Loop:main_loop
+[2023-05-20 13:48:27,393]: INFO: Game_Loop: exiting Game_Loop
+[2023-05-20 13:48:28,915]: INFO: Game_Setup: starting Game_Loop
+[2023-05-20 13:48:29,332]: INFO: Game_Loop: start Game.Loop:main_loop
+[2023-05-20 13:48:40,772]: INFO: Game_Loop: exiting Game_Loop
+[2023-05-20 13:48:43,498]: INFO: Game_Setup: starting About
+[2023-05-20 13:48:44,692]: INFO: About: exiting About
+[2023-05-20 13:48:46,054]: INFO: Game_Setup: starting Options
+[2023-05-20 13:48:49,888]: INFO: Options: exiting Options
+[2023-05-20 13:48:50,975]: INFO: Game_Setup: starting Game_Loop
+[2023-05-20 13:48:51,397]: INFO: Game_Loop: start Game.Loop:main_loop
+[2023-05-20 13:48:57,037]: INFO: Game_Loop: exiting Game_Loop
+[2023-05-20 13:48:58,167]: INFO: Game_Setup: starting Options
+[2023-05-20 13:48:59,415]: INFO: Options: exiting Options
+[2023-05-20 13:49:00,278]: INFO: Game_Setup: starting About
+[2023-05-20 13:49:01,598]: INFO: About: exiting About
