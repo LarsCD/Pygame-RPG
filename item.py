@@ -14,7 +14,7 @@ class Weapon:
         self.value = metadata['value']
         self.is_stackable = metadata['is_stackable']
         self.id = 0
-        self.isEquipped = False
+        self.is_equipped = False
 
     def use(self):
         if self.isEquiped:
