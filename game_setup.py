@@ -238,6 +238,7 @@ class About:
             self.ROOT.window.fill(self.default_bg_color)
 
     def build_static_text_lables(self):
+        # "My eyes burn looking at this but Im not gonna change it lol" ~L
         def_color = self.ROOT.lable_hover_col
         black = (0, 0, 0)
         title_label = Lable(self.title, 25, self.ROOT.lable_col, self.ROOT.lable_click_col,

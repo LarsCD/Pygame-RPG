@@ -82,13 +82,17 @@ class Game_Loop:
 
         # TESTING
         weapon_1 = self.Entity.create_weapon_item(self.static_weapon_data['enemy_weapons']['placeholder_weapon'])
+        weapon_2 = self.Entity.create_weapon_item(self.static_weapon_data['weapons']['rare_sword'])
 
         # BUTTONS
-        back_label = Lable('MAIN MENU', 20, self.lable_col, self.lable_click_col, self.lable_hover_col,
+        back_label = Lable('MAIN MENU', 20, self.lable_col, self.lable_click_col, (153, 0, 28),
                             ((self.DISPLAY_WIDTH / 2), (self.DISPLAY_HEIGHT / 2) + 240),
                             is_centered=True, is_clickable=True)
         display_item = Lable(f'View {str(weapon_1.name).upper()} ({weapon_1.tag})', 20, self.lable_col, self.lable_click_col,
                              self.lable_hover_col, (self.Game_Main.DISPLAY_WIDTH*0.1, 200), is_clickable=True)
+        display_item_2 = Lable(f'View {str(weapon_2.name).upper()} ({weapon_2.tag})', 20, self.lable_col,
+                             self.lable_click_col,
+                             self.lable_hover_col, (self.Game_Main.DISPLAY_WIDTH * 0.1, 225), is_clickable=True)
 
         while self.run_display:
             self.check_quit_event()
@@ -99,8 +103,11 @@ class Game_Loop:
 
             if display_item.draw_text(self.window):
                 self.Weapon_Display_Screen.main_loop(weapon_1)
+            if display_item_2.draw_text(self.window):
+                self.Weapon_Display_Screen.main_loop(weapon_2)
 
             if back_label.draw_text(self.window):
+                # quit out of game
                 self.run_display = False
                 self.logger.log(logging.INFO, f'exiting Game_Loop')
 

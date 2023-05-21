@@ -7,9 +7,23 @@
       "name": "Placeholder Weapon",
       "item_type": "weapon",
       "weapon_type": "blunt",
-      "tier": 1,
+      "tier": 2,
       "damage": [5,7],
       "value": 7,
+      "is_stackable": false
+    }
+  },
+  "weapons":
+  {
+    "rare_sword":
+    {
+      "tag": "rare_sword",
+      "name": "Rare Sword",
+      "item_type": "weapon",
+      "weapon_type": "blunt",
+      "tier": 3,
+      "damage": [28,35],
+      "value": 120,
       "is_stackable": false
     }
   }
