@@ -1,2 +1,0 @@
-[2023-05-21 17:03:30,753]: INFO: Game_Setup: starting Options
-[2023-05-21 17:03:33,527]: INFO: Options: exiting Options

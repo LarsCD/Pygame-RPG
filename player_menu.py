@@ -98,8 +98,7 @@ class Player_Menu:
 
                     quantity = self.player_object.get_item_quantity(item.tag, item.item_type)
                     item_label = Lable(f'{item.name}', self.text_size, item.tier_color, black, black,
-                                       ((pos_x), (pos_y)), is_clickable=True,
-                                       function=Weapon_Display_Screen.main_loop, function_args=item)
+                                       ((pos_x), (pos_y)), is_clickable=False)
 
                     # item_label = Lable(f'{item.name}', self.text_size, item.tier_color, black, black,
                     #                     ((pos_x), (pos_y)), is_clickable=True,

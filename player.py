@@ -46,7 +46,7 @@ class Player:
         self.weapon_equiped = None
         # INVENTORY
         self.inventory = {
-            'weapon': []
+            'weapon': [],
         }
         self.inventory_cat_names = {
             'weapon': 'Weapons'

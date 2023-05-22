@@ -1,6 +1,0 @@
-[2023-05-21 19:59:37,642]: INFO: Game_Setup: starting Game_Loop
-[2023-05-21 19:59:38,086]: INFO: Game_Loop: start Game.Loop:main_loop
-[2023-05-21 19:59:38,086]: INFO: DataLoader: Loading 'data/enemy/enemy_data.json'
-[2023-05-21 19:59:38,087]: INFO: DataLoader: Loading 'data/items/weapon_data.json'
-[2023-05-21 19:59:38,087]: INFO: DataLoader: Loading 'data/player_classes/class_data.json'
-[2023-05-21 19:59:38,824]: INFO: Game_Loop: exiting Game_Loop
