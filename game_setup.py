@@ -21,6 +21,7 @@ class Game_Setup:
 
         # SCREEN PARAMETERS
         self.DISPLAY_WIDTH, self.DISPLAY_HEIGHT = resolution
+        self.RESOLUTION = resolution
         self.display = pygame.Surface((self.DISPLAY_WIDTH, self.DISPLAY_HEIGHT))
         self.window = pygame.display.set_mode((self.DISPLAY_WIDTH, self.DISPLAY_HEIGHT))
         self.default_font = default_font
@@ -39,7 +40,7 @@ class Game_Setup:
 
         # SCENE LABELS
         self.static_text_lables = []
-        self.background = pygame.image.load("assets/image/background.png")
+        self.background = pygame.image.load("assets/image/test_map.png")
 
         # DISPLAYS
         self.Game_Loop = Game_Loop(self) # MAIN GAME LOOP
@@ -64,7 +65,7 @@ class Game_Setup:
                             (int(self.DISPLAY_WIDTH / 2), int(self.DISPLAY_HEIGHT*0.9)), is_centered=True)
         fader_effect = Screen_Effect()
         while self.running:
-            self.window.blit(self.background, (0, 0))
+            self.window.blit(pygame.transform.scale(self.background, self.RESOLUTION), (0, 0))
             self.check_quit_event()
 
             # self.set_background_color()

@@ -26,6 +26,15 @@ class Lable:
         self.clicked = False
         self.hover = False
         self.action = False
+        self.release = True
+        self.release_click = True
+
+        # AUDIO
+        self.hover_sound = pygame.mixer.Sound('assets/audio/menu/Menu2.wav')
+        self.click_sound = pygame.mixer.Sound('assets/audio/menu/Menu4.wav')
+
+        pygame.mixer.Sound.set_volume(self.hover_sound, 0.2)
+        pygame.mixer.Sound.set_volume(self.click_sound, 0.2)
 
 
     def draw_text(self, surface):
@@ -54,13 +63,21 @@ class Lable:
 
         # change color on click
         if self.clicked:
+            if self.release_click:
+                self.click_sound.play()
             self.color = self.clicked_color
             self.text_surface = self.font_text.render(self.text, False, self.color)
+            self.release_click = False
         else:
             if self.hover:
+                if self.release:
+                    self.hover_sound.play()
                 self.color = self.hover_color
                 self.text_surface = self.font_text.render(self.text, False, self.color)
+                self.release = False
             else:
+                self.release_click = True
+                self.release = True
                 self.color = self.def_color
                 self.text_surface = self.font_text.render(self.text, False, self.color)
 
@@ -107,3 +124,11 @@ class Screen_Effect:
             pygame.display.update()
             # time.sleep(fade_speed)
             pygame.time.Clock().tick(60)
+
+
+
+class Health_bar():
+    def __init__(self):
+        pass
+
+

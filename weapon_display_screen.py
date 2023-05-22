@@ -17,8 +17,9 @@ class Weapon_Display_Screen:
         self.display_start_x_pos = 128
         self.display_start_y_pos = 120
         self.display_sep_space = 300
-        self.text_size = 25
+        self.text_size = 15
         self.name_pos_x = 135
+        self.background = pygame.image.load("assets/image/menu_background_1.png")
 
         # ITEM
         self.weapon_object = None
@@ -48,14 +49,14 @@ class Weapon_Display_Screen:
         tier_frame_scaled = pygame.transform.scale(tier_frame, self.default_frame_size)
 
 
-
         while self.run_display:
+            self.ROOT.window.blit(pygame.transform.scale(self.background, self.ROOT.RESOLUTION), (0, 0))
             self.check_quit_event()
-            self.set_background_color()
+            # self.set_background_color()
             self.draw_static_text_labels()
 
             self.ROOT.window.blit(icon_scaled, self.icon_pos)
-            self.ROOT.window.blit(tier_frame_scaled, self.tier_frame_pos)
+            # self.ROOT.window.blit(tier_frame_scaled, self.tier_frame_pos)
 
             if back_label.draw_text(self.ROOT.window):
                 # quit out of view

@@ -5,27 +5,29 @@ from dev.dev_logger import DevLogger
 from data_loader import DataLoader
 from entity import Entity
 from weapon_display_screen import Weapon_Display_Screen
+from player_menu import Player_Menu
 
 
 class Game_Loop:
-    def __init__(self, Game_Main):
-        self.Game_Main = Game_Main
+    def __init__(self, Game_Setup):
+        self.Game_Setup = Game_Setup
         self.run_display = True
         self.clock = pygame.time.Clock()
 
         # SCENE COLORS
-        self.default_bg_color = self.Game_Main.default_bg_color
-        self.bg_color = self.Game_Main.bg_color
+        self.default_bg_color = self.Game_Setup.default_bg_color
+        self.bg_color = self.Game_Setup.bg_color
 
-        self.lable_col = self.Game_Main.lable_col
-        self.lable_click_col = self.Game_Main.lable_click_col
-        self.lable_hover_col = self.Game_Main.lable_hover_col
+        self.lable_col = self.Game_Setup.lable_col
+        self.lable_click_col = self.Game_Setup.lable_click_col
+        self.lable_hover_col = self.Game_Setup.lable_hover_col
 
         # SCREEN PARAMETERS
-        self.DISPLAY_WIDTH, self.DISPLAY_HEIGHT = self.Game_Main.DISPLAY_WIDTH, self.Game_Main.DISPLAY_HEIGHT
+        self.DISPLAY_WIDTH, self.DISPLAY_HEIGHT = self.Game_Setup.DISPLAY_WIDTH, self.Game_Setup.DISPLAY_HEIGHT
+        self.RESOLUTION = self.Game_Setup.RESOLUTION
         self.display = pygame.Surface((self.DISPLAY_WIDTH, self.DISPLAY_HEIGHT))
         self.window = pygame.display.set_mode((self.DISPLAY_WIDTH, self.DISPLAY_HEIGHT))
-        self.default_font = self.Game_Main.default_font
+        self.default_font = self.Game_Setup.default_font
         self.fps = 60
 
         # SCENE LABELS
@@ -34,12 +36,16 @@ class Game_Loop:
         # DEV
         self.logger = DevLogger(Game_Loop)
 
+        # PLAYER
+        self.player_object = None
+
         # MODULES
         self.DataLoader = DataLoader()
         self.Entity = Entity()
 
         # DISPLAYS
         self.Weapon_Display_Screen = Weapon_Display_Screen(self)
+        self.Player_Menu = Player_Menu(self)
 
         # DATA
         self.static_enemy_data = None
@@ -83,16 +89,22 @@ class Game_Loop:
         # TESTING
         weapon_1 = self.Entity.create_weapon_item(self.static_weapon_data['enemy_weapons']['placeholder_weapon'])
         weapon_2 = self.Entity.create_weapon_item(self.static_weapon_data['weapons']['rare_sword'])
+        self.player_object = self.Entity.create_player(self.static_player_class_data['sorcerer_class'])
 
         # BUTTONS
         back_label = Lable('MAIN MENU', 20, self.lable_col, self.lable_click_col, (153, 0, 28),
                             ((self.DISPLAY_WIDTH / 2), (self.DISPLAY_HEIGHT / 2) + 240),
                             is_centered=True, is_clickable=True)
-        display_item = Lable(f'View {str(weapon_1.name).upper()} ({weapon_1.tag})', 20, self.lable_col, self.lable_click_col,
-                             self.lable_hover_col, (self.Game_Main.DISPLAY_WIDTH*0.1, 200), is_clickable=True)
+        display_item = Lable(f'View {str(weapon_1.name).upper()} ({weapon_1.tag})', 20, self.lable_col,
+                             self.lable_click_col, self.lable_hover_col, (self.Game_Setup.DISPLAY_WIDTH * 0.1, 200),
+                             is_clickable=True)
         display_item_2 = Lable(f'View {str(weapon_2.name).upper()} ({weapon_2.tag})', 20, self.lable_col,
-                             self.lable_click_col,
-                             self.lable_hover_col, (self.Game_Main.DISPLAY_WIDTH * 0.1, 225), is_clickable=True)
+                               self.lable_click_col,
+                               self.lable_hover_col, (self.Game_Setup.DISPLAY_WIDTH * 0.1, 225), is_clickable=True)
+
+        display_player = Lable(f'View PLAYER ({self.player_object.player_class_name})', 20, self.lable_col,
+                               self.lable_click_col,
+                               self.lable_hover_col, (self.Game_Setup.DISPLAY_WIDTH * 0.1, 300), is_clickable=True)
 
         while self.run_display:
             self.check_quit_event()
@@ -105,6 +117,8 @@ class Game_Loop:
                 self.Weapon_Display_Screen.main_loop(weapon_1)
             if display_item_2.draw_text(self.window):
                 self.Weapon_Display_Screen.main_loop(weapon_2)
+            if display_player.draw_text(self.window):
+                self.Player_Menu.main_loop(self.player_object)
 
             if back_label.draw_text(self.window):
                 # quit out of game
@@ -112,7 +126,7 @@ class Game_Loop:
                 self.logger.log(logging.INFO, f'exiting Game_Loop')
 
             pygame.display.update()
-            self.Game_Main.clock.tick(self.Game_Main.fps)
+            self.Game_Setup.clock.tick(self.Game_Setup.fps)
 
 
     def load_static_data(self):
@@ -128,7 +142,7 @@ class Game_Loop:
 
     def build_static_text_lables(self):
         play_label = Lable('PLAYING GAME...', 40, 'white', 'gray', 'green',
-                           (self.Game_Main.DISPLAY_WIDTH*0.1, self.Game_Main.DISPLAY_HEIGHT*0.1), is_clickable=False)
+                           (self.Game_Setup.DISPLAY_WIDTH * 0.1, self.Game_Setup.DISPLAY_HEIGHT * 0.1), is_clickable=False)
         # package labels
         self.static_text_lables.append(play_label)
 
