@@ -89,7 +89,16 @@ class Game_Loop:
         # TESTING
         weapon_1 = self.Entity.create_weapon_item(self.static_weapon_data['enemy_weapons']['placeholder_weapon'])
         weapon_2 = self.Entity.create_weapon_item(self.static_weapon_data['weapons']['rare_sword'])
+        weapon_3 = self.Entity.create_weapon_item(self.static_weapon_data['weapons']['rare_sword'])
+        weapon_4 = self.Entity.create_weapon_item(self.static_weapon_data['enemy_weapons']['placeholder_weapon'])
+        weapon_5 = self.Entity.create_weapon_item(self.static_weapon_data['enemy_weapons']['placeholder_weapon'])
+
         self.player_object = self.Entity.create_player(self.static_player_class_data['sorcerer_class'])
+        self.player_object.give_item(weapon_1)
+        self.player_object.give_item(weapon_2)
+        self.player_object.give_item(weapon_3)
+        self.player_object.give_item(weapon_4)
+        self.player_object.give_item(weapon_5)
 
         # BUTTONS
         back_label = Lable('MAIN MENU', 20, self.lable_col, self.lable_click_col, (153, 0, 28),

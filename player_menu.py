@@ -1,5 +1,6 @@
 import pygame
 from assets.custom_pygame_assets import Lable
+from weapon_display_screen import Weapon_Display_Screen
 
 class Player_Menu:
     def __init__(self, ROOT):
@@ -31,11 +32,15 @@ class Player_Menu:
         self.default_frame_size = (60, 60)
         self.tier_name_pos_y = 80
 
+        # MODULES
+        self.Weapon_Display_Screen = Weapon_Display_Screen
+
     def main_loop(self, player_object):
+        self.run_display = True
         self.static_text_lables = []
         self.player_object = player_object
-        self.run_display = True
         self.build_static_text_lables()
+        self.build_inventory()
 
         back_label = Lable('BACK', 20, 'white', 'gray', (153, 0, 28),
                            ((self.ROOT.DISPLAY_WIDTH / 2), (self.ROOT.DISPLAY_HEIGHT / 2) + 240),
@@ -63,6 +68,50 @@ class Player_Menu:
             self.ROOT.window.fill(self.bg_color)
         else:
             self.ROOT.window.fill(self.default_bg_color)
+
+    def build_inventory(self):
+        inventory_start_pos_x = 625
+        inventory_start_pos_y = 350
+        offset_y = 5
+        offset_x = 250
+        black = (0, 0, 0)
+
+        inventory_title = Lable(f'INVENTORY', 35, 'white', black, black,
+                                ((inventory_start_pos_x), (inventory_start_pos_y - 45)), is_clickable=False)
+        self.static_text_lables.append(inventory_title)
+
+        for i, cat_name in enumerate(self.player_object.inventory):
+            i += 1
+            item_tag_labels_build = []
+            cat_name_label = Lable(f'{str(cat_name).capitalize()}s', self.text_size+5, 'white', black, black,
+                                    ((inventory_start_pos_x), (i * (self.text_size) + inventory_start_pos_y)), is_clickable=False)
+            self.static_text_lables.append(cat_name_label)
+
+            for n, item in enumerate(self.player_object.inventory[cat_name]):
+                if item.tag in item_tag_labels_build:
+                    pass
+                else:
+                    item_tag_labels_build.append(item.tag)
+                    pos_x = inventory_start_pos_x
+                    pos_y = inventory_start_pos_y + (i+n * (self.text_size) + offset_y) + 30
+                    # TODO: aha fix deze shit
+
+                    quantity = self.player_object.get_item_quantity(item.tag, item.item_type)
+                    item_label = Lable(f'{item.name}', self.text_size, item.tier_color, black, black,
+                                       ((pos_x), (pos_y)), is_clickable=True,
+                                       function=Weapon_Display_Screen.main_loop, function_args=item)
+
+                    # item_label = Lable(f'{item.name}', self.text_size, item.tier_color, black, black,
+                    #                     ((pos_x), (pos_y)), is_clickable=True,
+                    #                    function=Weapon_Display_Screen.main_loop, function_args=item)
+                    # TODO: function= doesnt work (custom_pygame_assets)
+                    quantity_label = Lable(f'x{quantity}', self.text_size, 'white', black, black,
+                                        ((pos_x+offset_x), (pos_y)), is_clickable=False)
+
+                    self.static_text_lables.append(item_label)
+                    self.static_text_lables.append(quantity_label)
+
+
 
     def build_static_text_lables(self):
         def_color = self.ROOT.lable_hover_col

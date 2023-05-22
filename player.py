@@ -93,9 +93,14 @@ class Player:
                     self.logger.log(logging.DEBUG,f'{item_tag} removed from inventory player: {self.player_class_tag}')
                     break
 
-    def get_quantity(self, item_tag, item_type):
-        # get quantity of items in inventory
-        pass
+
+    def get_item_quantity(self, item_tag, item_type):
+        quantity = 0
+        for item in self.inventory[item_type]:
+            if item.tag == item_tag:
+                quantity += 1
+        return quantity
+
 
     # HEALTH FUNCTIONS
     def heal(self, healing):
