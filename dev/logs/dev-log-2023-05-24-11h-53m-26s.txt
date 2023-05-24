@@ -1,0 +1,48 @@
+[2023-05-24 11:53:28,638]: INFO: Game_Setup: starting Game_Loop
+[2023-05-24 11:53:29,041]: INFO: Game_Loop: start Game.Loop:main_loop
+[2023-05-24 11:53:29,042]: INFO: DataLoader: Loading 'data/enemy/enemy_data.json'
+[2023-05-24 11:53:29,042]: INFO: DataLoader: Loading 'data/items/weapon_data.json'
+[2023-05-24 11:53:29,042]: INFO: DataLoader: Loading 'data/player_classes/class_data.json'
+[2023-05-24 11:53:29,044]: DEBUG: Player: placeholder_weapon added to inventory player: sorcerer_class
+[2023-05-24 11:53:29,044]: DEBUG: Player: rare_sword added to inventory player: sorcerer_class
+[2023-05-24 11:53:29,046]: DEBUG: Player: rare_sword added to inventory player: sorcerer_class
+[2023-05-24 11:53:29,046]: DEBUG: Player: placeholder_weapon added to inventory player: sorcerer_class
+[2023-05-24 11:53:29,046]: DEBUG: Player: placeholder_weapon added to inventory player: sorcerer_class
+[2023-05-24 11:53:29,736]: DEBUG: Player: player: sorcerer_class took damage (-20 dmg)
+[2023-05-24 11:53:31,496]: DEBUG: Player: player: sorcerer_class healed (+5 hp)
+[2023-05-24 11:53:31,991]: DEBUG: Player: player: sorcerer_class healed (+5 hp)
+[2023-05-24 11:53:32,563]: DEBUG: Player: player: sorcerer_class healed (+5 hp)
+[2023-05-24 11:53:33,829]: DEBUG: Player: player: sorcerer_class healed (+5 hp)
+[2023-05-24 11:53:34,049]: DEBUG: Player: player: sorcerer_class healed (+5 hp)
+[2023-05-24 11:53:34,608]: DEBUG: Player: player: sorcerer_class took damage (-5 dmg)
+[2023-05-24 11:53:35,186]: DEBUG: Player: player: sorcerer_class took damage (-5 dmg)
+[2023-05-24 11:53:35,347]: DEBUG: Player: player: sorcerer_class took damage (-5 dmg)
+[2023-05-24 11:53:35,502]: DEBUG: Player: player: sorcerer_class took damage (-5 dmg)
+[2023-05-24 11:53:35,719]: DEBUG: Player: player: sorcerer_class took damage (-5 dmg)
+[2023-05-24 11:53:35,874]: DEBUG: Player: player: sorcerer_class took damage (-5 dmg)
+[2023-05-24 11:53:36,107]: DEBUG: Player: player: sorcerer_class took damage (-5 dmg)
+[2023-05-24 11:53:36,266]: DEBUG: Player: player: sorcerer_class took damage (-5 dmg)
+[2023-05-24 11:53:36,515]: DEBUG: Player: player: sorcerer_class took damage (-5 dmg)
+[2023-05-24 11:53:36,665]: DEBUG: Player: player: sorcerer_class took damage (-5 dmg)
+[2023-05-24 11:53:37,143]: DEBUG: Player: player: sorcerer_class took damage (-5 dmg)
+[2023-05-24 11:53:37,318]: DEBUG: Player: player: sorcerer_class took damage (-5 dmg)
+[2023-05-24 11:53:37,499]: DEBUG: Player: player: sorcerer_class took damage (-5 dmg)
+[2023-05-24 11:53:37,766]: DEBUG: Player: player: sorcerer_class took damage (-5 dmg)
+[2023-05-24 11:53:37,937]: DEBUG: Player: player: sorcerer_class took damage (-5 dmg)
+[2023-05-24 11:53:38,121]: DEBUG: Player: player: sorcerer_class took damage (-5 dmg)
+[2023-05-24 11:53:38,278]: DEBUG: Player: player: sorcerer_class took damage (-5 dmg)
+[2023-05-24 11:53:38,509]: DEBUG: Player: player: sorcerer_class took damage (-5 dmg)
+[2023-05-24 11:53:38,509]: DEBUG: Player: player: sorcerer_class died (hp: 0)
+[2023-05-24 11:53:38,668]: DEBUG: Player: player: sorcerer_class took damage (-5 dmg)
+[2023-05-24 11:53:38,669]: DEBUG: Player: player: sorcerer_class died (hp: 0)
+[2023-05-24 11:53:38,903]: DEBUG: Player: player: sorcerer_class took damage (-5 dmg)
+[2023-05-24 11:53:38,904]: DEBUG: Player: player: sorcerer_class died (hp: 0)
+[2023-05-24 11:53:39,059]: DEBUG: Player: player: sorcerer_class took damage (-5 dmg)
+[2023-05-24 11:53:39,059]: DEBUG: Player: player: sorcerer_class died (hp: 0)
+[2023-05-24 11:53:42,732]: DEBUG: Player: player: sorcerer_class healed (+5 hp)
+[2023-05-24 11:53:42,988]: DEBUG: Player: player: sorcerer_class healed (+5 hp)
+[2023-05-24 11:53:43,167]: DEBUG: Player: player: sorcerer_class healed (+5 hp)
+[2023-05-24 11:53:43,350]: DEBUG: Player: player: sorcerer_class healed (+5 hp)
+[2023-05-24 11:53:47,818]: DEBUG: Player: player: sorcerer_class took damage (-5 dmg)
+[2023-05-24 11:53:48,072]: DEBUG: Player: player: sorcerer_class took damage (-5 dmg)
+[2023-05-24 11:53:51,697]: DEBUG: Player: player: sorcerer_class healed (+5 hp)

@@ -134,13 +134,17 @@ class Screen_Effect:
 
 
 class Health_bar:
-    def __init__(self, hp_current: int, hp_max: int, pos, width, height, color, bg_color):
-        self.health_bar_length = 200
+    def __init__(self, hp_current: int, hp_max: int, pos, width, height, color, bg_color, show_title=False, show_numbers=True, color_gradient=False):
+        self.health_bar_length = width
         self.color = color
         self.bg_color = bg_color
         self.pos = pos
         self.width = width
         self.height = height
+
+        self.show_title = show_title
+        self.show_numbers = show_numbers
+        self.color_gradient = color_gradient
 
 
         self.current_hp = hp_current
@@ -148,7 +152,9 @@ class Health_bar:
 
         self.health_ratio = self.max_hp / self.health_bar_length
 
-    def update(self, surface):
+    def update(self, surface, current_hp, max_hp):
+        self.current_hp = current_hp
+        self.max_hp = max_hp
         self.show_health(surface)
 
     def subtract(self, amount: int):
@@ -164,8 +170,17 @@ class Health_bar:
             self.current_hp = self.max_hp
 
     def show_health(self, surface):
+        if self.color_gradient:
+            hp_percentage = (self.current_hp/self.max_hp)
+
+            if hp_percentage < 0.5:
+                self.color = (255, (255*(hp_percentage)), 0)
+            elif hp_percentage >= 0.5:
+                self.color = (255-(255*hp_percentage), 255, 0)
+            print(self.color)
+            # print(hp_percentage)
+
         pygame.draw.rect(surface, self.color, (self.pos[0], self.pos[1], (self.current_hp/self.health_ratio), self.height))
         pygame.draw.rect(surface, self.bg_color, (self.pos[0], self.pos[1], self.health_bar_length,self.height), 4)
-
-
-
+        health_label = Lable(f'{self.current_hp}/{self.max_hp}', (self.height-10), 'white', 'black', 'black', (self.pos[0]+5, self.pos[1]+5), is_centered=False, is_clickable=False)
+        health_label.draw_text(surface)

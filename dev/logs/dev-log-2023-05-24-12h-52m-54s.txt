@@ -1,0 +1,47 @@
+[2023-05-24 12:52:56,110]: INFO: Game_Setup: starting Game_Loop
+[2023-05-24 12:52:56,515]: INFO: Game_Loop: start Game.Loop:main_loop
+[2023-05-24 12:52:56,515]: INFO: DataLoader: Loading 'data/enemy/enemy_data.json'
+[2023-05-24 12:52:56,515]: INFO: DataLoader: Loading 'data/items/weapon_data.json'
+[2023-05-24 12:52:56,516]: INFO: DataLoader: Loading 'data/player_classes/class_data.json'
+[2023-05-24 12:52:56,517]: DEBUG: Player: placeholder_weapon added to inventory player: sorcerer_class
+[2023-05-24 12:52:56,518]: DEBUG: Player: rare_sword added to inventory player: sorcerer_class
+[2023-05-24 12:52:56,518]: DEBUG: Player: rare_sword added to inventory player: sorcerer_class
+[2023-05-24 12:52:56,518]: DEBUG: Player: placeholder_weapon added to inventory player: sorcerer_class
+[2023-05-24 12:52:56,518]: DEBUG: Player: placeholder_weapon added to inventory player: sorcerer_class
+[2023-05-24 12:52:57,183]: DEBUG: Player: player: sorcerer_class took damage (-20 dmg)
+[2023-05-24 12:52:58,221]: DEBUG: Player: player: sorcerer_class healed (+15 hp)
+[2023-05-24 12:52:58,564]: DEBUG: Player: player: sorcerer_class healed (+15 hp)
+[2023-05-24 12:52:59,456]: DEBUG: Player: player: sorcerer_class took damage (-15 dmg)
+[2023-05-24 12:52:59,594]: DEBUG: Player: player: sorcerer_class took damage (-15 dmg)
+[2023-05-24 12:52:59,801]: DEBUG: Player: player: sorcerer_class took damage (-15 dmg)
+[2023-05-24 12:52:59,940]: DEBUG: Player: player: sorcerer_class took damage (-15 dmg)
+[2023-05-24 12:53:00,159]: DEBUG: Player: player: sorcerer_class took damage (-15 dmg)
+[2023-05-24 12:53:00,303]: DEBUG: Player: player: sorcerer_class took damage (-15 dmg)
+[2023-05-24 12:53:00,303]: DEBUG: Player: player: sorcerer_class died (hp: 0)
+[2023-05-24 12:53:00,518]: DEBUG: Player: player: sorcerer_class took damage (-15 dmg)
+[2023-05-24 12:53:00,519]: DEBUG: Player: player: sorcerer_class died (hp: 0)
+[2023-05-24 12:53:01,409]: DEBUG: Player: player: sorcerer_class healed (+15 hp)
+[2023-05-24 12:53:01,546]: DEBUG: Player: player: sorcerer_class healed (+15 hp)
+[2023-05-24 12:53:01,752]: DEBUG: Player: player: sorcerer_class healed (+15 hp)
+[2023-05-24 12:53:01,888]: DEBUG: Player: player: sorcerer_class healed (+15 hp)
+[2023-05-24 12:53:05,304]: DEBUG: Player: player: sorcerer_class took damage (-15 dmg)
+[2023-05-24 12:53:06,733]: DEBUG: Player: player: sorcerer_class healed (+15 hp)
+[2023-05-24 12:53:07,543]: DEBUG: Player: player: sorcerer_class took damage (-15 dmg)
+[2023-05-24 12:53:07,951]: DEBUG: Player: player: sorcerer_class took damage (-15 dmg)
+[2023-05-24 12:53:08,901]: DEBUG: Player: player: sorcerer_class healed (+15 hp)
+[2023-05-24 12:53:09,037]: DEBUG: Player: player: sorcerer_class healed (+15 hp)
+[2023-05-24 12:53:09,245]: DEBUG: Player: player: sorcerer_class healed (+15 hp)
+[2023-05-24 12:53:09,921]: DEBUG: Player: player: sorcerer_class healed (+15 hp)
+[2023-05-24 12:54:09,932]: DEBUG: Player: player: sorcerer_class healed (+15 hp)
+[2023-05-24 12:54:10,070]: DEBUG: Player: player: sorcerer_class healed (+15 hp)
+[2023-05-24 12:54:10,277]: DEBUG: Player: player: sorcerer_class healed (+15 hp)
+[2023-05-24 12:54:10,964]: DEBUG: Player: player: sorcerer_class took damage (-15 dmg)
+[2023-05-24 12:54:12,198]: DEBUG: Player: player: sorcerer_class took damage (-15 dmg)
+[2023-05-24 12:54:12,471]: DEBUG: Player: player: sorcerer_class took damage (-15 dmg)
+[2023-05-24 12:54:12,811]: DEBUG: Player: player: sorcerer_class took damage (-15 dmg)
+[2023-05-24 12:54:13,151]: DEBUG: Player: player: sorcerer_class took damage (-15 dmg)
+[2023-05-24 12:54:14,566]: DEBUG: Player: player: sorcerer_class took damage (-15 dmg)
+[2023-05-24 12:54:14,566]: DEBUG: Player: player: sorcerer_class died (hp: 0)
+[2023-05-24 12:54:15,719]: DEBUG: Player: player: sorcerer_class healed (+15 hp)
+[2023-05-24 12:54:16,061]: DEBUG: Player: player: sorcerer_class healed (+15 hp)
+[2023-05-24 12:54:16,270]: DEBUG: Player: player: sorcerer_class healed (+15 hp)

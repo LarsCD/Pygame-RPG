@@ -39,8 +39,6 @@ class Player_Menu:
         self.run_display = True
         self.static_text_lables = []
         self.player_object = player_object
-        self.build_static_text_lables()
-        self.build_inventory()
 
         back_label = Lable('BACK', 20, 'white', 'gray', (153, 0, 28),
                            ((self.ROOT.DISPLAY_WIDTH / 2), 675),
@@ -53,23 +51,33 @@ class Player_Menu:
 
         self.player_object.take_damage(20)
 
+        health_bar = Health_bar(self.player_object.hp, self.player_object.hpMax, (625, 500), 200, 25,
+                                (255, 0, 0), (255, 255, 255), color_gradient=True)
 
 
         while self.run_display:
+
+            self.ROOT.window.fill((0, 0, 0))
             self.ROOT.window.blit(pygame.transform.scale(self.background, self.ROOT.RESOLUTION), (0, 0))
+
+            self.build_static_text_lables()
+            self.build_inventory()
+
             # TODO: make function for background ^
+
             self.check_quit_event()
-            # self.set_background_color()
             self.draw_static_text_labels()
 
-            health_bar = Health_bar(self.player_object.hp, self.player_object.hpMax, (625, 500), 200, 25,
-                                    (255, 0, 0), (255, 255, 255)).update(self.ROOT.window)
+            health_bar.update(self.ROOT.window, self.player_object.hp, self.player_object.hpMax)
 
+            self.player_object.take_damage(1)
+            if self.player_object.hp <= 0:
+                self.player_object.heal_full()
 
-            if heal_button.draw_text(self.ROOT.window):
-                self.player_object.heal(5)
             if damage_button.draw_text(self.ROOT.window):
-                self.player_object.take_damage(5)
+                self.player_object.take_damage(15)
+            if heal_button.draw_text(self.ROOT.window):
+                self.player_object.heal(15)
             if back_label.draw_text(self.ROOT.window):
                 # quit out of view
                 self.run_display = False
@@ -81,8 +89,9 @@ class Player_Menu:
     def build_inventory(self):
         inventory_start_pos_x = 625
         inventory_start_pos_y = 350
-        offset_y = 5
+        offset_y = 10
         offset_x = 250
+        between_space_y = 30
         black = (0, 0, 0)
 
         inventory_title = Lable(f'INVENTORY', 35, 'white', black, black,
@@ -102,7 +111,7 @@ class Player_Menu:
                 else:
                     item_tag_labels_build.append(item.tag)
                     pos_x = inventory_start_pos_x
-                    pos_y = inventory_start_pos_y + (i+n * (self.text_size) + offset_y) + 30
+                    pos_y = inventory_start_pos_y + (i+n * (self.text_size) + offset_y) + between_space_y
                     # TODO: aha fix deze shit
 
                     quantity = self.player_object.get_item_quantity(item.tag, item.item_type)
@@ -168,6 +177,7 @@ class Player_Menu:
     def draw_static_text_labels(self):
         for label in self.static_text_lables:
             label.draw_text(self.ROOT.window)
+        self.static_text_lables = []
 
 
     def set_background_color(self):
