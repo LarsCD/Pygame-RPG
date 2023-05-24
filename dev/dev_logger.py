@@ -11,7 +11,6 @@ class DevLogger:
         log_file_path = str(f"dev/logs/dev-log-{time_start.date()}-{time_start.time().hour}h-{time_start.time().minute}m-{time_start.time().second}s.txt")
 
         self.logger = logging.getLogger(logger_name)
-
         file_handler = logging.FileHandler(log_file_path)
         file_handler.setLevel(level=log_level)
         formatter = logging.Formatter("[%(asctime)s]: %(levelname)s: %(name)s: %(message)s")

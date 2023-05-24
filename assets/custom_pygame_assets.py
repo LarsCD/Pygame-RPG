@@ -177,7 +177,8 @@ class Health_bar:
                 self.color = (255, (255*(hp_percentage)), 0)
             elif hp_percentage >= 0.5:
                 self.color = (255-(255*hp_percentage), 255, 0)
-            print(self.color)
+            # TODO: doesnt work great
+            # print(self.color)
             # print(hp_percentage)
 
         pygame.draw.rect(surface, self.color, (self.pos[0], self.pos[1], (self.current_hp/self.health_ratio), self.height))
