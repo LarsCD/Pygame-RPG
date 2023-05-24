@@ -1,0 +1,17 @@
+[2023-05-24 11:32:19,397]: INFO: Game_Setup: starting Options
+[2023-05-24 11:32:21,195]: INFO: Options: exiting Options
+[2023-05-24 11:32:22,016]: INFO: Game_Setup: starting About
+[2023-05-24 11:32:23,249]: INFO: About: exiting About
+[2023-05-24 11:32:32,659]: INFO: Game_Setup: starting Options
+[2023-05-24 11:32:34,822]: INFO: Options: exiting Options
+[2023-05-24 11:32:35,818]: INFO: Game_Setup: starting Game_Loop
+[2023-05-24 11:32:36,230]: INFO: Game_Loop: start Game.Loop:main_loop
+[2023-05-24 11:32:36,230]: INFO: DataLoader: Loading 'data/enemy/enemy_data.json'
+[2023-05-24 11:32:36,232]: INFO: DataLoader: Loading 'data/items/weapon_data.json'
+[2023-05-24 11:32:36,233]: INFO: DataLoader: Loading 'data/player_classes/class_data.json'
+[2023-05-24 11:32:36,234]: DEBUG: Player: placeholder_weapon added to inventory player: sorcerer_class
+[2023-05-24 11:32:36,234]: DEBUG: Player: rare_sword added to inventory player: sorcerer_class
+[2023-05-24 11:32:36,234]: DEBUG: Player: rare_sword added to inventory player: sorcerer_class
+[2023-05-24 11:32:36,234]: DEBUG: Player: placeholder_weapon added to inventory player: sorcerer_class
+[2023-05-24 11:32:36,234]: DEBUG: Player: placeholder_weapon added to inventory player: sorcerer_class
+[2023-05-24 11:32:46,601]: DEBUG: Player: player: sorcerer_class took damage (-20 dmg)

@@ -1,0 +1,10 @@
+[2023-05-24 11:48:36,605]: INFO: Game_Setup: starting Game_Loop
+[2023-05-24 11:48:37,017]: INFO: Game_Loop: start Game.Loop:main_loop
+[2023-05-24 11:48:37,017]: INFO: DataLoader: Loading 'data/enemy/enemy_data.json'
+[2023-05-24 11:48:37,018]: INFO: DataLoader: Loading 'data/items/weapon_data.json'
+[2023-05-24 11:48:37,018]: INFO: DataLoader: Loading 'data/player_classes/class_data.json'
+[2023-05-24 11:48:37,019]: DEBUG: Player: placeholder_weapon added to inventory player: sorcerer_class
+[2023-05-24 11:48:37,020]: DEBUG: Player: rare_sword added to inventory player: sorcerer_class
+[2023-05-24 11:48:37,028]: DEBUG: Player: rare_sword added to inventory player: sorcerer_class
+[2023-05-24 11:48:37,028]: DEBUG: Player: placeholder_weapon added to inventory player: sorcerer_class
+[2023-05-24 11:48:37,028]: DEBUG: Player: placeholder_weapon added to inventory player: sorcerer_class

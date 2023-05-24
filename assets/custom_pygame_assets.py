@@ -133,8 +133,39 @@ class Screen_Effect:
 
 
 
-class Health_bar():
-    def __init__(self):
-        pass
+class Health_bar:
+    def __init__(self, hp_current: int, hp_max: int, pos, width, height, color, bg_color):
+        self.health_bar_length = 200
+        self.color = color
+        self.bg_color = bg_color
+        self.pos = pos
+        self.width = width
+        self.height = height
+
+
+        self.current_hp = hp_current
+        self.max_hp = hp_max
+
+        self.health_ratio = self.max_hp / self.health_bar_length
+
+    def update(self, surface):
+        self.show_health(surface)
+
+    def subtract(self, amount: int):
+        if self.current_hp > 0:
+            self.current_hp -= amount
+        if self.current_hp <= 0:
+            self.current_hp = 0
+
+    def add(self, amout: int):
+        if self.current_hp < self.max_hp:
+            self.current_hp += amout
+        if self.current_hp >= self.max_hp:
+            self.current_hp = self.max_hp
+
+    def show_health(self, surface):
+        pygame.draw.rect(surface, self.color, (self.pos[0], self.pos[1], (self.current_hp/self.health_ratio), self.height))
+        pygame.draw.rect(surface, self.bg_color, (self.pos[0], self.pos[1], self.health_bar_length,self.height), 4)
+
 
 

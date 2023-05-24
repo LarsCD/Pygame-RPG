@@ -123,7 +123,7 @@ class Game_Setup:
     def check_quit_event(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                self.running, self.playing = False, False
+                quit()
 
 
 
@@ -191,7 +191,7 @@ class Options:
     def check_quit_event(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                self.run_display = False
+                quit()
 
 
 
@@ -276,4 +276,4 @@ class About:
     def check_quit_event(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                self.run_display = False
+                quit()

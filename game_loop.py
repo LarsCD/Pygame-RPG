@@ -162,4 +162,4 @@ class Game_Loop:
     def check_quit_event(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                self.run_display = False
+                quit()

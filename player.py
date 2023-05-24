@@ -93,7 +93,6 @@ class Player:
                     self.logger.log(logging.DEBUG,f'{item_tag} removed from inventory player: {self.player_class_tag}')
                     break
 
-
     def get_item_quantity(self, item_tag, item_type):
         quantity = 0
         for item in self.inventory[item_type]:

@@ -1,5 +1,5 @@
 import pygame
-from assets.custom_pygame_assets import Lable
+from assets.custom_pygame_assets import Lable, Health_bar
 from weapon_display_screen import Weapon_Display_Screen
 
 class Player_Menu:
@@ -43,8 +43,15 @@ class Player_Menu:
         self.build_inventory()
 
         back_label = Lable('BACK', 20, 'white', 'gray', (153, 0, 28),
-                           ((self.ROOT.DISPLAY_WIDTH / 2), (self.ROOT.DISPLAY_HEIGHT / 2) + 240),
-                           is_centered=True, is_clickable=True)
+                           ((self.ROOT.DISPLAY_WIDTH / 2), 675),
+                           is_centered=True)
+
+        damage_button = Lable('DAMAGE PLAYER', 15, 'white', 'gray', 'red',
+                           (625, 550))
+        heal_button = Lable('HEAL PLAYER', 15, 'white', 'gray', 'green',
+                              (625, 570))
+
+        self.player_object.take_damage(20)
 
 
 
@@ -55,7 +62,14 @@ class Player_Menu:
             # self.set_background_color()
             self.draw_static_text_labels()
 
+            health_bar = Health_bar(self.player_object.hp, self.player_object.hpMax, (625, 500), 200, 25,
+                                    (255, 0, 0), (255, 255, 255)).update(self.ROOT.window)
 
+
+            if heal_button.draw_text(self.ROOT.window):
+                self.player_object.heal(5)
+            if damage_button.draw_text(self.ROOT.window):
+                self.player_object.take_damage(5)
             if back_label.draw_text(self.ROOT.window):
                 # quit out of view
                 self.run_display = False
@@ -63,11 +77,6 @@ class Player_Menu:
             pygame.display.update()
             self.ROOT.clock.tick(self.ROOT.fps)
 
-    def set_background_color(self):
-        if self.bg_color != None:
-            self.ROOT.window.fill(self.bg_color)
-        else:
-            self.ROOT.window.fill(self.default_bg_color)
 
     def build_inventory(self):
         inventory_start_pos_x = 625
@@ -111,7 +120,6 @@ class Player_Menu:
                     self.static_text_lables.append(quantity_label)
 
 
-
     def build_static_text_lables(self):
         def_color = self.ROOT.lable_hover_col
         black = (0, 0, 0)
@@ -126,23 +134,28 @@ class Player_Menu:
         self.static_text_lables.append(title_label)
         self.static_text_lables.append(player_name)
 
+        self.build_metadata_labels()
+
+
+    def build_metadata_labels(self):
         # make label for every attribute of weapon object (cluttered asf I know..)
         n = 0
         m = 0
+        black = (0, 0, 0)
         for attr, value in self.player_object.__dict__.items():
             row_length = 26
             offset_x = 0
             if m >= row_length:
                 n = m - row_length
-                offset_x = self.display_sep_space*2
+                offset_x = self.display_sep_space * 2
             offset_y = 5
 
             pos_x = self.display_start_x_pos
             pos_y = self.display_start_y_pos + (n * (self.text_size + offset_y))
 
             attr_label = Lable(f'{attr}', self.text_size, self.ROOT.lable_hover_col, black, black,
-                                (pos_x + offset_x, pos_y),
-                                is_clickable=False)
+                               (pos_x + offset_x, pos_y),
+                               is_clickable=False)
             value_label = Lable(f'{value}', self.text_size, 'white', black, black,
                                 (self.display_start_x_pos + self.display_sep_space + offset_x,
                                  self.display_start_y_pos + (n * (self.text_size + 5))), is_clickable=False)
@@ -151,11 +164,19 @@ class Player_Menu:
             n += 1
             m += 1
 
+
     def draw_static_text_labels(self):
         for label in self.static_text_lables:
             label.draw_text(self.ROOT.window)
 
+
+    def set_background_color(self):
+        if self.bg_color != None:
+            self.ROOT.window.fill(self.bg_color)
+        else:
+            self.ROOT.window.fill(self.default_bg_color)
+
     def check_quit_event(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                self.run_display = False
+                quit()

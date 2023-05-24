@@ -65,11 +65,13 @@ class Weapon_Display_Screen:
             pygame.display.update()
             self.ROOT.clock.tick(self.ROOT.fps)
 
+
     def set_background_color(self):
         if self.bg_color != None:
             self.ROOT.window.fill(self.bg_color)
         else:
             self.ROOT.window.fill(self.default_bg_color)
+
 
     def build_static_text_lables(self):
         def_color = self.ROOT.lable_hover_col
@@ -88,18 +90,24 @@ class Weapon_Display_Screen:
         self.static_text_lables.append(weapon_name)
         self.static_text_lables.append(tier_text)
 
+        self.build_metadata_labels() # builds static labels for every attribute of the item_object class
+
+
+    def build_metadata_labels(self):
         # make label for every attribute of weapon object (cluttered asf I know..)
         n = 0
+        black = (0, 0, 0)
         for attr, value in self.weapon_object.__dict__.items():
             attr_label = Lable(f'{attr}', self.text_size, self.ROOT.lable_hover_col, black, black,
-                                (self.display_start_x_pos, self.display_start_y_pos + (n * (self.text_size + 5))),
-                                is_clickable=False)
+                               (self.display_start_x_pos, self.display_start_y_pos + (n * (self.text_size + 5))),
+                               is_clickable=False)
             value_label = Lable(f'{value}', self.text_size, 'white', black, black,
                                 (self.display_start_x_pos + self.display_sep_space,
-                                 self.display_start_y_pos + (n * (self.text_size + 5))), is_clickable=False)
+                                 self.display_start_y_pos + (n * (self.text_size)) + 15), is_clickable=False)
             self.static_text_lables.append(attr_label)
             self.static_text_lables.append(value_label)
             n += 1
+
 
     def draw_static_text_labels(self):
         for label in self.static_text_lables:
@@ -108,4 +116,4 @@ class Weapon_Display_Screen:
     def check_quit_event(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                self.run_display = False
+                quit()
