@@ -1,0 +1,24 @@
+[2023-05-25 15:01:30,849]: INFO: Game_Setup: starting Game_Loop
+[2023-05-25 15:01:31,255]: INFO: Game_Loop: start Game.Loop:main_loop
+[2023-05-25 15:01:31,255]: INFO: DataLoader: Loading 'data/enemy/enemy_data.json'
+[2023-05-25 15:01:31,255]: INFO: DataLoader: Loading 'data/items/weapon_data.json'
+[2023-05-25 15:01:31,255]: INFO: DataLoader: Loading 'data/player_classes/class_data.json'
+[2023-05-25 15:01:31,257]: DEBUG: Player: placeholder_weapon added to inventory player: sorcerer_class
+[2023-05-25 15:01:31,257]: DEBUG: Player: rare_sword added to inventory player: sorcerer_class
+[2023-05-25 15:01:31,259]: DEBUG: Player: rare_sword added to inventory player: sorcerer_class
+[2023-05-25 15:01:31,259]: DEBUG: Player: placeholder_weapon added to inventory player: sorcerer_class
+[2023-05-25 15:01:31,259]: DEBUG: Player: placeholder_weapon added to inventory player: sorcerer_class
+[2023-05-25 15:01:34,405]: DEBUG: Player: player: sorcerer_class took damage (-15 dmg)
+[2023-05-25 15:01:37,145]: DEBUG: Player: player: sorcerer_class took damage (-15 dmg)
+[2023-05-25 15:01:37,746]: DEBUG: Player: player: sorcerer_class took damage (-15 dmg)
+[2023-05-25 15:01:38,281]: DEBUG: Player: player: sorcerer_class took damage (-15 dmg)
+[2023-05-25 15:01:38,812]: DEBUG: Player: player: sorcerer_class took damage (-15 dmg)
+[2023-05-25 15:01:39,548]: DEBUG: Player: player: sorcerer_class took damage (-15 dmg)
+[2023-05-25 15:01:39,548]: DEBUG: Player: player: sorcerer_class died (hp: 0)
+[2023-05-25 15:01:39,615]: DEBUG: Player: player: sorcerer_class fully healed
+[2023-05-25 15:01:41,278]: DEBUG: Player: player: sorcerer_class healed (+15 hp)
+[2023-05-25 15:01:43,550]: DEBUG: Player: player: sorcerer_class healed (+15 hp)
+[2023-05-25 15:01:45,299]: DEBUG: Player: player: sorcerer_class took damage (-15 dmg)
+[2023-05-25 15:01:45,835]: DEBUG: Player: player: sorcerer_class took damage (-15 dmg)
+[2023-05-25 15:01:47,305]: DEBUG: Player: player: sorcerer_class took damage (-15 dmg)
+[2023-05-25 15:01:53,152]: INFO: Game_Loop: exiting Game_Loop

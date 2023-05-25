@@ -103,7 +103,7 @@ class Weapon_Display_Screen:
                                is_clickable=False)
             value_label = Lable(f'{value}', self.text_size, 'white', black, black,
                                 (self.display_start_x_pos + self.display_sep_space,
-                                 self.display_start_y_pos + (n * (self.text_size)) + 15), is_clickable=False)
+                                 self.display_start_y_pos + (n * (self.text_size + 5))), is_clickable=False)
             self.static_text_lables.append(attr_label)
             self.static_text_lables.append(value_label)
             n += 1

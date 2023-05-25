@@ -1,5 +1,5 @@
 import pygame
-from assets.custom_pygame_assets import Lable, Health_bar
+from assets.custom_pygame_assets import Lable, Health_bar, Custom_bar
 from weapon_display_screen import Weapon_Display_Screen
 
 class Player_Menu:
@@ -45,14 +45,16 @@ class Player_Menu:
                            is_centered=True)
 
         damage_button = Lable('DAMAGE PLAYER', 15, 'white', 'gray', 'red',
-                           (625, 550))
+                           (625, 575))
         heal_button = Lable('HEAL PLAYER', 15, 'white', 'gray', 'green',
-                              (625, 570))
+                              (625, 600))
 
-        self.player_object.take_damage(20)
-
-        health_bar = Health_bar(self.player_object.hp, self.player_object.hpMax, (625, 500), 200, 25,
+        health_bar = Health_bar(self.player_object.hp, self.player_object.hpMax, (625, 470), 200, 25,
                                 (255, 0, 0), (255, 255, 255), color_gradient=True)
+        energy_bar = Custom_bar(self.player_object.ep, self.player_object.epMax, (625, 505), 200, 25,
+                                'orange', (255, 255, 255))
+        mana_bar = Custom_bar(self.player_object.mp, self.player_object.mpMax, (625, 540), 200, 25,
+                                'cyan', (255, 255, 255))
 
 
         while self.run_display:
@@ -69,10 +71,12 @@ class Player_Menu:
             self.draw_static_text_labels()
 
             health_bar.update(self.ROOT.window, self.player_object.hp, self.player_object.hpMax)
+            energy_bar.update(self.ROOT.window, self.player_object.ep, self.player_object.epMax)
+            mana_bar.update(self.ROOT.window, self.player_object.mp, self.player_object.mpMax)
 
-            self.player_object.take_damage(1)
             if self.player_object.hp <= 0:
                 self.player_object.heal_full()
+
 
             if damage_button.draw_text(self.ROOT.window):
                 self.player_object.take_damage(15)

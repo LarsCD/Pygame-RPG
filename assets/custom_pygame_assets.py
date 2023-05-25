@@ -132,7 +132,6 @@ class Screen_Effect:
             pygame.time.Clock().tick(60)
 
 
-
 class Health_bar:
     def __init__(self, hp_current: int, hp_max: int, pos, width, height, color, bg_color, show_title=False, show_numbers=True, color_gradient=False):
         self.health_bar_length = width
@@ -184,4 +183,46 @@ class Health_bar:
         pygame.draw.rect(surface, self.color, (self.pos[0], self.pos[1], (self.current_hp/self.health_ratio), self.height))
         pygame.draw.rect(surface, self.bg_color, (self.pos[0], self.pos[1], self.health_bar_length,self.height), 4)
         health_label = Lable(f'{self.current_hp}/{self.max_hp}', (self.height-10), 'white', 'black', 'black', (self.pos[0]+5, self.pos[1]+5), is_centered=False, is_clickable=False)
+        health_label.draw_text(surface)
+
+
+class Custom_bar:
+    def __init__(self, stat_current: int, stat_max: int, pos, width, height, color, bg_color, show_title=False, show_numbers=True):
+        self.health_bar_length = width
+        self.color = color
+        self.bg_color = bg_color
+        self.pos = pos
+        self.width = width
+        self.height = height
+
+        self.show_title = show_title
+        self.show_numbers = show_numbers
+
+        self.current_stat = stat_current
+        self.max_stat = stat_max
+
+        self.health_ratio = self.max_stat / self.health_bar_length
+
+    def update(self, surface, stat_current, stat_max):
+        self.current_stat = stat_current
+        self.max_stat = stat_max
+        self.show_stat(surface)
+
+    def subtract(self, amount: int):
+        if self.current_stat > 0:
+            self.current_stat -= amount
+        if self.current_stat <= 0:
+            self.current_stat = 0
+
+    def add(self, amout: int):
+        if self.current_stat < self.max_stat:
+            self.current_stat += amout
+        if self.current_stat >= self.max_stat:
+            self.current_stat = self.max_stat
+
+    def show_stat(self, surface):
+
+        pygame.draw.rect(surface, self.color, (self.pos[0], self.pos[1], (self.current_stat / self.health_ratio), self.height))
+        pygame.draw.rect(surface, self.bg_color, (self.pos[0], self.pos[1], self.health_bar_length,self.height), 4)
+        health_label = Lable(f'{self.current_stat}/{self.max_stat}', (self.height - 10), 'white', 'black', 'black', (self.pos[0] + 5, self.pos[1] + 5), is_centered=False, is_clickable=False)
         health_label.draw_text(surface)
