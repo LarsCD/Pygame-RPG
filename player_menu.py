@@ -19,7 +19,7 @@ class Player_Menu:
         self.display_start_y_pos = 120
         self.display_sep_space = 250
         self.text_size = 15
-        self.name_pos_x = 135
+        self.name_pos_x = 145
         self.background = pygame.image.load("assets/image/menu_background_1.png")
 
         # PLAYER
@@ -29,16 +29,23 @@ class Player_Menu:
         self.default_icon_size = (56, 56)
         self.tier_frame_pos = (128, 40)
         self.icon_pos = (130, 42)
+        self.frame_pos = (128, 40)
         self.default_frame_size = (60, 60)
-        self.tier_name_pos_y = 80
 
         # MODULES
         self.Weapon_Display_Screen = Weapon_Display_Screen
+
 
     def main_loop(self, player_object):
         self.run_display = True
         self.static_text_lables = []
         self.player_object = player_object
+
+        icon = pygame.image.load(self.player_object.image).convert_alpha()
+        icon_scaled = pygame.transform.scale(icon, self.default_icon_size)
+
+        frame = pygame.image.load(self.player_object.frame).convert_alpha()
+        frame_scaled = pygame.transform.scale(frame, self.default_frame_size)
 
         back_label = Lable('BACK', 20, 'white', 'gray', (153, 0, 28),
                            ((self.ROOT.DISPLAY_WIDTH / 2), 675),
@@ -50,11 +57,11 @@ class Player_Menu:
                               (625, 600))
 
         health_bar = Health_bar(self.player_object.hp, self.player_object.hpMax, (625, 470), 200, 25,
-                                (255, 0, 0), (255, 255, 255), color_gradient=True)
+                                (255, 0, 0), (255, 255, 255), title='health')
         energy_bar = Custom_bar(self.player_object.ep, self.player_object.epMax, (625, 505), 200, 25,
-                                'orange', (255, 255, 255))
+                                (255,178,0), (255, 255, 255), title='energy')
         mana_bar = Custom_bar(self.player_object.mp, self.player_object.mpMax, (625, 540), 200, 25,
-                                'cyan', (255, 255, 255))
+                              (23,93,255), (255, 255, 255), title='mana  ')
 
 
         while self.run_display:
@@ -62,30 +69,40 @@ class Player_Menu:
             self.ROOT.window.fill((0, 0, 0))
             self.ROOT.window.blit(pygame.transform.scale(self.background, self.ROOT.RESOLUTION), (0, 0))
 
+            # prepare static text labels and put in list
             self.build_static_text_lables()
             self.build_inventory()
 
             # TODO: make function for background ^
 
             self.check_quit_event()
+
+            # draw all static text labels from list
             self.draw_static_text_labels()
 
+            # draw player icon
+            self.ROOT.window.blit(frame_scaled, self.frame_pos)
+            self.ROOT.window.blit(icon_scaled, self.icon_pos)
+
+            # draw health, energy and mana bars
             health_bar.update(self.ROOT.window, self.player_object.hp, self.player_object.hpMax)
             energy_bar.update(self.ROOT.window, self.player_object.ep, self.player_object.epMax)
             mana_bar.update(self.ROOT.window, self.player_object.mp, self.player_object.mpMax)
 
+            # player interaction
             if self.player_object.hp <= 0:
                 self.player_object.heal_full()
-
-
             if damage_button.draw_text(self.ROOT.window):
-                self.player_object.take_damage(15)
+                self.player_object.take_damage(10)
             if heal_button.draw_text(self.ROOT.window):
-                self.player_object.heal(15)
+                self.player_object.heal(10)
             if back_label.draw_text(self.ROOT.window):
                 # quit out of view
                 self.run_display = False
 
+            # TODO: make function for player interaction? (25-5-2023)
+
+            # update screen
             pygame.display.update()
             self.ROOT.clock.tick(self.ROOT.fps)
 

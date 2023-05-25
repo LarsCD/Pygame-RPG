@@ -1,0 +1,20 @@
+[2023-05-25 21:13:53,303]: INFO: Game_Setup: starting Game_Loop
+[2023-05-25 21:13:53,708]: INFO: Game_Loop: start Game.Loop:main_loop
+[2023-05-25 21:13:53,708]: INFO: DataLoader: Loading 'data/enemy/enemy_data.json'
+[2023-05-25 21:13:53,709]: INFO: DataLoader: Loading 'data/items/weapon_data.json'
+[2023-05-25 21:13:53,710]: INFO: DataLoader: Loading 'data/player_classes/class_data.json'
+[2023-05-25 21:13:53,710]: DEBUG: Player: placeholder_weapon added to inventory player: sorcerer_class
+[2023-05-25 21:13:53,711]: DEBUG: Player: rare_sword added to inventory player: sorcerer_class
+[2023-05-25 21:13:53,712]: DEBUG: Player: rare_sword added to inventory player: sorcerer_class
+[2023-05-25 21:13:53,712]: DEBUG: Player: placeholder_weapon added to inventory player: sorcerer_class
+[2023-05-25 21:13:53,712]: DEBUG: Player: placeholder_weapon added to inventory player: sorcerer_class
+[2023-05-25 21:13:56,729]: DEBUG: Player: player: sorcerer_class healed (+15 hp)
+[2023-05-25 21:13:57,062]: DEBUG: Player: player: sorcerer_class healed (+15 hp)
+[2023-05-25 21:13:57,455]: DEBUG: Player: player: sorcerer_class took damage (-15 dmg)
+[2023-05-25 21:13:57,621]: DEBUG: Player: player: sorcerer_class took damage (-15 dmg)
+[2023-05-25 21:13:57,843]: DEBUG: Player: player: sorcerer_class took damage (-15 dmg)
+[2023-05-25 21:13:58,011]: DEBUG: Player: player: sorcerer_class took damage (-15 dmg)
+[2023-05-25 21:13:58,457]: DEBUG: Player: player: sorcerer_class took damage (-15 dmg)
+[2023-05-25 21:14:01,474]: DEBUG: Player: player: sorcerer_class healed (+15 hp)
+[2023-05-25 21:14:01,696]: DEBUG: Player: player: sorcerer_class healed (+15 hp)
+[2023-05-25 21:14:04,761]: INFO: Game_Loop: exiting Game_Loop

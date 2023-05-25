@@ -47,9 +47,11 @@ class Player:
         # INVENTORY
         self.inventory = {
             'weapon': [],
+            'potion': [],
         }
         self.inventory_cat_names = {
-            'weapon': 'Weapons'
+            'weapon': 'Weapons',
+            'potion': 'Potions'
         }
         self.spells = {
             'attack_spell': []
@@ -57,6 +59,9 @@ class Player:
         self.spell_cat_names = {
             'Attack Spells'
         }
+        # SPRITES
+        self.image = str(f'assets/image/player_model/player_icon_{self.player_class_tag}.png')
+        self.frame = str(f'assets/image/player_model/player_icon_frame_{self.player_class_tag}.png')
         # DEBUG
         self.logger = DevLogger(Player)
 
