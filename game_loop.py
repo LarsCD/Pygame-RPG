@@ -1,11 +1,15 @@
 import pygame
-from assets.custom_pygame_assets import Lable
 import logging
-from dev.dev_logger import DevLogger
+from datetime import datetime
+
 from data_loader import DataLoader
+from dev.dev_logger import DevLogger
 from entity import Entity
+from assets.custom_pygame_assets import Lable
 from weapon_display_screen import Weapon_Display_Screen
 from player_menu import Player_Menu
+from dev.dev_logger import DevLogger
+from dev.dev_screen import DevScreen
 
 
 class Game_Loop:
@@ -13,6 +17,11 @@ class Game_Loop:
         self.Game_Setup = Game_Setup
         self.run_display = True
         self.clock = pygame.time.Clock()
+
+        # DATA
+        self.game_name = Game_Setup.game_name
+        self.game_version = Game_Setup.game_version
+        self.start_game = datetime.now()
 
         # SCENE COLORS
         self.default_bg_color = self.Game_Setup.default_bg_color
@@ -28,7 +37,7 @@ class Game_Loop:
         self.display = pygame.Surface((self.DISPLAY_WIDTH, self.DISPLAY_HEIGHT))
         self.window = pygame.display.set_mode((self.DISPLAY_WIDTH, self.DISPLAY_HEIGHT))
         self.default_font = self.Game_Setup.default_font
-        self.fps = 60
+        self.fps = self.Game_Setup.fps
 
         # SCENE LABELS
         self.static_text_lables = []
@@ -40,6 +49,8 @@ class Game_Loop:
         self.player_object = None
 
         # MODULES
+        self.DevLogger = DevLogger(Game_Loop)
+        self.DevScreen = DevScreen(self)
         self.DataLoader = DataLoader()
         self.Entity = Entity()
 
@@ -86,7 +97,7 @@ class Game_Loop:
         self.load_static_data()
         self.build_static_text_lables()
 
-        # TESTING
+        #### ---------------------------- TESTING ---------------------------- ####
         weapon_1 = self.Entity.create_weapon_item(self.static_weapon_data['enemy_weapons']['placeholder_weapon'])
         weapon_2 = self.Entity.create_weapon_item(self.static_weapon_data['weapons']['rare_sword'])
         weapon_3 = self.Entity.create_weapon_item(self.static_weapon_data['weapons']['rare_sword'])
@@ -99,6 +110,7 @@ class Game_Loop:
         self.player_object.give_item(weapon_3)
         self.player_object.give_item(weapon_4)
         self.player_object.give_item(weapon_5)
+        ### ---------------------------- TESTING ---------------------------- ####
 
         # BUTTONS
         back_label = Lable('MAIN MENU', 20, self.lable_col, self.lable_click_col, (153, 0, 28),
@@ -133,6 +145,9 @@ class Game_Loop:
                 # quit out of game
                 self.run_display = False
                 self.logger.log(logging.INFO, f'exiting Game_Loop')
+
+            # dev
+            self.DevScreen.main()
 
             pygame.display.update()
             self.Game_Setup.clock.tick(self.Game_Setup.fps)

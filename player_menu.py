@@ -35,10 +35,11 @@ class Player_Menu:
 
         # MODULES
         self.Weapon_Display_Screen = Weapon_Display_Screen
+        self.DevScreen = DevScreen(self.ROOT)
 
 
     def main_loop(self, player_object):
-        DevScreen.update()
+
         self.run_display = True
         self.static_text_lables = []
         self.player_object = player_object
@@ -101,8 +102,10 @@ class Player_Menu:
             if back_label.draw_text(self.ROOT.window):
                 # quit out of view
                 self.run_display = False
-
             # TODO: make function for player interaction? (25-5-2023)
+
+            # dev
+            self.DevScreen.main()
 
             # update screen
             pygame.display.update()

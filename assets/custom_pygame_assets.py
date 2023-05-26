@@ -85,7 +85,8 @@ class Lable:
                 self.release = True
                 self.color = self.def_color
                 self.text_surface = self.font_text.render(self.text, False, self.color)
-
+                # self.text_surface = surface.draw.text(self.text, self.rect.x, self.rect.y, fontname=self.font_text, fontsize=self.size)
+                # TODO: DO MAJOR REMODEL OF TEXT WRITING (26-5-2023)
         # display on screen
         surface.blit(self.text_surface, (self.rect.x, self.rect.y))
         return self.action

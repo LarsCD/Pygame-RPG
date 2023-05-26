@@ -1,0 +1,27 @@
+[2023-05-26 22:41:25,975]: INFO: Game_Setup: starting Game_Loop
+[2023-05-26 22:41:26,381]: INFO: Game_Loop: start Game.Loop:main_loop
+[2023-05-26 22:41:26,381]: INFO: DataLoader: Loading 'data/enemy/enemy_data.json'
+[2023-05-26 22:41:26,381]: INFO: DataLoader: Loading 'data/items/weapon_data.json'
+[2023-05-26 22:41:26,382]: INFO: DataLoader: Loading 'data/player_classes/class_data.json'
+[2023-05-26 22:41:26,383]: DEBUG: Player: placeholder_weapon added to inventory player: sorcerer_class
+[2023-05-26 22:41:26,383]: DEBUG: Player: rare_sword added to inventory player: sorcerer_class
+[2023-05-26 22:41:26,385]: DEBUG: Player: rare_sword added to inventory player: sorcerer_class
+[2023-05-26 22:41:26,385]: DEBUG: Player: placeholder_weapon added to inventory player: sorcerer_class
+[2023-05-26 22:41:26,385]: DEBUG: Player: placeholder_weapon added to inventory player: sorcerer_class
+[2023-05-26 22:41:34,746]: INFO: Game_Loop: exiting Game_Loop
+[2023-05-26 22:41:36,126]: INFO: Game_Setup: starting Game_Loop
+[2023-05-26 22:41:36,530]: INFO: Game_Loop: start Game.Loop:main_loop
+[2023-05-26 22:41:36,530]: INFO: DataLoader: Loading 'data/enemy/enemy_data.json'
+[2023-05-26 22:41:36,530]: INFO: DataLoader: Loading 'data/items/weapon_data.json'
+[2023-05-26 22:41:36,530]: INFO: DataLoader: Loading 'data/player_classes/class_data.json'
+[2023-05-26 22:41:36,532]: DEBUG: Player: placeholder_weapon added to inventory player: sorcerer_class
+[2023-05-26 22:41:36,532]: DEBUG: Player: placeholder_weapon added to inventory player: sorcerer_class
+[2023-05-26 22:41:36,532]: DEBUG: Player: rare_sword added to inventory player: sorcerer_class
+[2023-05-26 22:41:36,532]: DEBUG: Player: rare_sword added to inventory player: sorcerer_class
+[2023-05-26 22:41:36,532]: DEBUG: Player: rare_sword added to inventory player: sorcerer_class
+[2023-05-26 22:41:36,532]: DEBUG: Player: rare_sword added to inventory player: sorcerer_class
+[2023-05-26 22:41:36,532]: DEBUG: Player: placeholder_weapon added to inventory player: sorcerer_class
+[2023-05-26 22:41:36,532]: DEBUG: Player: placeholder_weapon added to inventory player: sorcerer_class
+[2023-05-26 22:41:36,532]: DEBUG: Player: placeholder_weapon added to inventory player: sorcerer_class
+[2023-05-26 22:41:36,532]: DEBUG: Player: placeholder_weapon added to inventory player: sorcerer_class
+[2023-05-26 22:42:09,072]: INFO: Game_Loop: exiting Game_Loop

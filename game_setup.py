@@ -12,6 +12,8 @@ class Game_Setup:
         # PYGAME
         pygame.init()
         self.game_name = 'RPG3'
+        self.game_version = 'v0.1.3'
+
         pygame.display.set_caption(self.game_name)
         self.clock = pygame.time.Clock()
 
@@ -25,7 +27,7 @@ class Game_Setup:
         self.display = pygame.Surface((self.DISPLAY_WIDTH, self.DISPLAY_HEIGHT))
         self.window = pygame.display.set_mode((self.DISPLAY_WIDTH, self.DISPLAY_HEIGHT))
         self.default_font = default_font
-        self.fps = 60
+        self.fps = 120
 
         # DEFAULT TEXT LABLE PARAMETERS
         self.bold_font = bold_font

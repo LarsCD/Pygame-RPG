@@ -1,5 +1,9 @@
 import pygame
+import logging
+
 from assets.custom_pygame_assets import Lable
+from dev.dev_logger import DevLogger
+from dev.dev_screen import DevScreen
 
 class Weapon_Display_Screen:
     def __init__(self, ROOT):
@@ -31,6 +35,11 @@ class Weapon_Display_Screen:
         self.default_frame_size = (60, 60)
         self.tier_name_pos_y = 80
 
+        # MODULES
+        self.DevLogger = DevLogger(Weapon_Display_Screen)
+        self.DevScreen = DevScreen(self.ROOT)
+
+
     def main_loop(self, weapon_object):
         self.static_text_lables = []
         self.weapon_object = weapon_object
@@ -61,6 +70,9 @@ class Weapon_Display_Screen:
             if back_label.draw_text(self.ROOT.window):
                 # quit out of view
                 self.run_display = False
+
+            # dev
+            self.DevScreen.main()
 
             pygame.display.update()
             self.ROOT.clock.tick(self.ROOT.fps)
