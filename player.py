@@ -47,11 +47,9 @@ class Player:
         # INVENTORY
         self.inventory = {
             'weapon': [],
-            'potion': [],
         }
         self.inventory_cat_names = {
             'weapon': 'Weapons',
-            'potion': 'Potions'
         }
         self.spells = {
             'attack_spell': []
