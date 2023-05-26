@@ -3,7 +3,7 @@ import time
 
 class Lable:
     def __init__(self, text: str, size: int, text_color: str, clicked_color: str, hover_color: str, possition: tuple,
-                 is_centered=False, is_clickable=True, bold_text=False, function=None, function_args=None):
+                 is_centered=False, is_clickable=True, bold_text=False, class_module=None, class_method=None, method_args=None):
         self.text = text
         self.size = size
         self.color = text_color
@@ -30,8 +30,9 @@ class Lable:
         self.release = True
         self.release_click = True
 
-        self.function = function
-        self.function_args = function_args
+        self.class_module = class_module
+        self.class_method = class_method
+        self.method_args = method_args
 
         # AUDIO
         self.hover_sound = pygame.mixer.Sound('assets/audio/menu/Menu2.wav')
@@ -58,8 +59,6 @@ class Lable:
                 if pygame.mouse.get_pressed()[0] == 0:
                     self.clicked = False
                     self.action = True
-                    if self.function != None:
-                        self.function(self.function_args)
             elif pygame.mouse.get_pressed()[0] == 1 and self.clicked == False:
                 self.clicked = True
         else:

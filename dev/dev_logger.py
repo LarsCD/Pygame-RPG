@@ -3,8 +3,11 @@ from datetime import datetime
 
 time_start = datetime.today()
 
+logger_enabled = True
+
 class DevLogger:
     def __init__(self, logging_class, log_level=logging.DEBUG, print_level=logging.DEBUG):
+        self.logger_enabled = logger_enabled
         # logging details
         logging.basicConfig(level=print_level)
         logger_name = str(logging_class.__name__)
@@ -20,4 +23,5 @@ class DevLogger:
 
 
     def log(self, level, message):
-        self.logger.log(level, message)
+        if self.logger_enabled:
+            self.logger.log(level, message)

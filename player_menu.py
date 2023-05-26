@@ -1,6 +1,7 @@
 import pygame
 from assets.custom_pygame_assets import Lable, Health_bar, Custom_bar
 from weapon_display_screen import Weapon_Display_Screen
+from dev.dev_screen import DevScreen
 
 class Player_Menu:
     def __init__(self, ROOT):
@@ -37,6 +38,7 @@ class Player_Menu:
 
 
     def main_loop(self, player_object):
+        DevScreen.update()
         self.run_display = True
         self.static_text_lables = []
         self.player_object = player_object
@@ -108,8 +110,8 @@ class Player_Menu:
 
 
     def build_inventory(self):
-        inventory_start_pos_x = 625
-        inventory_start_pos_y = 350
+        inventory_start_pos_x = 128
+        inventory_start_pos_y = 170
         offset_y = 10
         offset_x = 250
         between_space_y = 30
@@ -136,13 +138,10 @@ class Player_Menu:
                     # TODO: aha fix deze shit
 
                     quantity = self.player_object.get_item_quantity(item.tag, item.item_type)
+
                     item_label = Lable(f'{item.name}', self.text_size, item.tier_color, black, black,
                                        ((pos_x), (pos_y)), is_clickable=False)
 
-                    # item_label = Lable(f'{item.name}', self.text_size, item.tier_color, black, black,
-                    #                     ((pos_x), (pos_y)), is_clickable=True,
-                    #                    function=Weapon_Display_Screen.main_loop, function_args=item)
-                    # TODO: function= doesnt work (custom_pygame_assets)
                     quantity_label = Lable(f'x{quantity}', self.text_size, 'white', black, black,
                                         ((pos_x+offset_x), (pos_y)), is_clickable=False)
 
@@ -164,7 +163,7 @@ class Player_Menu:
         self.static_text_lables.append(title_label)
         self.static_text_lables.append(player_name)
 
-        self.build_metadata_labels()
+        # self.build_metadata_labels()
 
 
     def build_metadata_labels(self):
