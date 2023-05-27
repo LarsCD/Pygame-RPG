@@ -1,8 +1,8 @@
 from enemy import Enemy
-from item import Weapon
+from item import Weapon, Potion
 from player import Player
 
-class Entity:
+class Entity_Loader:
     def __init__(self):
         pass
 
@@ -10,9 +10,12 @@ class Entity:
         enemy_object = Enemy(metadata)
         return enemy_object
 
-    def create_weapon_item(self, metadata):
-        item_weapon_object = Weapon(metadata)
-        return item_weapon_object
+    def create_item(self, metadata):
+        if metadata['item_type'] == 'weapon':
+            item_object = Weapon(metadata)
+        if metadata['item_type'] == 'potion':
+            item_object = Potion(metadata)
+        return item_object
 
     def create_player(self, metadata):
         player_object = Player(**metadata)

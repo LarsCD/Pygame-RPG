@@ -47,9 +47,11 @@ class Player:
         # INVENTORY
         self.inventory = {
             'weapon': [],
+            'potion': [],
         }
         self.inventory_cat_names = {
             'weapon': 'Weapons',
+            'potion': 'Potions',
         }
         self.spells = {
             'attack_spell': []
@@ -65,6 +67,7 @@ class Player:
 
 
     # INVENTORY FUNCTIONS
+    # TODO: make this more modular
     def give_item(self, item_object):
         if item_object.item_type == 'weapon':
             item_exists_in_inventory = False
@@ -78,6 +81,10 @@ class Player:
             else:
                 self.inventory['weapon'].append(item_object)
                 self.logger.log(logging.DEBUG, f'{item_object.tag} added to inventory player: {self.player_class_tag}')
+
+        if item_object.item_type == 'potion':
+            self.inventory['potion'].append(item_object)
+
 
     def remove_item(self, item_tag, item_type):
         item_exists_in_inventory = False
@@ -95,6 +102,7 @@ class Player:
                     del self.inventory[item_type][index]
                     self.logger.log(logging.DEBUG,f'{item_tag} removed from inventory player: {self.player_class_tag}')
                     break
+
 
     def get_item_quantity(self, item_tag, item_type):
         quantity = 0

@@ -22,7 +22,7 @@ class Player_Menu:
         self.display_start_x_pos = 128
         self.display_start_y_pos = 120
         self.display_sep_space = 250
-        self.text_size = 15
+        self.text_size = 20
         self.name_pos_x = 145
         self.background = pygame.image.load("assets/image/menu_background_1.png")
 
@@ -122,34 +122,30 @@ class Player_Menu:
             pygame.display.update()
             self.ROOT.clock.tick(self.ROOT.fps)
 
-
+    # build static labels for whole inventory
     def build_inventory(self):
         inventory_start_pos_x = 128
         inventory_start_pos_y = 170
-        offset_y = 10
-        offset_x = 250
-        between_space_y = 30
+        offset_y = 100
+        offset_x = 400
+        between_space_y = 100
         black = (0, 0, 0)
 
         inventory_title = Lable(f'INVENTORY', 35, 'white', black, black,
                                 ((inventory_start_pos_x), (inventory_start_pos_y - 45)), is_clickable=False)
         self.static_text_lables.append(inventory_title)
-
+        n = 0
         for i, cat_name in enumerate(self.player_object.inventory):
-            i += 1
+            n += 1
             item_tag_labels_build = []
-            cat_name_label = Lable(f'{str(cat_name).capitalize()}s', self.text_size+5, 'white', black, black,
-                                    ((inventory_start_pos_x), (i * (self.text_size) + inventory_start_pos_y)), is_clickable=False)
-            self.static_text_lables.append(cat_name_label)
-
-            for n, item in enumerate(self.player_object.inventory[cat_name]):
+            for item in self.player_object.inventory[cat_name]:
                 if item.tag in item_tag_labels_build:
                     pass
                 else:
+                    n += 1
                     item_tag_labels_build.append(item.tag)
                     pos_x = inventory_start_pos_x
-                    pos_y = inventory_start_pos_y + (i+n * (self.text_size) + offset_y) + between_space_y
-                    # TODO: aha fix deze shit
+                    pos_y = inventory_start_pos_y + n*(self.text_size+5)
 
                     quantity = self.player_object.get_item_quantity(item.tag, item.item_type)
 

@@ -1,0 +1,42 @@
+{
+  "healing_potions":
+  {
+    "small_healing_potion":
+    {
+      "tag": "small_healing_potion",
+      "name": "Small Healing Potion",
+      "item_type": "potion",
+      "potion_type": "healing_potion",
+      "tier": 3,
+      "healing": 30,
+      "value": 75,
+      "is_stackable": true
+    },
+
+    "medium_healing_potion":
+    {
+      "tag": "medium_healing_potion",
+      "name": "Medium Healing Potion",
+      "item_type": "potion",
+      "potion_type": "healing_potion",
+      "tier": 4,
+      "healing": 75,
+      "value": 150,
+      "is_stackable": true
+    }
+  },
+  "mana_potions":
+  {
+    "small_mana_potion":
+    {
+      "tag": "small_mana_potion",
+      "name": "Small Mana Potion",
+      "item_type": "potion",
+      "potion_type": "mana_potion",
+      "tier": 4,
+      "mana": 45,
+      "value": 250,
+      "is_stackable": true
+    }
+  }
+}

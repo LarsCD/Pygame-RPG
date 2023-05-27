@@ -1,0 +1,22 @@
+{
+  "level_1":
+  {
+    "cave_level_1":
+    {
+      "tag": "cave_level_1",
+      "name": "Dark Cave",
+      "level": 1,
+      "loot":
+      {
+        "weapons":
+        [
+          {"tag": "rare_sword","chance": 100}
+        ]
+      },
+      "enemies":
+      [
+        {"enemy":  "placeholder_enemy", "level":  [3,5]}
+      ]
+    }
+  }
+}

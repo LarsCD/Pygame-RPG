@@ -28,8 +28,46 @@ class Weapon:
             return random.randint(self.damage[0], self.damage[1])
         else:
             logger = DevLogger(Weapon)
-            logger.log(logging.WARNING, f'{self.tag} used > returned 0; self.equipped: {self.isEquiped}')
+            logger.log(logging.WARNING, f'{self.tag} cannot be used and returned 0; self.equipped: {self.isEquiped}')
             return 0
+
+class Potion:
+    def __init__(self, metadata):
+        # import modules
+        self.Tier = Tier()
+        # general metadata
+        self.tag = metadata['tag']
+        self.name = metadata['name']
+        self.item_type = metadata['item_type']
+        self.potion_type = metadata['potion_type']
+        if self.potion_type == 'healing_potion':
+            self.healing = metadata['healing']
+        if self.potion_type == 'mana_potion':
+            self.mana = metadata['mana']
+        self.tier = metadata['tier']
+        self.tier_tag = self.Tier.get_tier_tag(self.tier)
+        self.tier_name = self.Tier.get_tier_name(self.tier)
+        self.tier_color = self.Tier.get_tier_color(self.tier)
+        self.value = metadata['value']
+        self.is_stackable = metadata['is_stackable']
+        self.is_empty = False
+        self.id = 0
+        self.is_equipped = False
+        self.image = str(f'assets/image/potions/{self.tag}.png')
+        self.tier_icon = str(f'assets/image/tiers/{self.tier_tag}_tier_frame.png')
+
+    def use(self):
+        if is_empty is not True:
+            self.is_empty = True
+            if self.potion_type == ['healing_potion']:
+                return self.healing
+            if self.potion_type == ['mana_potion']:
+                return self.mana
+        else:
+            logger = DevLogger(Potion)
+            logger.log(logging.WARNING, f'{self.tag} cannot be used; self.is_empty={self.is_empty})')
+
+
 
 class Tier:
     def __init__(self):
