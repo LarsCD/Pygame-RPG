@@ -65,7 +65,7 @@ class Weapon_Display_Screen:
             self.draw_static_text_labels()
 
             self.ROOT.window.blit(icon_scaled, self.icon_pos)
-            # self.ROOT.window.blit(tier_frame_scaled, self.tier_frame_pos)
+            self.ROOT.window.blit(tier_frame_scaled, self.tier_frame_pos)
 
             if back_label.draw_text(self.ROOT.window):
                 # quit out of view

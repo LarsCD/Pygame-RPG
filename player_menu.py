@@ -1,6 +1,9 @@
 import pygame
+import time
+import logging
 from assets.custom_pygame_assets import Lable, Health_bar, Custom_bar
 from weapon_display_screen import Weapon_Display_Screen
+from dev.dev_logger import DevLogger
 from dev.dev_screen import DevScreen
 
 class Player_Menu:
@@ -35,10 +38,12 @@ class Player_Menu:
 
         # MODULES
         self.Weapon_Display_Screen = Weapon_Display_Screen
+        self.log = DevLogger(Player_Menu).log
         self.DevScreen = DevScreen(self.ROOT)
 
 
     def main_loop(self, player_object):
+        t1_main_loop_load = time.perf_counter()
 
         self.run_display = True
         self.static_text_lables = []
@@ -65,25 +70,31 @@ class Player_Menu:
                                 (255,178,0), (255, 255, 255), title='energy')
         mana_bar = Custom_bar(self.player_object.mp, self.player_object.mpMax, (625, 540), 200, 25,
                               (23,93,255), (255, 255, 255), title='mana  ')
+        t2_main_loop_load = time.perf_counter()
+        dt_main_loop_load = t2_main_loop_load-t1_main_loop_load
+        self.log(logging.DEBUG, f'dt_main_loop_load: {round(dt_main_loop_load*1000, 3)}ms')
 
 
         while self.run_display:
+            t7 = time.perf_counter()
 
-            self.ROOT.window.fill((0, 0, 0))
-            self.ROOT.window.blit(pygame.transform.scale(self.background, self.ROOT.RESOLUTION), (0, 0))
+            t1 = time.perf_counter()
+            # self.ROOT.window.fill((64, 64, 64))   # <-- this bad boy adds 10ms of unnecessary shit >:(
+            self.ROOT.window.blit(pygame.transform.scale(self.background, self.ROOT.RESOLUTION), (0, 0)) # (performance cut: ~12ms)
 
-            # prepare static text labels and put in list
+            # prepare static text labels and put in list (performance cut: ~3.0 ms)
             self.build_static_text_lables()
+            # prepare static text labels for player inventory (performance cut: ~9.0 ms)
             self.build_inventory()
 
             # TODO: make function for background ^
-
+            # check if quit window (performance cut: ~0.02 ms)
             self.check_quit_event()
 
-            # draw all static text labels from list
+            # draw all static text labels from list (performance cut: ~0.06 ms)
             self.draw_static_text_labels()
 
-            # draw player icon
+            # draw player icon (performance cut: ~0.01 ms)
             self.ROOT.window.blit(frame_scaled, self.frame_pos)
             self.ROOT.window.blit(icon_scaled, self.icon_pos)
 
@@ -92,7 +103,7 @@ class Player_Menu:
             energy_bar.update(self.ROOT.window, self.player_object.ep, self.player_object.epMax)
             mana_bar.update(self.ROOT.window, self.player_object.mp, self.player_object.mpMax)
 
-            # player interaction
+            # player interaction (performance cut: ~0.07 ms)
             if self.player_object.hp <= 0:
                 self.player_object.heal_full()
             if damage_button.draw_text(self.ROOT.window):
@@ -104,7 +115,7 @@ class Player_Menu:
                 self.run_display = False
             # TODO: make function for player interaction? (25-5-2023)
 
-            # dev
+            # runs dev info in background, enable with [F1]
             self.DevScreen.main()
 
             # update screen

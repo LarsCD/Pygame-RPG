@@ -71,7 +71,7 @@ class DevScreen:
     def calc_fps(self):
         self.t1_delta = self.t1_stop-self.t1_start
         fps = 1/self.t1_delta
-        print(fps)
+        # print(fps)
 
 
     def update_fps(self):
@@ -83,7 +83,7 @@ class DevScreen:
         title_label = Lable(f'{self.ROOT.game_name} {self.ROOT.game_version} - by: LarsCD', 15,
               self.color, 'black', 'black', (0, 0), is_clickable=False)
 
-        fps_label = Lable(f'fps: {round(self.fps, 1)} Hz', 15,
+        fps_label = Lable(f'fps: {round(self.fps, 1)} Hz  ({round((1/self.fps)*1000, 1)}ms)', 15,
                           self.color, 'black', 'black', (0, 25), is_clickable=False)
         mouse_label = Lable(f'mouse pos: {str(self.mouse_pos)}', 15,
                           self.color, 'black', 'black', (0, 50), is_clickable=False)
@@ -96,7 +96,6 @@ class DevScreen:
         fps_label.draw_text(self.ROOT.window)
         mouse_label.draw_text(self.ROOT.window)
         game_time_label.draw_text(self.ROOT.window)
-
 
         pygame.display.update()
 
