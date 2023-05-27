@@ -14,7 +14,7 @@ class DevScreen:
 
         # config
         self.mode_key = pygame.K_F1
-        self.color = 'purple'
+        self.color = 'green'
 
         self.log = DevLogger(DevScreen).log
 
@@ -81,24 +81,22 @@ class DevScreen:
     def draw_dev_screen(self):
         osset_y = 0
         title_label = Lable(f'{self.ROOT.game_name} {self.ROOT.game_version} - by: LarsCD', 15,
-              self.color, 'black', 'black', (25, 25), is_clickable=False)
+              self.color, 'black', 'black', (0, 0), is_clickable=False)
 
         fps_label = Lable(f'fps: {round(self.fps, 1)} Hz', 15,
-                          self.color, 'black', 'black', (25, 75), is_clickable=False)
+                          self.color, 'black', 'black', (0, 25), is_clickable=False)
         mouse_label = Lable(f'mouse pos: {str(self.mouse_pos)}', 15,
-                          self.color, 'black', 'black', (25, 100), is_clickable=False)
+                          self.color, 'black', 'black', (0, 50), is_clickable=False)
 
         game_time_label = Lable(f'Game time: {str(self.game_time)}', 15,
-                            self.color, 'black', 'black', (25, 125), is_clickable=False)
-        detail_label = Lable(f'[F1]: Performance', 15,
-                             self.color, 'black', 'black', (25, 150), is_clickable=False)
+                            self.color, 'black', 'black', (0, 75), is_clickable=False)
 
         # drawing all labels on the screen
         title_label.draw_text(self.ROOT.window)
         fps_label.draw_text(self.ROOT.window)
         mouse_label.draw_text(self.ROOT.window)
         game_time_label.draw_text(self.ROOT.window)
-        detail_label.draw_text(self.ROOT.window)
+
 
         pygame.display.update()
 
