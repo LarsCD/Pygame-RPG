@@ -3,7 +3,7 @@ from dev.dev_logger import DevLogger
 from game_setup import Game_Setup
 
 
-class Core:
+class Setup:
     def __init__(self):
         pass
 

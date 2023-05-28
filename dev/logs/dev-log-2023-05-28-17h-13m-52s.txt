@@ -1,0 +1,10 @@
+[2023-05-28 17:13:55,732]: INFO: Game_Setup: starting Game_Loop
+[2023-05-28 17:13:56,165]: INFO: Game_Loop: start Game.Loop:main_loop
+[2023-05-28 17:13:56,165]: INFO: Game_Loop: start Game.Loop:main_loop
+[2023-05-28 17:13:56,165]: INFO: DataLoader: Loading 'data/enemy/enemy_data.json'
+[2023-05-28 17:13:56,179]: INFO: DataLoader: Loading 'data/items/potion_data.json'
+[2023-05-28 17:13:56,183]: INFO: DataLoader: Loading 'data/items/weapon_data.json'
+[2023-05-28 17:13:56,188]: INFO: DataLoader: Loading 'data/player_classes/class_data.json'
+[2023-05-28 17:13:56,192]: INFO: DataLoader: Loading 'data/world_data/world_data.json'
+[2023-05-28 17:13:56,195]: INFO: Game_Loop: load_all_static_data() complete (29.92 ms)
+[2023-05-28 17:13:56,195]: INFO: Game_Loop: load_all_static_data() complete (29.92 ms)

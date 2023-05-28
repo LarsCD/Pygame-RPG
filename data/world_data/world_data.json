@@ -10,7 +10,15 @@
       {
         "weapons":
         [
-          {"tag": "rare_sword", "category": "weapons", "chance": 1.00}
+          {"tag": "rare_sword", "category": "weapons", "chance": 1.00, "quantity":  1}
+        ],
+        "healing_potions":
+        [
+          {"tag": "small_healing_potion", "category": "healing_potions", "chance": 0.75, "quantity":  3}
+        ],
+        "mana_potions":
+        [
+          {"tag": "small_mana_potion", "category": "mana_potions", "chance": 0.25, "quantity":  2}
         ]
       },
       "enemies":

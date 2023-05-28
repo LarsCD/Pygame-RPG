@@ -1,9 +1,9 @@
-from setup import Core
+from setup import Setup
 from dev.dev_logger import DevLogger
 
 class Main:
     def __init__(self):
-        self.core = Core()
+        self.core = Setup()
         self.run_game = True
 
     def main_loop(self):

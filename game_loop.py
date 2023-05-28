@@ -13,6 +13,7 @@ from weapon_display_screen import Weapon_Display_Screen
 from player_menu import Player_Menu
 from dev.dev_logger import DevLogger
 from dev.dev_screen import DevScreen
+from world.level_loader import Level_Loader
 
 
 class Game_Loop:
@@ -56,6 +57,7 @@ class Game_Loop:
         self.DevScreen = DevScreen(self)
         self.DataLoader = DataLoader()
         self.Entity_Loader = Entity_Loader()
+        self.Level_Loader = Level_Loader()
 
         # DISPLAYS
         self.Weapon_Display_Screen = Weapon_Display_Screen(self)
@@ -85,6 +87,10 @@ class Game_Loop:
 
         #### ---------------------------- TESTING ---------------------------- ####
         t1 = time.perf_counter()
+
+        level_1 = self.Level_Loader.load_level(self.static_world_data['level_1']['cave_level_1'])
+        level_1.load_level(self.static_item_data, self.static_enemy_data)
+
         weapon_1 = self.Entity_Loader.create_item(self.static_item_data['weapon_data']['enemy_weapons']['placeholder_weapon'])
         weapon_2 = self.Entity_Loader.create_item(self.static_item_data['weapon_data']['weapons']['rare_sword'])
         weapon_3 = self.Entity_Loader.create_item(self.static_item_data['weapon_data']['weapons']['rare_sword'])
@@ -173,6 +179,7 @@ class Game_Loop:
     # this method loads all necessary metadata for enemies, items, players, etc.
     def load_all_static_data(self):
         t1 = time.perf_counter()
+        self.logger.log(logging.INFO, f'loading all game data...')
         exluded_data_folders = []
         cwd = os.getcwd()
         data_folder_path = 'data'
@@ -201,7 +208,7 @@ class Game_Loop:
                     self.static_world_data = self.DataLoader.load_data(f'{data_folder_path}/{data_folder}/world_data.json')
         t2 = time.perf_counter()
         dt = t2-t1
-        self.logger.log(logging.INFO, f'load_all_static_data() complete ({round(dt*1000, 2)} ms)')
+        self.logger.log(logging.INFO, f'game data succesfully loaded ({round(dt*1000, 2)} ms)')
 
 
 
