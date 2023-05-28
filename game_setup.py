@@ -12,7 +12,7 @@ class Game_Setup:
         # PYGAME
         pygame.init()
         self.game_name = 'RPG3'
-        self.game_version = 'v0.1.5'
+        self.game_version = 'v0.1.6'
 
         pygame.display.set_caption(self.game_name)
         self.clock = pygame.time.Clock()
