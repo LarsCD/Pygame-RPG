@@ -1,0 +1,17 @@
+[2023-05-28 10:26:01,959]: INFO: Game_Setup: starting Game_Loop
+[2023-05-28 10:26:02,370]: INFO: Game_Loop: start Game.Loop:main_loop
+[2023-05-28 10:26:02,370]: INFO: Game_Loop: start Game.Loop:main_loop
+[2023-05-28 10:26:02,371]: INFO: DataLoader: Loading 'data/enemy/enemy_data.json'
+[2023-05-28 10:26:02,371]: INFO: DataLoader: Loading 'data/items/potion_data.json'
+[2023-05-28 10:26:02,371]: INFO: DataLoader: Loading 'data/items/weapon_data.json'
+[2023-05-28 10:26:02,371]: INFO: DataLoader: Loading 'data/player_classes/class_data.json'
+[2023-05-28 10:26:02,372]: INFO: DataLoader: Loading 'data/world_data/world_data.json'
+[2023-05-28 10:26:02,374]: INFO: Game_Loop: load_all_static_data() complete (3.53 ms)
+[2023-05-28 10:26:02,374]: INFO: Game_Loop: load_all_static_data() complete (3.53 ms)
+[2023-05-28 10:26:02,376]: DEBUG: Player: placeholder_weapon added to inventory player: sorcerer_class
+[2023-05-28 10:26:02,376]: DEBUG: Player: rare_sword added to inventory player: sorcerer_class
+[2023-05-28 10:26:02,376]: DEBUG: Player: rare_sword added to inventory player: sorcerer_class
+[2023-05-28 10:26:02,376]: DEBUG: Player: placeholder_weapon added to inventory player: sorcerer_class
+[2023-05-28 10:26:02,377]: DEBUG: Player: placeholder_weapon added to inventory player: sorcerer_class
+[2023-05-28 10:26:02,377]: INFO: Game_Loop: created testing entities (1.02 ms)
+[2023-05-28 10:26:02,377]: INFO: Game_Loop: created testing entities (1.02 ms)

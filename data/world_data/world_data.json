@@ -10,13 +10,14 @@
       {
         "weapons":
         [
-          {"tag": "rare_sword","chance": 100}
+          {"tag": "rare_sword", "category": "weapons", "chance": 1.00}
         ]
       },
       "enemies":
       [
-        {"enemy":  "placeholder_enemy", "level":  [3,5]}
-      ]
+        {"tag":  "placeholder_enemy", "category": "enemy", "level":  [3,5], "quantity": 2}
+      ],
+      "path_connections": ["forrest_1"]
     }
   }
 }

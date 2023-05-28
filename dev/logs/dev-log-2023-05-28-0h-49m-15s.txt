@@ -1,0 +1,24 @@
+[2023-05-28 00:49:20,103]: INFO: Game_Setup: starting Game_Loop
+[2023-05-28 00:49:20,510]: INFO: Game_Loop: start Game.Loop:main_loop
+[2023-05-28 00:49:20,510]: INFO: Game_Loop: start Game.Loop:main_loop
+[2023-05-28 00:49:20,510]: INFO: DataLoader: Loading 'data/enemy/enemy_data.json'
+[2023-05-28 00:49:20,511]: INFO: DataLoader: Loading 'data/items/potion_data.json'
+[2023-05-28 00:49:20,512]: INFO: DataLoader: Loading 'data/items/weapon_data.json'
+[2023-05-28 00:49:20,512]: INFO: DataLoader: Loading 'data/player_classes/class_data.json'
+[2023-05-28 00:49:20,512]: INFO: DataLoader: Loading 'data/world_data/world_data.json'
+[2023-05-28 00:49:20,520]: INFO: Game_Loop: load_all_static_data() complete (10.2 ms)
+[2023-05-28 00:49:20,520]: INFO: Game_Loop: load_all_static_data() complete (10.2 ms)
+[2023-05-28 00:49:20,522]: DEBUG: Player: placeholder_weapon added to inventory player: sorcerer_class
+[2023-05-28 00:49:20,522]: DEBUG: Player: rare_sword added to inventory player: sorcerer_class
+[2023-05-28 00:49:20,522]: DEBUG: Player: rare_sword added to inventory player: sorcerer_class
+[2023-05-28 00:49:20,522]: DEBUG: Player: placeholder_weapon added to inventory player: sorcerer_class
+[2023-05-28 00:49:20,522]: DEBUG: Player: placeholder_weapon added to inventory player: sorcerer_class
+[2023-05-28 00:49:20,522]: INFO: Game_Loop: created testing entities (0.58 ms)
+[2023-05-28 00:49:20,522]: INFO: Game_Loop: created testing entities (0.58 ms)
+[2023-05-28 00:49:39,142]: DEBUG: Player_Menu: dt_main_loop_load: 3.02ms
+[2023-05-28 00:49:41,194]: DEBUG: Player: player: sorcerer_class took damage (-10 dmg)
+[2023-05-28 00:49:41,421]: DEBUG: Player: player: sorcerer_class took damage (-10 dmg)
+[2023-05-28 00:49:41,625]: DEBUG: Player: player: sorcerer_class took damage (-10 dmg)
+[2023-05-28 00:49:41,803]: DEBUG: Player: player: sorcerer_class took damage (-10 dmg)
+[2023-05-28 00:49:42,308]: DEBUG: Player: player: sorcerer_class healed (+10 hp)
+[2023-05-28 00:49:42,460]: DEBUG: Player: player: sorcerer_class healed (+10 hp)

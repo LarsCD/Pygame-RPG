@@ -55,7 +55,7 @@ class Game_Loop:
         self.DevLogger = DevLogger(Game_Loop)
         self.DevScreen = DevScreen(self)
         self.DataLoader = DataLoader()
-        self.Entity = Entity_Loader()
+        self.Entity_Loader = Entity_Loader()
 
         # DISPLAYS
         self.Weapon_Display_Screen = Weapon_Display_Screen(self)
@@ -85,17 +85,17 @@ class Game_Loop:
 
         #### ---------------------------- TESTING ---------------------------- ####
         t1 = time.perf_counter()
-        weapon_1 = self.Entity.create_item(self.static_item_data['weapon_data']['enemy_weapons']['placeholder_weapon'])
-        weapon_2 = self.Entity.create_item(self.static_item_data['weapon_data']['weapons']['rare_sword'])
-        weapon_3 = self.Entity.create_item(self.static_item_data['weapon_data']['weapons']['rare_sword'])
-        weapon_4 = self.Entity.create_item(self.static_item_data['weapon_data']['enemy_weapons']['placeholder_weapon'])
-        weapon_5 = self.Entity.create_item(self.static_item_data['weapon_data']['enemy_weapons']['placeholder_weapon'])
-        potion_1 = self.Entity.create_item(self.static_item_data['potion_data']['healing_potions']['small_healing_potion'])
-        potion_2 = self.Entity.create_item(self.static_item_data['potion_data']['healing_potions']['medium_healing_potion'])
-        potion_3 = self.Entity.create_item(self.static_item_data['potion_data']['mana_potions']['small_mana_potion'])
+        weapon_1 = self.Entity_Loader.create_item(self.static_item_data['weapon_data']['enemy_weapons']['placeholder_weapon'])
+        weapon_2 = self.Entity_Loader.create_item(self.static_item_data['weapon_data']['weapons']['rare_sword'])
+        weapon_3 = self.Entity_Loader.create_item(self.static_item_data['weapon_data']['weapons']['rare_sword'])
+        weapon_4 = self.Entity_Loader.create_item(self.static_item_data['weapon_data']['enemy_weapons']['placeholder_weapon'])
+        weapon_5 = self.Entity_Loader.create_item(self.static_item_data['weapon_data']['enemy_weapons']['placeholder_weapon'])
+        potion_1 = self.Entity_Loader.create_item(self.static_item_data['potion_data']['healing_potions']['small_healing_potion'])
+        potion_2 = self.Entity_Loader.create_item(self.static_item_data['potion_data']['healing_potions']['medium_healing_potion'])
+        potion_3 = self.Entity_Loader.create_item(self.static_item_data['potion_data']['mana_potions']['small_mana_potion'])
 
 
-        self.player_object = self.Entity.create_player(self.static_player_class_data['sorcerer_class'])
+        self.player_object = self.Entity_Loader.create_player(self.static_player_class_data['sorcerer_class'])
         self.player_object.give_item(weapon_1)
         self.player_object.give_item(weapon_2)
         self.player_object.give_item(weapon_3)
