@@ -1,6 +1,6 @@
 import logging
 import time
-from random import uniform
+from random import uniform, randint
 
 from dev.dev_logger import DevLogger
 from entity_loader import Entity_Loader
@@ -23,7 +23,8 @@ class Level:
 
         # data
         self.is_loaded = False
-        self.is_cleared = False
+        self.no_enemies = False
+        self.no_items = False
 
         # modules
         self.Entity_Loader = Entity_Loader
@@ -79,6 +80,7 @@ class Level:
             for _ in range(enemy['quantity']):
                 category = category_data_index[enemy['category']]
                 enemy_object = self.Entity_Loader.create_enemy(static_enemy_data[category][enemy['tag']])
+                enemy_object.level_up(randint(enemy['level'][0], enemy['level'][1]))
                 self.enemies.append(enemy_object)
 
         t2 = time.perf_counter()
@@ -107,3 +109,6 @@ class Level:
             self.log(logging.WARNING, f'{self.tag}: could not be entered; level is not loaded! (self.loaded={self.is_loaded})')
         else:
             self.is_current_location = True
+
+    def search(self):
+        pass

@@ -17,7 +17,7 @@
       [
         {"tag":  "placeholder_enemy", "category": "enemy", "level":  [3,5], "quantity": 2}
       ],
-      "path_connections": ["forrest_1"]
+      "path_connections": ["forest_1"]
     }
   }
 }
