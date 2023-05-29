@@ -9,7 +9,7 @@ from data_loader import DataLoader
 from dev.dev_logger import DevLogger
 from entity_loader import Entity_Loader
 from assets.custom_pygame_assets import Lable
-from weapon_display_screen import Weapon_Display_Screen
+from item_display_screen import Item_Display_Screen
 from player_menu import Player_Menu
 from dev.dev_logger import DevLogger
 from dev.dev_screen import DevScreen
@@ -61,7 +61,7 @@ class Game_Loop:
         self.Level_Loader = Level_Loader()
 
         # DISPLAYS
-        self.Weapon_Display_Screen = Weapon_Display_Screen(self)
+        self.Weapon_Display_Screen = Item_Display_Screen(self)
         self.Player_Menu = Player_Menu(self)
         self.Combat_Menu = Combat_Menu(self)
 
@@ -102,7 +102,13 @@ class Game_Loop:
         potion_2 = self.Entity_Loader.create_item(self.static_item_data['potion_data']['healing_potions']['medium_healing_potion'])
         potion_3 = self.Entity_Loader.create_item(self.static_item_data['potion_data']['mana_potions']['small_mana_potion'])
 
+        armor_1 = self.Entity_Loader.create_item(self.static_item_data['armor_data']['rare_knights_armor'])
+        helmet_1 = self.Entity_Loader.create_item(self.static_item_data['helmet_data']['rare_knights_helmet'])
+        shield_1 = self.Entity_Loader.create_item(self.static_item_data['shield_data']['super_rare_knights_shield'])
+
         self.player_object = self.Entity_Loader.create_player(self.static_player_class_data['knight_class'])
+        self.player_object.level_up(30)
+
         self.player_object.give_item(weapon_1)
         self.player_object.give_item(weapon_2)
         self.player_object.give_item(weapon_3)
@@ -111,6 +117,9 @@ class Game_Loop:
         self.player_object.give_item(potion_1)
         self.player_object.give_item(potion_2)
         self.player_object.give_item(potion_3)
+        self.player_object.give_item(armor_1)
+        self.player_object.give_item(helmet_1)
+        self.player_object.give_item(shield_1)
         self.player_object.equip_first_weapon()
 
         enemy_1 = level_1.enemies[1]
@@ -124,14 +133,14 @@ class Game_Loop:
         back_label = Lable('MAIN MENU', 20, self.lable_col, self.lable_click_col, (153, 0, 28),
                             ((self.DISPLAY_WIDTH / 2), (self.DISPLAY_HEIGHT / 2) + 240),
                             is_centered=True, is_clickable=True)
-        display_item = Lable(f'View {str(weapon_1.name).upper()} ({weapon_1.tag})', 20, self.lable_col,
+        display_item = Lable(f'View {str(armor_1.name).upper()} ({armor_1.tag})', 20, self.lable_col,
                              self.lable_click_col, self.lable_hover_col, (self.Game_Setup.DISPLAY_WIDTH * 0.1, 200),
                              is_clickable=True)
-        display_item_2 = Lable(f'View {str(weapon_2.name).upper()} ({weapon_2.tag})', 20, self.lable_col,
+        display_item_2 = Lable(f'View {str(helmet_1.name).upper()} ({helmet_1.tag})', 20, self.lable_col,
                                self.lable_click_col,
                                self.lable_hover_col, (self.Game_Setup.DISPLAY_WIDTH * 0.1, 225), is_clickable=True)
 
-        display_item_3 = Lable(f'View {str(potion_1.name).upper()} ({potion_1.tag})', 20, self.lable_col,
+        display_item_3 = Lable(f'View {str(shield_1.name).upper()} ({shield_1.tag})', 20, self.lable_col,
                                self.lable_click_col,
                                self.lable_hover_col, (self.Game_Setup.DISPLAY_WIDTH * 0.1, 275), is_clickable=True)
 
@@ -160,11 +169,11 @@ class Game_Loop:
 
 
             if display_item.draw_text(self.window):
-                self.Weapon_Display_Screen.main_loop(weapon_1)
+                self.Weapon_Display_Screen.main_loop(armor_1)
             if display_item_2.draw_text(self.window):
-                self.Weapon_Display_Screen.main_loop(weapon_2)
+                self.Weapon_Display_Screen.main_loop(helmet_1)
             if display_item_3.draw_text(self.window):
-                self.Weapon_Display_Screen.main_loop(potion_1)
+                self.Weapon_Display_Screen.main_loop(shield_1)
             if display_item_4.draw_text(self.window):
                 self.Weapon_Display_Screen.main_loop(potion_2)
             if display_item_5.draw_text(self.window):
@@ -213,13 +222,22 @@ class Game_Loop:
                         if file == 'potion_data.json':
                             potion_data = self.DataLoader.load_data(f'{data_folder_path}/{data_folder}/{file}')
                             self.static_item_data.update({'potion_data': potion_data})
+                        if file == 'armor_data.json':
+                            armor_data = self.DataLoader.load_data(f'{data_folder_path}/{data_folder}/{file}')
+                            self.static_item_data.update({'armor_data': armor_data})
+                        if file == 'helmet_data.json':
+                            helmet_data = self.DataLoader.load_data(f'{data_folder_path}/{data_folder}/{file}')
+                            self.static_item_data.update({'helmet_data': helmet_data})
+                        if file == 'shield_data.json':
+                            shield_data = self.DataLoader.load_data(f'{data_folder_path}/{data_folder}/{file}')
+                            self.static_item_data.update({'shield_data': shield_data})
                 if target_folder == f'{cwd}/{data_folder_path}/player_classes':
                     self.static_player_class_data = self.DataLoader.load_data(f'{data_folder_path}/{data_folder}/class_data.json')
                 if target_folder == f'{cwd}/{data_folder_path}/world_data':
                     self.static_world_data = self.DataLoader.load_data(f'{data_folder_path}/{data_folder}/world_data.json')
         t2 = time.perf_counter()
         dt = t2-t1
-        self.logger.log(logging.INFO, f'game data succesfully loaded ({round(dt*1000, 2)} ms)')
+        self.logger.log(logging.INFO, f'game data successfully loaded ({round(dt*1000, 2)} ms)')
 
 
 

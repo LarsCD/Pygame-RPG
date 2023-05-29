@@ -1,5 +1,5 @@
 from enemy import Enemy
-from item import Weapon, Potion
+from item import *
 from player import Player
 
 class Entity_Loader:
@@ -15,6 +15,12 @@ class Entity_Loader:
             item_object = Weapon(metadata)
         if metadata['item_type'] == 'potion':
             item_object = Potion(metadata)
+        if metadata['item_type'] == 'armor':
+            item_object = Armor(metadata)
+        if metadata['item_type'] == 'helmet':
+            item_object = Helmet(metadata)
+        if metadata['item_type'] == 'shield':
+            item_object = Shield(metadata)
         return item_object
 
     def create_player(self, metadata):

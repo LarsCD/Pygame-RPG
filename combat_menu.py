@@ -48,28 +48,33 @@ class Combat_Menu:
 
         self.run_display = True
 
-        self.build_static_text_lables()
+
 
         # MENU
         damage_button = Lable('DAMAGE', 25, 'white', 'red', 'gray',
                               (self.right_down_screen_1_x, 590), bold_text=True)
         heal_button = Lable('HEAL', 25, 'white', 'green', 'gray',
                             (self.right_down_screen_1_x, 620), bold_text=True)
+        heal_button = Lable('MANA', 25, 'white', 'green', 'gray',
+                            (self.right_down_screen_1_x, 620), bold_text=True)
         back_label = Lable('BACK', 25, 'white', 'gray', (153, 0, 28),
                            (self.right_up_screen_x, 460), is_clickable=True, bold_text=True)
 
         # PLAYER
-        health_bar = Health_bar(self.player_object.hp, self.player_object.hpMax, (self.left_down_screen_1_x, 590),
+        health_bar = Health_bar(self.player_object.hp, self.player_object.hpMax, (self.left_down_screen_1_x, 600),
                                 250, 25, (255, 0, 0), (194, 194, 209), title='HP ')
-        energy_bar = Custom_bar(self.player_object.ep, self.player_object.epMax, (self.left_down_screen_1_x, 620),
+        energy_bar = Custom_bar(self.player_object.ep, self.player_object.epMax, (self.left_down_screen_1_x, 630),
                                 250, 25, (255, 178, 0), (194, 194, 209), title='EP ')
-        mana_bar = Custom_bar(self.player_object.mp, self.player_object.mpMax, (self.left_down_screen_1_x, 650),
+        mana_bar = Custom_bar(self.player_object.mp, self.player_object.mpMax, (self.left_down_screen_1_x, 660),
                               250, 25, (23, 93, 255), (194, 194, 209), title='MP ')
+        xp_bar = Custom_bar(self.player_object.xp, self.player_object.xpMax, (121, 580),
+                              250, 15, (102, 255, 227), (194, 194, 209), show_numbers=False)
+
         # ENEMY
         enemy_health_bar = Health_bar(self.enemy_object.hp, self.enemy_object.hpMax, (50, 60),
                                 250, 25, (255, 0, 0), (194, 194, 209), show_numbers=True)
 
-        marker = Highlight_marker('-20 DMG', 20, (255, 0, 0), (640, 360), 1, (0, 1), 2, spread=50)
+        damage_marker = Highlight_marker('-20 DMG', 20, (255, 0, 0), (640, 360), 1, (0, 1), 2, spread=50)
 
         while self.run_display:
             self.ROOT.window.fill((0, 0, 0))
@@ -79,20 +84,18 @@ class Combat_Menu:
 
             self.check_quit_event()
 
-
+            self.build_static_text_lables()
             self.build_attr_labels()
             self.build_enemy_labels()
 
             self.draw_static_text_labels()
 
 
-            # draw marker
-            marker.start(self.ROOT.window)
-
             # PLAYER
             health_bar.update(self.ROOT.window, self.player_object.hp, self.player_object.hpMax)
             energy_bar.update(self.ROOT.window, self.player_object.ep, self.player_object.epMax)
             mana_bar.update(self.ROOT.window, self.player_object.mp, self.player_object.mpMax)
+            xp_bar.update(self.ROOT.window, self.player_object.xp, self.player_object.xpMax)
 
             # ENEMY
             enemy_health_bar.update(self.ROOT.window, self.enemy_object.hp, self.enemy_object.hpMax)
@@ -102,9 +105,12 @@ class Combat_Menu:
                 self.player_object.heal_full()
             if damage_button.draw_text(self.ROOT.window):
                 self.player_object.take_damage(10)
-                marker.animate((300, 100), color=[200,0,0], vari_red=50, vari_blu=200)
+                damage_marker.animate((300, 250), color=[250, 0, 0], vari_red=100, vari_grn=10, vari_blu=20)
             if heal_button.draw_text(self.ROOT.window):
                 self.player_object.heal(10)
+
+            # draw marker
+            damage_marker.update(self.ROOT.window)
 
             # MENU
             if back_label.draw_text(self.ROOT.window):
@@ -133,11 +139,15 @@ class Combat_Menu:
 
 
     def build_static_text_lables(self):
-        title_label = Lable(self.title, 25, self.ROOT.lable_col, self.ROOT.lable_click_col,
-                            self.ROOT.lable_hover_col, (5, 5),
-                            is_clickable=False)
+        level_label = Lable(f'LEVEL', 20, 'gray', 'black', 'black',
+                            (50, 500), is_clickable=False, bold_text=True)
+        level_label_value = Lable(f'{self.player_object.level}', 20, 'white', 'black', 'black',
+                                  (150, 500), is_clickable=False, bold_text=True)
+
+
         # package labels
-        self.static_text_lables.append(title_label)
+        self.static_text_lables.append(level_label)
+        self.static_text_lables.append(level_label_value)
 
 
     def build_attr_labels(self):

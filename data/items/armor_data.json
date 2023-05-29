@@ -1,0 +1,12 @@
+{
+  "rare_knights_armor":
+  {
+    "tag": "rare_knights_armor",
+    "name": "Knights Armor",
+    "item_type": "armor",
+    "tier": 3,
+    "armor": 100,
+    "value": 600,
+    "is_stackable": false
+  }
+}

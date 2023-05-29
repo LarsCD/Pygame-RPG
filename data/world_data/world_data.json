@@ -23,7 +23,7 @@
       },
       "enemies":
       [
-        {"tag":  "placeholder_enemy", "category": "enemy", "level":  [3,5], "quantity": 2}
+        {"tag":  "placeholder_enemy", "category": "enemy", "level":  [30,30], "quantity": 2}
       ],
       "path_connections": ["forest_1"]
     }

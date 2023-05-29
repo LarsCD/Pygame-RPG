@@ -48,6 +48,8 @@ class Lable:
         self.hover = False
 
         if not self.clickable:
+            self.color = self.def_color
+            self.text_surface = self.font_text.render(self.text, False, self.color)
             surface.blit(self.text_surface, (self.rect.x, self.rect.y))
             return 0
         # get mouse pos
@@ -266,7 +268,7 @@ class Highlight_marker:
         self.time = 0
         self.time_remaining = 0
 
-    def start(self, surface):
+    def update(self, surface):
         if self.time_remaining <= 0:
             return
         else:

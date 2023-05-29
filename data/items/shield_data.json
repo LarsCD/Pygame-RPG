@@ -1,0 +1,12 @@
+{
+  "super_rare_knights_shield":
+  {
+    "tag": "super_rare_knights_shield",
+    "name": "Metal Knights Shield",
+    "item_type": "shield",
+    "tier": 4,
+    "block": [50, 75],
+    "value": 400,
+    "is_stackable": false
+  }
+}

@@ -50,10 +50,16 @@ class Player:
         self.inventory = {
             'weapon': [],
             'potion': [],
+            'armor': [],
+            'helmet': [],
+            'shield': [],
         }
         self.inventory_cat_names = {
             'weapon': 'Weapons',
             'potion': 'Potions',
+            'armor': 'Armor',
+            'helmet': 'Helmet',
+            'shield': 'Shield',
         }
         self.spells = {
             'attack_spell': []
@@ -86,6 +92,46 @@ class Player:
 
         if item_object.item_type == 'potion':
             self.inventory['potion'].append(item_object)
+
+        if item_object.item_type == 'armor':
+            item_exists_in_inventory = False
+            for inventory_item in self.inventory[item_object.item_type]:
+                if inventory_item.tag == item_object.tag:
+                    item_exists_in_inventory = True
+                    break
+            if not item_object.is_stackable and item_exists_in_inventory:
+                self.logger.log(logging.WARNING, f'{item_object.tag} cannot be added to inventory player: {self.player_class_tag} (not stackable)')
+                return
+            else:
+                self.inventory['armor'].append(item_object)
+                self.logger.log(logging.DEBUG, f'{item_object.tag} added to inventory player: {self.player_class_tag}')
+
+        if item_object.item_type == 'helmet':
+            item_exists_in_inventory = False
+            for inventory_item in self.inventory[item_object.item_type]:
+                if inventory_item.tag == item_object.tag:
+                    item_exists_in_inventory = True
+                    break
+            if not item_object.is_stackable and item_exists_in_inventory:
+                self.logger.log(logging.WARNING, f'{item_object.tag} cannot be added to inventory player: {self.player_class_tag} (not stackable)')
+                return
+            else:
+                self.inventory['helmet'].append(item_object)
+                self.logger.log(logging.DEBUG, f'{item_object.tag} added to inventory player: {self.player_class_tag}')
+
+        if item_object.item_type == 'shield':
+            item_exists_in_inventory = False
+            for inventory_item in self.inventory[item_object.item_type]:
+                if inventory_item.tag == item_object.tag:
+                    item_exists_in_inventory = True
+                    break
+            if not item_object.is_stackable and item_exists_in_inventory:
+                self.logger.log(logging.WARNING, f'{item_object.tag} cannot be added to inventory player: {self.player_class_tag} (not stackable)')
+                return
+            else:
+                self.inventory['shield'].append(item_object)
+                self.logger.log(logging.DEBUG, f'{item_object.tag} added to inventory player: {self.player_class_tag}')
+
 
 
     def remove_item(self, item_tag, item_type):
@@ -140,3 +186,34 @@ class Player:
         self.hp = 0
         self.is_dead = True
         self.logger.log(logging.DEBUG, f'player: {self.player_class_tag} died (hp: {self.hp})')
+
+
+    # LEVEL UP FUNCTIONS
+    def level_up(self, levels):
+        for _ in range(levels):
+            self.level_up_stats()
+
+    def level_up_stats(self):
+        self.level += 1
+
+        hpMax_old = self.hpMax
+        self.hpMax = round(self.hpMax * self.hpMax_mult)
+        hpAdd = self.hpMax - hpMax_old
+        self.hp += hpAdd
+
+        xpMax_old = self.xpMax
+        self.xpMax = round(self.xpMax * self.xpMax_mult)
+        xpAdd = self.xpMax - xpMax_old
+        self.xp += xpAdd
+
+        epMax_old = self.epMax
+        self.epMax = round(self.epMax * self.epMax_mult)
+        epAdd = self.epMax - epMax_old
+        self.ep += epAdd
+
+        mpMax_old = self.mpMax
+        print(self.mpMax)
+        self.mpMax = round(self.mpMax * self.mpMax_mult)
+        epAdd = self.mpMax - mpMax_old
+        self.mp += epAdd
+

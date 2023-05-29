@@ -1,0 +1,12 @@
+{
+  "rare_knights_helmet":
+  {
+    "tag": "rare_knights_helmet",
+    "name": "Knights Battle Helmet",
+    "item_type": "helmet",
+    "tier": 3,
+    "armor": 50,
+    "value": 350,
+    "is_stackable": false
+  }
+}

@@ -28,8 +28,9 @@ class Weapon:
             return random.randint(self.damage[0], self.damage[1])
         else:
             logger = DevLogger(Weapon)
-            logger.log(logging.WARNING, f'{self.tag} cannot be used and returned 0; self.equipped: {self.isEquiped}')
+            logger.log(logging.WARNING, f'{self.tag} cannot be used and returned 0; self.equipped: {self.is_equipped}')
             return 0
+
 
 class Potion:
     def __init__(self, metadata):
@@ -67,6 +68,76 @@ class Potion:
             logger = DevLogger(Potion)
             logger.log(logging.WARNING, f'{self.tag} cannot be used; self.is_empty={self.is_empty})')
 
+
+class Armor:
+    def __init__(self, metadata):
+        # import modules
+        self.Tier = Tier()
+        # general metadata
+        self.tag = metadata['tag']
+        self.name = metadata['name']
+        self.item_type = metadata['item_type']
+        self.armor = metadata['armor']
+        self.tier = metadata['tier']
+        self.tier_tag = self.Tier.get_tier_tag(self.tier)
+        self.tier_name = self.Tier.get_tier_name(self.tier)
+        self.tier_color = self.Tier.get_tier_color(self.tier)
+        self.value = metadata['value']
+        self.is_stackable = metadata['is_stackable']
+        self.id = 0
+        self.is_equipped = False
+        self.image = str(f'assets/images/armor/{self.tag}.png')
+        self.tier_icon = str(f'assets/images/tiers/{self.tier_tag}_tier_frame.png')
+
+
+class Helmet:
+    def __init__(self, metadata):
+        # import modules
+        self.Tier = Tier()
+        # general metadata
+        self.tag = metadata['tag']
+        self.name = metadata['name']
+        self.item_type = metadata['item_type']
+        self.armor = metadata['armor']
+        self.tier = metadata['tier']
+        self.tier_tag = self.Tier.get_tier_tag(self.tier)
+        self.tier_name = self.Tier.get_tier_name(self.tier)
+        self.tier_color = self.Tier.get_tier_color(self.tier)
+        self.value = metadata['value']
+        self.is_stackable = metadata['is_stackable']
+        self.id = 0
+        self.is_equipped = False
+        self.image = str(f'assets/images/helmets/{self.tag}.png')
+        self.tier_icon = str(f'assets/images/tiers/{self.tier_tag}_tier_frame.png')
+
+
+class Shield:
+    def __init__(self, metadata):
+        # import modules
+        self.Tier = Tier()
+        # general metadata
+        self.tag = metadata['tag']
+        self.name = metadata['name']
+        self.item_type = metadata['item_type']
+        self.block = metadata['block']
+        self.tier = metadata['tier']
+        self.tier_tag = self.Tier.get_tier_tag(self.tier)
+        self.tier_name = self.Tier.get_tier_name(self.tier)
+        self.tier_color = self.Tier.get_tier_color(self.tier)
+        self.value = metadata['value']
+        self.is_stackable = metadata['is_stackable']
+        self.id = 0
+        self.is_equipped = False
+        self.image = str(f'assets/images/shields/{self.tag}.png')
+        self.tier_icon = str(f'assets/images/tiers/{self.tier_tag}_tier_frame.png')
+
+    def use(self):
+        if self.isEquiped:
+            return random.randint(self.block[0], self.block[1])
+        else:
+            logger = DevLogger(Shield)
+            logger.log(logging.WARNING, f'{self.tag} cannot be used and returned 0; self.equipped: {self.is_equipped}')
+            return 0
 
 
 class Tier:

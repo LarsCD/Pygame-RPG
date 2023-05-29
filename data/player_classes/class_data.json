@@ -6,14 +6,14 @@
     "player_class_tag": "knight_class",
     "level": 0,
     "level_max": 50,
-    "hp": 100,
+    "hp": 130,
     "xp": 0,
-    "ep": 20,
+    "ep": 30,
     "mp": 10,
-    "hpMax": 120,
+    "hpMax": 130,
     "xpMax": 50,
-    "epMax": 20,
-    "mpMax": 10,
+    "epMax": 30,
+    "mpMax": 20,
     "strength": 7,
     "agility": 6,
     "intelligence": 3,
@@ -23,10 +23,10 @@
     "xp_mult": 0.9,
     "ep_mult": 1.5,
     "mp_mult": 0.3,
-    "hpMax_mult": 1.030,
-    "xpMax_mult": 1.010,
-    "epMax_mult": 1.025,
-    "mpMax_mult": 1.005
+    "hpMax_mult": 1.050,
+    "xpMax_mult": 1.020,
+    "epMax_mult": 1.080,
+    "mpMax_mult": 1.050
   },
   "sorcerer_class":
   {
@@ -54,7 +54,7 @@
     "mp_mult": 0.3,
     "hpMax_mult": 1.030,
     "xpMax_mult": 1.010,
-    "epMax_mult": 1.025,
-    "mpMax_mult": 1.005
+    "epMax_mult": 1.020,
+    "mpMax_mult": 1.020
   }
 }

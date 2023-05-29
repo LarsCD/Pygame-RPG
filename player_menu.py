@@ -2,7 +2,7 @@ import pygame
 import time
 import logging
 from assets.custom_pygame_assets import Lable, Health_bar, Custom_bar
-from weapon_display_screen import Weapon_Display_Screen
+from item_display_screen import Item_Display_Screen
 from dev.dev_logger import DevLogger
 from dev.dev_screen import DevScreen
 
@@ -37,7 +37,7 @@ class Player_Menu:
         self.default_frame_size = (60, 60)
 
         # MODULES
-        self.Weapon_Display_Screen = Weapon_Display_Screen
+        self.Weapon_Display_Screen = Item_Display_Screen
         self.log = DevLogger(Player_Menu).log
         self.DevScreen = DevScreen(self.ROOT)
 
