@@ -24,7 +24,7 @@ class Player_Menu:
         self.display_sep_space = 250
         self.text_size = 20
         self.name_pos_x = 145
-        self.background = pygame.image.load("assets/image/menu_background_1.png")
+        self.background = pygame.image.load("assets/images/menu_background_1.png")
 
         # PLAYER
         self.player_object = None
@@ -60,15 +60,15 @@ class Player_Menu:
                            is_centered=True)
 
         damage_button = Lable('DAMAGE PLAYER', 15, 'white', 'gray', 'red',
-                           (625, 575))
+                              (625, 575))
         heal_button = Lable('HEAL PLAYER', 15, 'white', 'gray', 'green',
-                              (625, 600))
+                            (625, 600))
 
-        health_bar = Health_bar(self.player_object.hp, self.player_object.hpMax, (625, 470), 200, 25,
+        health_bar = Health_bar(self.player_object.hp, self.player_object.hpMax, (625, 470), 150, 25,
                                 (255, 0, 0), (255, 255, 255), title='health')
-        energy_bar = Custom_bar(self.player_object.ep, self.player_object.epMax, (625, 505), 200, 25,
+        energy_bar = Custom_bar(self.player_object.ep, self.player_object.epMax, (625, 505), 150, 25,
                                 (255,178,0), (255, 255, 255), title='energy')
-        mana_bar = Custom_bar(self.player_object.mp, self.player_object.mpMax, (625, 540), 200, 25,
+        mana_bar = Custom_bar(self.player_object.mp, self.player_object.mpMax, (625, 540), 150, 25,
                               (23,93,255), (255, 255, 255), title='mana  ')
         t2_main_loop_load = time.perf_counter()
         dt_main_loop_load = t2_main_loop_load-t1_main_loop_load
@@ -153,7 +153,7 @@ class Player_Menu:
                                        ((pos_x), (pos_y)), is_clickable=False)
 
                     quantity_label = Lable(f'x{quantity}', self.text_size, 'white', black, black,
-                                        ((pos_x+offset_x), (pos_y)), is_clickable=False)
+                                           ((pos_x+offset_x), (pos_y)), is_clickable=False)
 
                     self.static_text_lables.append(item_label)
                     self.static_text_lables.append(quantity_label)
@@ -168,6 +168,7 @@ class Player_Menu:
                             is_clickable=False)
         player_name = Lable(f'{str(self.player_object.player_name).upper()}', 35, 'white', black, black,
                             (self.name_pos_x + self.default_icon_size[1], 40), is_clickable=False)
+
 
 
         self.static_text_lables.append(title_label)
@@ -208,7 +209,6 @@ class Player_Menu:
         for label in self.static_text_lables:
             label.draw_text(self.ROOT.window)
         self.static_text_lables = []
-
 
     def set_background_color(self):
         if self.bg_color != None:

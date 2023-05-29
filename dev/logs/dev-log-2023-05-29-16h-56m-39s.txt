@@ -1,0 +1,41 @@
+[2023-05-29 16:56:40,449]: INFO: Game_Setup: starting Game_Loop
+[2023-05-29 16:56:40,866]: INFO: Game_Loop: start Game.Loop:main_loop
+[2023-05-29 16:56:40,866]: INFO: Game_Loop: start Game.Loop:main_loop
+[2023-05-29 16:56:40,866]: INFO: Game_Loop: loading all game data...
+[2023-05-29 16:56:40,866]: INFO: Game_Loop: loading all game data...
+[2023-05-29 16:56:40,866]: INFO: DataLoader: Loading 'data/enemy/enemy_data.json'
+[2023-05-29 16:56:40,867]: INFO: DataLoader: Loading 'data/items/potion_data.json'
+[2023-05-29 16:56:40,867]: INFO: DataLoader: Loading 'data/items/weapon_data.json'
+[2023-05-29 16:56:40,869]: INFO: DataLoader: Loading 'data/player_classes/class_data.json'
+[2023-05-29 16:56:40,870]: INFO: DataLoader: Loading 'data/world_data/world_data.json'
+[2023-05-29 16:56:40,870]: INFO: Game_Loop: game data succesfully loaded (3.67 ms)
+[2023-05-29 16:56:40,870]: INFO: Game_Loop: game data succesfully loaded (3.67 ms)
+[2023-05-29 16:56:40,871]: INFO: Level: cave_level_1: loading level...
+[2023-05-29 16:56:40,871]: INFO: Level: cave_level_1: generated loot (0.05 ms)
+[2023-05-29 16:56:40,871]: INFO: Level: cave_level_1: generated enemies (0.03 ms)
+[2023-05-29 16:56:40,871]: INFO: Level: cave_level_1: loaded (0.2 ms)
+[2023-05-29 16:56:40,872]: DEBUG: Player: placeholder_weapon added to inventory player: knight_class
+[2023-05-29 16:56:40,872]: DEBUG: Player: rare_sword added to inventory player: knight_class
+[2023-05-29 16:56:40,872]: DEBUG: Player: rare_sword added to inventory player: knight_class
+[2023-05-29 16:56:40,872]: DEBUG: Player: placeholder_weapon added to inventory player: knight_class
+[2023-05-29 16:56:40,872]: DEBUG: Player: placeholder_weapon added to inventory player: knight_class
+[2023-05-29 16:56:40,872]: INFO: Game_Loop: created testing entities (1.11 ms)
+[2023-05-29 16:56:40,872]: INFO: Game_Loop: created testing entities (1.11 ms)
+[2023-05-29 16:56:42,322]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-05-29 16:56:42,661]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-05-29 16:56:42,831]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-05-29 16:56:43,003]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-05-29 16:56:43,175]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-05-29 16:56:43,347]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-05-29 16:56:43,487]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-05-29 16:56:43,686]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-05-29 16:56:43,854]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-05-29 16:56:44,025]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-05-29 16:56:44,025]: DEBUG: Player: player: knight_class died (hp: 0)
+[2023-05-29 16:56:44,054]: DEBUG: Player: player: knight_class fully healed
+[2023-05-29 16:56:44,195]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-05-29 16:56:44,365]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-05-29 16:56:44,531]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-05-29 16:56:44,700]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-05-29 16:56:44,867]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-05-29 16:56:45,039]: DEBUG: Player: player: knight_class took damage (-10 dmg)

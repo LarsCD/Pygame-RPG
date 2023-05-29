@@ -1,0 +1,25 @@
+[2023-05-29 12:43:24,877]: INFO: Game_Setup: starting Game_Loop
+[2023-05-29 12:43:25,293]: INFO: Game_Loop: start Game.Loop:main_loop
+[2023-05-29 12:43:25,293]: INFO: Game_Loop: start Game.Loop:main_loop
+[2023-05-29 12:43:25,293]: INFO: Game_Loop: loading all game data...
+[2023-05-29 12:43:25,293]: INFO: Game_Loop: loading all game data...
+[2023-05-29 12:43:25,294]: INFO: DataLoader: Loading 'data/enemy/enemy_data.json'
+[2023-05-29 12:43:25,294]: INFO: DataLoader: Loading 'data/items/potion_data.json'
+[2023-05-29 12:43:25,295]: INFO: DataLoader: Loading 'data/items/weapon_data.json'
+[2023-05-29 12:43:25,303]: INFO: DataLoader: Loading 'data/player_classes/class_data.json'
+[2023-05-29 12:43:25,303]: INFO: DataLoader: Loading 'data/world_data/world_data.json'
+[2023-05-29 12:43:25,304]: INFO: Game_Loop: game data succesfully loaded (10.57 ms)
+[2023-05-29 12:43:25,304]: INFO: Game_Loop: game data succesfully loaded (10.57 ms)
+[2023-05-29 12:43:25,306]: INFO: Level: cave_level_1: loading level...
+[2023-05-29 12:43:25,306]: INFO: Level: cave_level_1: generated loot (0.09 ms)
+[2023-05-29 12:43:25,307]: INFO: Level: cave_level_1: generated enemies (0.08 ms)
+[2023-05-29 12:43:25,307]: INFO: Level: cave_level_1: loaded (0.53 ms)
+[2023-05-29 12:43:25,307]: DEBUG: Player: placeholder_weapon added to inventory player: sorcerer_class
+[2023-05-29 12:43:25,308]: DEBUG: Player: rare_sword added to inventory player: sorcerer_class
+[2023-05-29 12:43:25,308]: DEBUG: Player: rare_sword added to inventory player: sorcerer_class
+[2023-05-29 12:43:25,308]: DEBUG: Player: placeholder_weapon added to inventory player: sorcerer_class
+[2023-05-29 12:43:25,308]: DEBUG: Player: placeholder_weapon added to inventory player: sorcerer_class
+[2023-05-29 12:43:25,308]: INFO: Game_Loop: created testing entities (2.65 ms)
+[2023-05-29 12:43:25,308]: INFO: Game_Loop: created testing entities (2.65 ms)
+[2023-05-29 12:43:33,700]: INFO: Game_Loop: exiting Game_Loop
+[2023-05-29 12:43:33,700]: INFO: Game_Loop: exiting Game_Loop

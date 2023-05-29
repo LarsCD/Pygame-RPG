@@ -11,6 +11,7 @@ class Game_Setup:
                  lable_click_col: tuple, lable_hover_col: tuple, bg_color: tuple=None):
         # PYGAME
         pygame.init()
+
         self.game_name = 'RPG3'
         self.game_version = 'v0.1.6'
 
@@ -42,7 +43,7 @@ class Game_Setup:
 
         # SCENE LABELS
         self.static_text_lables = []
-        self.background = pygame.image.load("assets/image/test_map.png")
+        self.background = pygame.image.load("assets/images/test_map.png")
 
         # DISPLAYS
         self.Game_Loop = Game_Loop(self) # MAIN GAME LOOP

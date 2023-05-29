@@ -1,8 +1,9 @@
 import pygame
 import time
+import random
 
 class Lable:
-    def __init__(self, text: str, size: int, text_color: str, clicked_color: str, hover_color: str, possition: tuple,
+    def __init__(self, text: str, size: int, text_color: str, clicked_color: str, hover_color: str, possition: list,
                  is_centered=False, is_clickable=True, bold_text=False, class_module=None, class_method=None, method_args=None):
         self.text = text
         self.size = size
@@ -183,7 +184,7 @@ class Health_bar:
         # show bar title
         if self.title != None:
             offset_x = (self.height-6)*len(self.title)+4
-            title_label = Lable(str(self.title).upper(), (self.height-6), 'white', 'black', 'black', (self.pos[0]+4, self.pos[1]+4), is_centered=False, is_clickable=False)
+            title_label = Lable(str(self.title).upper(), (self.height-6), 'white', 'black', 'black', (self.pos[0]+4, self.pos[1]+4), is_centered=False, is_clickable=False, bold_text=True)
             title_label.draw_text(surface)
         else:
             offset_x = 0
@@ -192,7 +193,7 @@ class Health_bar:
         pygame.draw.rect(surface, self.bg_color, (self.pos[0]+offset_x, self.pos[1], self.health_bar_length,self.height), 4)
         # show numbers
         if self.show_numbers:
-            health_label = Lable(f'{self.current_hp}/{self.max_hp}', (self.height-10), 'white', 'black', 'black', (self.pos[0]+4+offset_x, self.pos[1]+4), is_centered=False, is_clickable=False)
+            health_label = Lable(f'{self.current_hp}/{self.max_hp}', (self.height-10), 'white', 'black', 'black', (self.pos[0]+4+offset_x, self.pos[1]+4), is_centered=False, is_clickable=False, bold_text=True)
             health_label.draw_text(surface)
 
 
@@ -235,7 +236,7 @@ class Custom_bar:
         # show bar title
         if self.title != None:
             offset_x = (self.height-6)*len(self.title)+4
-            title_label = Lable(str(self.title).upper(), (self.height-6), 'white', 'black', 'black', (self.pos[0]+4, self.pos[1]+4), is_centered=False, is_clickable=False)
+            title_label = Lable(str(self.title).upper(), (self.height-6), 'white', 'black', 'black', (self.pos[0]+4, self.pos[1]+4), is_centered=False, is_clickable=False, bold_text=True)
             title_label.draw_text(surface)
         else:
             offset_x = 0
@@ -244,10 +245,74 @@ class Custom_bar:
         pygame.draw.rect(surface, self.bg_color, (self.pos[0]+offset_x, self.pos[1], self.health_bar_length,self.height), 4)
         # show numbers
         if self.show_numbers:
-            health_label = Lable(f'{self.current_stat}/{self.max_stat}', (self.height-10), 'white', 'black', 'black', (self.pos[0]+4+offset_x, self.pos[1]+4), is_centered=False, is_clickable=False)
+            health_label = Lable(f'{self.current_stat}/{self.max_stat}', (self.height-10), 'white', 'black', 'black', (self.pos[0]+4+offset_x, self.pos[1]+4), is_centered=False, is_clickable=False, bold_text=True)
             health_label.draw_text(surface)
 
 
 class Highlight_marker:
-    def __init__(self, text: str, size: int, text_color: str, pos: tuple):
-        pass
+    def __init__(self, text: str, size: int, text_color: str, start_pos: list, time: float, vector: tuple, speed: float, spread=0):
+        self.start_pos = list(start_pos)
+        self.pos = self.start_pos
+        self.label = Lable(text, size, text_color, 'black', 'black', self.pos, is_centered=True, is_clickable=False)
+        self.spread = spread
+
+        self.time_length = time
+        self.time_step = (1/30) # renders at 30 fps
+
+        self.speed = speed
+        self.vector = vector
+
+        self.step = 0
+        self.time = 0
+        self.time_remaining = 0
+
+    def start(self, surface):
+        if self.time_remaining <= 0:
+            return
+        else:
+            self.step += 1
+            self.time = self.step*self.time_step
+            self.time_remaining = self.time_length - self.time
+
+            # position and rendering
+            label_pos_x = (self.label.pos[0] + (self.vector[0] * self.speed * self.step))
+            label_pos_y = (self.label.pos[1] + (self.vector[1]*-1 * self.speed * self.step))
+            self.label.rect.x = label_pos_x
+            self.label.rect.y = label_pos_y
+            self.label.draw_text(surface)
+            # pygame.draw.rect(surface, 'red', pygame.Rect(label_pos_x, label_pos_y, 70, 20), 2)
+
+    def animate(self, pos, text=None, color=None, time=None, vari_red=0, vari_grn=0, vari_blu=0):
+        self.step = 0
+        self.time = 0
+        self.time_remaining = self.time_length - self.time
+
+        self.label.pos[0] = pos[0] + random.randint(self.spread*-1, self.spread)
+        self.label.pos[1] = pos[1] + random.randint(self.spread*-1, self.spread*0.5)
+
+
+        if color != None:
+            color[0] = color[0] + random.randint(vari_red*-1, vari_red)
+            if color[0] > 255:
+                color[0] = 255
+            if color[0] <= 0:
+                color[0] = 0
+            color[1] = color[1] + random.randint(vari_grn * -1, vari_grn)
+            if color[1] > 255:
+                color[1] = 255
+            if color[1] <= 0:
+                color[1] = 0
+            color[2] = color[2] + random.randint(vari_blu * -1, vari_blu)
+            if color[2] > 255:
+                color[2] = 255
+            if color[2] <= 0:
+                color[2] = 0
+            self.label.def_color = color
+
+        if text != None:
+            self.label.text = text
+
+        if time != None:
+            self.time_length = time
+
+

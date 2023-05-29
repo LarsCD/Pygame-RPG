@@ -20,8 +20,8 @@ class Weapon:
         self.is_stackable = metadata['is_stackable']
         self.id = 0
         self.is_equipped = False
-        self.image = str(f'assets/image/weapons/{self.tag}.png')
-        self.tier_icon = str(f'assets/image/tiers/{self.tier_tag}_tier_frame.png')
+        self.image = str(f'assets/images/weapons/{self.tag}.png')
+        self.tier_icon = str(f'assets/images/tiers/{self.tier_tag}_tier_frame.png')
 
     def use(self):
         if self.isEquiped:
@@ -53,8 +53,8 @@ class Potion:
         self.is_empty = False
         self.id = 0
         self.is_equipped = False
-        self.image = str(f'assets/image/potions/{self.tag}.png')
-        self.tier_icon = str(f'assets/image/tiers/{self.tier_tag}_tier_frame.png')
+        self.image = str(f'assets/images/potions/{self.tag}.png')
+        self.tier_icon = str(f'assets/images/tiers/{self.tier_tag}_tier_frame.png')
 
     def use(self):
         if is_empty is not True:

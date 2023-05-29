@@ -44,6 +44,8 @@ class Player:
         self.is_dead = False
         # LOADOUT
         self.weapon_equiped = None
+        self.armor_equiped = None
+        self.helmet_equiped = None
         # INVENTORY
         self.inventory = {
             'weapon': [],
@@ -60,8 +62,8 @@ class Player:
             'Attack Spells'
         }
         # SPRITES
-        self.image = str(f'assets/image/player_model/player_icon_{self.player_class_tag}.png')
-        self.frame = str(f'assets/image/player_model/player_icon_frame_{self.player_class_tag}.png')
+        self.image = str(f'assets/images/player_model/player_icon_{self.player_class_tag}.png')
+        self.frame = str(f'assets/images/player_model/player_icon_frame_{self.player_class_tag}.png')
         # DEBUG
         self.logger = DevLogger(Player)
 
@@ -110,6 +112,9 @@ class Player:
             if item.tag == item_tag:
                 quantity += 1
         return quantity
+
+    def equip_first_weapon(self):
+        self.weapon_equiped = self.inventory['weapon'][0]
 
 
     # HEALTH FUNCTIONS

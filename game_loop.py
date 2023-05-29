@@ -14,6 +14,7 @@ from player_menu import Player_Menu
 from dev.dev_logger import DevLogger
 from dev.dev_screen import DevScreen
 from world.level_loader import Level_Loader
+from combat_menu import Combat_Menu
 
 
 class Game_Loop:
@@ -62,6 +63,7 @@ class Game_Loop:
         # DISPLAYS
         self.Weapon_Display_Screen = Weapon_Display_Screen(self)
         self.Player_Menu = Player_Menu(self)
+        self.Combat_Menu = Combat_Menu(self)
 
         # DATA
         self.static_enemy_data = {}
@@ -100,8 +102,7 @@ class Game_Loop:
         potion_2 = self.Entity_Loader.create_item(self.static_item_data['potion_data']['healing_potions']['medium_healing_potion'])
         potion_3 = self.Entity_Loader.create_item(self.static_item_data['potion_data']['mana_potions']['small_mana_potion'])
 
-
-        self.player_object = self.Entity_Loader.create_player(self.static_player_class_data['sorcerer_class'])
+        self.player_object = self.Entity_Loader.create_player(self.static_player_class_data['knight_class'])
         self.player_object.give_item(weapon_1)
         self.player_object.give_item(weapon_2)
         self.player_object.give_item(weapon_3)
@@ -110,7 +111,9 @@ class Game_Loop:
         self.player_object.give_item(potion_1)
         self.player_object.give_item(potion_2)
         self.player_object.give_item(potion_3)
+        self.player_object.equip_first_weapon()
 
+        enemy_1 = level_1.enemies[1]
 
         t2 = time.perf_counter()
         dt = t2-t1
@@ -144,6 +147,11 @@ class Game_Loop:
                                self.lable_click_col,
                                self.lable_hover_col, (self.Game_Setup.DISPLAY_WIDTH * 0.1, 400), is_clickable=True)
 
+        combat_menu = Lable(f'View COMBAT MENU', 20, self.lable_col,
+                               self.lable_click_col,
+                               self.lable_hover_col, (self.Game_Setup.DISPLAY_WIDTH * 0.1, 450), is_clickable=True)
+
+
         while self.run_display:
             self.check_quit_event()
 
@@ -164,6 +172,9 @@ class Game_Loop:
 
             if display_player.draw_text(self.window):
                 self.Player_Menu.main_loop(self.player_object)
+
+            if combat_menu.draw_text(self.window):
+                self.Combat_Menu.main_loop(self.player_object, enemy_1)
 
             if back_label.draw_text(self.window):
                 # quit out of game

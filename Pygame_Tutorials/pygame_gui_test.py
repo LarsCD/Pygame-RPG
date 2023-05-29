@@ -8,7 +8,7 @@ SCREEN_WIDTH = 800
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption('Button Demo')
 
-# load button image
+# load button images
 start_img = pygame.image.load('button_frame_1.png').convert_alpha()
 clicked_img = pygame.image.load('button_frame_1_clicked.png').convert_alpha()
 

@@ -1,0 +1,54 @@
+[2023-05-29 12:01:42,115]: INFO: Game_Setup: starting Game_Loop
+[2023-05-29 12:01:42,541]: INFO: Game_Loop: start Game.Loop:main_loop
+[2023-05-29 12:01:42,541]: INFO: Game_Loop: start Game.Loop:main_loop
+[2023-05-29 12:01:42,542]: INFO: Game_Loop: loading all game data...
+[2023-05-29 12:01:42,542]: INFO: Game_Loop: loading all game data...
+[2023-05-29 12:01:42,542]: INFO: DataLoader: Loading 'data/enemy/enemy_data.json'
+[2023-05-29 12:01:42,543]: INFO: DataLoader: Loading 'data/items/potion_data.json'
+[2023-05-29 12:01:42,543]: INFO: DataLoader: Loading 'data/items/weapon_data.json'
+[2023-05-29 12:01:42,545]: INFO: DataLoader: Loading 'data/player_classes/class_data.json'
+[2023-05-29 12:01:42,545]: INFO: DataLoader: Loading 'data/world_data/world_data.json'
+[2023-05-29 12:01:42,546]: INFO: Game_Loop: game data succesfully loaded (3.9 ms)
+[2023-05-29 12:01:42,546]: INFO: Game_Loop: game data succesfully loaded (3.9 ms)
+[2023-05-29 12:01:42,547]: INFO: Level: cave_level_1: loading level...
+[2023-05-29 12:01:42,547]: INFO: Level: cave_level_1: generated loot (0.12 ms)
+[2023-05-29 12:01:42,547]: INFO: Level: cave_level_1: generated enemies (0.06 ms)
+[2023-05-29 12:01:42,547]: INFO: Level: cave_level_1: loaded (0.46 ms)
+[2023-05-29 12:01:42,548]: DEBUG: Player: placeholder_weapon added to inventory player: sorcerer_class
+[2023-05-29 12:01:42,548]: DEBUG: Player: rare_sword added to inventory player: sorcerer_class
+[2023-05-29 12:01:42,548]: DEBUG: Player: rare_sword added to inventory player: sorcerer_class
+[2023-05-29 12:01:42,548]: DEBUG: Player: placeholder_weapon added to inventory player: sorcerer_class
+[2023-05-29 12:01:42,549]: DEBUG: Player: placeholder_weapon added to inventory player: sorcerer_class
+[2023-05-29 12:01:42,549]: INFO: Game_Loop: created testing entities (2.18 ms)
+[2023-05-29 12:01:42,549]: INFO: Game_Loop: created testing entities (2.18 ms)
+[2023-05-29 12:01:50,332]: DEBUG: Player_Menu: dt_main_loop_load: 11.49ms
+[2023-05-29 12:01:51,589]: DEBUG: Player: player: sorcerer_class took damage (-10 dmg)
+[2023-05-29 12:01:51,730]: DEBUG: Player: player: sorcerer_class took damage (-10 dmg)
+[2023-05-29 12:01:51,902]: DEBUG: Player: player: sorcerer_class took damage (-10 dmg)
+[2023-05-29 12:01:52,073]: DEBUG: Player: player: sorcerer_class took damage (-10 dmg)
+[2023-05-29 12:01:52,218]: DEBUG: Player: player: sorcerer_class took damage (-10 dmg)
+[2023-05-29 12:01:52,358]: DEBUG: Player: player: sorcerer_class took damage (-10 dmg)
+[2023-05-29 12:02:17,621]: DEBUG: Player: player: sorcerer_class took damage (-10 dmg)
+[2023-05-29 12:02:17,816]: DEBUG: Player: player: sorcerer_class took damage (-10 dmg)
+[2023-05-29 12:02:19,282]: DEBUG: Player: player: sorcerer_class healed (+10 hp)
+[2023-05-29 12:02:19,475]: DEBUG: Player: player: sorcerer_class healed (+10 hp)
+[2023-05-29 12:02:19,700]: DEBUG: Player: player: sorcerer_class healed (+10 hp)
+[2023-05-29 12:02:20,024]: DEBUG: Player: player: sorcerer_class healed (+10 hp)
+[2023-05-29 12:02:20,243]: DEBUG: Player: player: sorcerer_class healed (+10 hp)
+[2023-05-29 12:02:20,659]: DEBUG: Player: player: sorcerer_class healed (+10 hp)
+[2023-05-29 12:02:20,817]: DEBUG: Player: player: sorcerer_class healed (+10 hp)
+[2023-05-29 12:02:21,291]: DEBUG: Player: player: sorcerer_class took damage (-10 dmg)
+[2023-05-29 12:02:21,479]: DEBUG: Player: player: sorcerer_class took damage (-10 dmg)
+[2023-05-29 12:02:21,640]: DEBUG: Player: player: sorcerer_class took damage (-10 dmg)
+[2023-05-29 12:02:21,798]: DEBUG: Player: player: sorcerer_class took damage (-10 dmg)
+[2023-05-29 12:02:22,019]: DEBUG: Player: player: sorcerer_class took damage (-10 dmg)
+[2023-05-29 12:02:36,576]: INFO: Game_Loop: exiting Game_Loop
+[2023-05-29 12:02:36,576]: INFO: Game_Loop: exiting Game_Loop
+[2023-05-29 12:02:39,940]: INFO: Game_Setup: starting Options
+[2023-05-29 12:02:42,232]: INFO: Options: resolution changed: 1280x720
+[2023-05-29 12:02:44,095]: INFO: Options: resolution changed: 1280x720
+[2023-05-29 12:02:50,840]: INFO: Options: exiting Options
+[2023-05-29 12:02:51,944]: INFO: Game_Setup: starting About
+[2023-05-29 12:02:53,956]: INFO: About: exiting About
+[2023-05-29 12:02:55,122]: INFO: Game_Setup: starting About
+[2023-05-29 12:03:00,942]: INFO: About: exiting About
