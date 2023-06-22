@@ -3,6 +3,7 @@ import time
 import logging
 from assets.custom_pygame_assets import Lable, Health_bar, Custom_bar
 from item_display_screen import Item_Display_Screen
+from player_inventory import Player_Inventory
 from dev.dev_logger import DevLogger
 from dev.dev_screen import DevScreen
 
@@ -22,12 +23,22 @@ class Player_Menu:
         self.display_start_x_pos = 128
         self.display_start_y_pos = 120
         self.display_sep_space = 250
-        self.text_size = 20
-        self.name_pos_x = 145
-        self.background = pygame.image.load("assets/images/menu_background_1.png")
+        self.text_size = 15
+        self.name_pos_x = 105
+        self.name_pos_y = 53
+        self.background = pygame.image.load("assets/images/player_menu_background.png")
 
         # PLAYER
         self.player_object = None
+
+        # EQUIPED
+        self.equiped_weapon_pos = (736, 304)
+        self.equiped_armor_pos = (576, 304)
+        self.equiped_helmet_pos = (576, 120)
+        self.equiped_shield_pos = (416, 304)
+
+        self.equiped_icon_size = (80, 80)
+        self.background_color = (67, 67, 79)
 
         # ICON
         self.default_icon_size = (56, 56)
@@ -37,7 +48,8 @@ class Player_Menu:
         self.default_frame_size = (60, 60)
 
         # MODULES
-        self.Weapon_Display_Screen = Item_Display_Screen
+        self.Item_Display_Screen = Item_Display_Screen
+        self.Player_Inventory = Player_Inventory
         self.log = DevLogger(Player_Menu).log
         self.DevScreen = DevScreen(self.ROOT)
 
@@ -55,21 +67,19 @@ class Player_Menu:
         frame = pygame.image.load(self.player_object.frame).convert_alpha()
         frame_scaled = pygame.transform.scale(frame, self.default_frame_size)
 
+
+        inventory_label = Lable(f'OPEN INVENTORY', 25, 'white', 'black', 'black',
+                                ((900), (80)), bold_text=True, is_clickable=True)
+
         back_label = Lable('BACK', 20, 'white', 'gray', (153, 0, 28),
-                           ((self.ROOT.DISPLAY_WIDTH / 2), 675),
-                           is_centered=True)
+                           (930, 590), bold_text=True)
 
-        damage_button = Lable('DAMAGE PLAYER', 15, 'white', 'gray', 'red',
-                              (625, 575))
-        heal_button = Lable('HEAL PLAYER', 15, 'white', 'gray', 'green',
-                            (625, 600))
-
-        health_bar = Health_bar(self.player_object.hp, self.player_object.hpMax, (625, 470), 150, 25,
-                                (255, 0, 0), (255, 255, 255), title='health')
-        energy_bar = Custom_bar(self.player_object.ep, self.player_object.epMax, (625, 505), 150, 25,
-                                (255,178,0), (255, 255, 255), title='energy')
-        mana_bar = Custom_bar(self.player_object.mp, self.player_object.mpMax, (625, 540), 150, 25,
-                              (23,93,255), (255, 255, 255), title='mana  ')
+        health_bar = Health_bar(self.player_object.hp, self.player_object.hpMax, (64, 215), 220, 28,
+                                (255, 0, 0), (194, 194, 209), title='HP ')
+        energy_bar = Custom_bar(self.player_object.ep, self.player_object.epMax, (64, 250), 220, 28,
+                                (255,178,0), (194, 194, 209), title='EP ')
+        mana_bar = Custom_bar(self.player_object.mp, self.player_object.mpMax, (64, 285), 220, 28,
+                              (23,93,255), (194, 194, 209), title='MP ')
         t2_main_loop_load = time.perf_counter()
         dt_main_loop_load = t2_main_loop_load-t1_main_loop_load
         self.log(logging.DEBUG, f'dt_main_loop_load: {round(dt_main_loop_load*1000, 3)}ms')
@@ -86,6 +96,7 @@ class Player_Menu:
             self.build_static_text_lables()
             # prepare static text labels for player inventory (performance cut: ~9.0 ms)
             self.build_inventory()
+            self.draw_equiped_icons()
 
             # TODO: make function for background ^
             # check if quit window (performance cut: ~0.02 ms)
@@ -95,8 +106,8 @@ class Player_Menu:
             self.draw_static_text_labels()
 
             # draw player icon (performance cut: ~0.01 ms)
-            self.ROOT.window.blit(frame_scaled, self.frame_pos)
-            self.ROOT.window.blit(icon_scaled, self.icon_pos)
+            # self.ROOT.window.blit(frame_scaled, self.frame_pos)
+            # self.ROOT.window.blit(icon_scaled, self.icon_pos)
 
             # draw health, energy and mana bars
             health_bar.update(self.ROOT.window, self.player_object.hp, self.player_object.hpMax)
@@ -104,12 +115,8 @@ class Player_Menu:
             mana_bar.update(self.ROOT.window, self.player_object.mp, self.player_object.mpMax)
 
             # player interaction (performance cut: ~0.07 ms)
-            if self.player_object.hp <= 0:
-                self.player_object.heal_full()
-            if damage_button.draw_text(self.ROOT.window):
-                self.player_object.take_damage(10)
-            if heal_button.draw_text(self.ROOT.window):
-                self.player_object.heal(10)
+            if inventory_label.draw_text(self.ROOT.window):
+                self.Player_Inventory(self.ROOT).main_loop(self.player_object)
             if back_label.draw_text(self.ROOT.window):
                 # quit out of view
                 self.run_display = False
@@ -124,24 +131,26 @@ class Player_Menu:
 
     # build static labels for whole inventory
     def build_inventory(self):
-        inventory_start_pos_x = 128
-        inventory_start_pos_y = 170
-        offset_y = 100
-        offset_x = 400
-        between_space_y = 100
-        black = (0, 0, 0)
 
-        inventory_title = Lable(f'INVENTORY', 35, 'white', black, black,
-                                ((inventory_start_pos_x), (inventory_start_pos_y - 45)), is_clickable=False)
-        self.static_text_lables.append(inventory_title)
+        inventory_start_pos_x = 900
+        inventory_start_pos_y = 120
+        offset_y = 100
+        offset_x = 300
+        between_space_y = 50
+        black = (0, 0, 0)
+        max_items_shown = 10
         n = 0
+        item_count = 0
         for i, cat_name in enumerate(self.player_object.inventory):
             n += 1
             item_tag_labels_build = []
-            for item in self.player_object.inventory[cat_name]:
+            for index, item in enumerate(self.player_object.inventory[cat_name]):
+                if item_count >= max_items_shown:
+                    return
                 if item.tag in item_tag_labels_build:
                     pass
                 else:
+                    item_count += 1
                     n += 1
                     item_tag_labels_build.append(item.tag)
                     pos_x = inventory_start_pos_x
@@ -150,14 +159,13 @@ class Player_Menu:
                     quantity = self.player_object.get_item_quantity(item.tag, item.item_type)
 
                     item_label = Lable(f'{item.name}', self.text_size, item.tier_color, black, black,
-                                       ((pos_x), (pos_y)), is_clickable=False)
+                                       ((pos_x), (pos_y)), is_clickable=True, class_method=self.Item_Display_Screen.main_loop, method_args=(self.player_object.inventory[cat_name.lower()][index]))
 
                     quantity_label = Lable(f'x{quantity}', self.text_size, 'white', black, black,
                                            ((pos_x+offset_x), (pos_y)), is_clickable=False)
 
                     self.static_text_lables.append(item_label)
                     self.static_text_lables.append(quantity_label)
-
 
     def build_static_text_lables(self):
         def_color = self.ROOT.lable_hover_col
@@ -166,8 +174,8 @@ class Player_Menu:
         title_label = Lable(self.title, self.text_size, self.ROOT.lable_col, self.ROOT.lable_click_col,
                             self.ROOT.lable_hover_col, (5, 5),
                             is_clickable=False)
-        player_name = Lable(f'{str(self.player_object.player_name).upper()}', 35, 'white', black, black,
-                            (self.name_pos_x + self.default_icon_size[1], 40), is_clickable=False)
+        player_name = Lable(f'{str(self.player_object.player_name).upper()}', 23, 'white', black, black,
+                            (self.name_pos_x, self.name_pos_y), is_clickable=False, bold_text=True)
 
 
 
@@ -175,6 +183,58 @@ class Player_Menu:
         self.static_text_lables.append(player_name)
 
         # self.build_metadata_labels()
+
+    def draw_equiped_icons(self):
+
+        # WEAPON
+        if self.player_object.weapon_equiped != None:
+            pygame.draw.rect(self.ROOT.window, self.background_color, (self.equiped_weapon_pos, self.equiped_icon_size))
+            # WEAPON IMAGE
+            weapon_icon = pygame.image.load(self.player_object.weapon_equiped.image).convert_alpha()
+            weapon_icon_scaled = pygame.transform.scale(weapon_icon, self.equiped_icon_size)
+            self.ROOT.window.blit(weapon_icon_scaled, self.equiped_weapon_pos)
+            # WEAPON TIER FRAME
+            weapon_frame = pygame.image.load(self.player_object.weapon_equiped.tier_icon).convert_alpha()
+            weapon_frame_scaled = pygame.transform.scale(weapon_frame, self.equiped_icon_size)
+            self.ROOT.window.blit(weapon_frame_scaled, self.equiped_weapon_pos)
+
+
+        # ARMOR
+        if self.player_object.armor_equiped != None:
+            pygame.draw.rect(self.ROOT.window, self.background_color, (self.equiped_armor_pos, self.equiped_icon_size))
+            # ARMOR IMAGE
+            armor_icon = pygame.image.load(self.player_object.armor_equiped.image).convert_alpha()
+            armor_icon_scaled = pygame.transform.scale(armor_icon, self.equiped_icon_size)
+            self.ROOT.window.blit(armor_icon_scaled, (self.equiped_armor_pos[0] + 3, self.equiped_armor_pos[1]))
+            # ARMOR TIER FRAME
+            armor_frame = pygame.image.load(self.player_object.armor_equiped.tier_icon).convert_alpha()
+            armor_frame_scaled = pygame.transform.scale(armor_frame, self.equiped_icon_size)
+            self.ROOT.window.blit(armor_frame_scaled, self.equiped_armor_pos)
+
+        # HELMET
+        if self.player_object.helmet_equiped != None:
+            pygame.draw.rect(self.ROOT.window, self.background_color, (self.equiped_helmet_pos, self.equiped_icon_size))
+            # HELMET IMAGE
+            helmet_icon = pygame.image.load(self.player_object.helmet_equiped.image).convert_alpha()
+            helmet_icon_scaled = pygame.transform.scale(helmet_icon, self.equiped_icon_size)
+            self.ROOT.window.blit(helmet_icon_scaled, (self.equiped_helmet_pos[0] + 3, self.equiped_helmet_pos[1]))
+            # HELMET TIER FRAME
+            helmet_frame = pygame.image.load(self.player_object.armor_equiped.tier_icon).convert_alpha()
+            helmet_frame_scaled = pygame.transform.scale(helmet_frame, self.equiped_icon_size)
+            self.ROOT.window.blit(helmet_frame_scaled, self.equiped_helmet_pos)
+
+        # SHIELD
+        if self.player_object.shield_equiped != None:
+            pygame.draw.rect(self.ROOT.window, self.background_color,
+                             (self.equiped_shield_pos, self.equiped_icon_size))
+            # ARMOR IMAGE
+            shield_icon = pygame.image.load(self.player_object.shield_equiped.image).convert_alpha()
+            shield_icon_scaled = pygame.transform.scale(shield_icon, self.equiped_icon_size)
+            self.ROOT.window.blit(shield_icon_scaled, (self.equiped_shield_pos[0] + 3, self.equiped_shield_pos[1]))
+            # ARMOR TIER FRAME
+            shield_frame = pygame.image.load(self.player_object.shield_equiped.tier_icon).convert_alpha()
+            shield_frame_scaled = pygame.transform.scale(shield_frame, self.equiped_icon_size)
+            self.ROOT.window.blit(shield_frame_scaled, self.equiped_shield_pos)
 
 
     def build_metadata_labels(self):

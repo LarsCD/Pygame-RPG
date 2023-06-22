@@ -4,7 +4,7 @@ import random
 
 class Lable:
     def __init__(self, text: str, size: int, text_color: str, clicked_color: str, hover_color: str, possition: list,
-                 is_centered=False, is_clickable=True, bold_text=False, class_module=None, class_method=None, method_args=None):
+                 is_centered=False, is_clickable=True, bold_text=False, class_method=None, method_args=None):
         self.text = text
         self.size = size
         self.color = text_color
@@ -31,7 +31,6 @@ class Lable:
         self.release = True
         self.release_click = True
 
-        self.class_module = class_module
         self.class_method = class_method
         self.method_args = method_args
 
@@ -88,11 +87,18 @@ class Lable:
                 self.release = True
                 self.color = self.def_color
                 self.text_surface = self.font_text.render(self.text, False, self.color)
-                # self.text_surface = surface.draw.text(self.text, self.rect.x, self.rect.y, fontname=self.font_text, fontsize=self.size)
-                # TODO: DO MAJOR REMODEL OF TEXT WRITING (26-5-2023)
+
+        # if self.action:
+        #     if self.class_method != None:
+        #         self.run_method()
+
         # display on screen
         surface.blit(self.text_surface, (self.rect.x, self.rect.y))
         return self.action
+
+    def run_method(self):
+        method = self.class_method
+        method(self.method_args)
 
 
 class Screen_Effect:
@@ -111,7 +117,6 @@ class Screen_Effect:
             s.set_alpha(n)  # alpha level
             s.fill(color)  # this fills the entire surface
             surface.blit(s, pos)  # (0,0) are the top-left coordinates
-
             pygame.display.update()
             # time.sleep(fade_speed)
             pygame.time.Clock().tick(60)

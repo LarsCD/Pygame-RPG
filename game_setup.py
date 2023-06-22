@@ -28,7 +28,7 @@ class Game_Setup:
         self.display = pygame.Surface((self.DISPLAY_WIDTH, self.DISPLAY_HEIGHT))
         self.window = pygame.display.set_mode((self.DISPLAY_WIDTH, self.DISPLAY_HEIGHT))
         self.default_font = default_font
-        self.fps = 120
+        self.fps = 30
 
         # DEFAULT TEXT LABLE PARAMETERS
         self.bold_font = bold_font

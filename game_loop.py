@@ -61,7 +61,7 @@ class Game_Loop:
         self.Level_Loader = Level_Loader()
 
         # DISPLAYS
-        self.Weapon_Display_Screen = Item_Display_Screen(self)
+        self.Item_Display_Screen = Item_Display_Screen(self)
         self.Player_Menu = Player_Menu(self)
         self.Combat_Menu = Combat_Menu(self)
 
@@ -109,8 +109,8 @@ class Game_Loop:
         self.player_object = self.Entity_Loader.create_player(self.static_player_class_data['knight_class'])
         self.player_object.level_up(30)
 
-        self.player_object.give_item(weapon_1)
         self.player_object.give_item(weapon_2)
+        self.player_object.give_item(weapon_1)
         self.player_object.give_item(weapon_3)
         self.player_object.give_item(weapon_4)
         self.player_object.give_item(weapon_5)
@@ -120,7 +120,11 @@ class Game_Loop:
         self.player_object.give_item(armor_1)
         self.player_object.give_item(helmet_1)
         self.player_object.give_item(shield_1)
+
         self.player_object.equip_first_weapon()
+        self.player_object.equip_first_armor()
+        self.player_object.equip_first_helmet()
+        self.player_object.equip_first_shield()
 
         enemy_1 = level_1.enemies[1]
 
@@ -169,15 +173,15 @@ class Game_Loop:
 
 
             if display_item.draw_text(self.window):
-                self.Weapon_Display_Screen.main_loop(armor_1)
+                self.Item_Display_Screen.main_loop(armor_1)
             if display_item_2.draw_text(self.window):
-                self.Weapon_Display_Screen.main_loop(helmet_1)
+                self.Item_Display_Screen.main_loop(helmet_1)
             if display_item_3.draw_text(self.window):
-                self.Weapon_Display_Screen.main_loop(shield_1)
+                self.Item_Display_Screen.main_loop(shield_1)
             if display_item_4.draw_text(self.window):
-                self.Weapon_Display_Screen.main_loop(potion_2)
+                self.Item_Display_Screen.main_loop(potion_2)
             if display_item_5.draw_text(self.window):
-                self.Weapon_Display_Screen.main_loop(potion_3)
+                self.Item_Display_Screen.main_loop(potion_3)
 
             if display_player.draw_text(self.window):
                 self.Player_Menu.main_loop(self.player_object)
@@ -217,7 +221,7 @@ class Game_Loop:
                 if target_folder == f'{cwd}/{data_folder_path}/items':
                     for file in os.listdir(target_folder):
                         if file == 'weapon_data.json':
-                            weapon_data = self.DataLoader.load_data(f'{data_folder_path}/{data_folder}/{file}')
+                            weapon_data = self.DataLoader.load_data(f'{cwd}/{data_folder_path}/{data_folder}/{file}')
                             self.static_item_data.update({'weapon_data': weapon_data})
                         if file == 'potion_data.json':
                             potion_data = self.DataLoader.load_data(f'{data_folder_path}/{data_folder}/{file}')

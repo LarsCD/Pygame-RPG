@@ -1,0 +1,30 @@
+[2023-05-30 21:04:10,548]: INFO: Game_Setup: starting Game_Loop
+[2023-05-30 21:04:10,961]: INFO: Game_Loop: start Game.Loop:main_loop
+[2023-05-30 21:04:10,961]: INFO: Game_Loop: start Game.Loop:main_loop
+[2023-05-30 21:04:10,961]: INFO: Game_Loop: loading all game data...
+[2023-05-30 21:04:10,961]: INFO: Game_Loop: loading all game data...
+[2023-05-30 21:04:10,961]: INFO: DataLoader: Loading 'data/enemy/enemy_data.json'
+[2023-05-30 21:04:10,963]: INFO: DataLoader: Loading 'data/items/armor_data.json'
+[2023-05-30 21:04:10,963]: INFO: DataLoader: Loading 'data/items/helmet_data.json'
+[2023-05-30 21:04:10,964]: INFO: DataLoader: Loading 'data/items/potion_data.json'
+[2023-05-30 21:04:10,964]: INFO: DataLoader: Loading 'data/items/shield_data.json'
+[2023-05-30 21:04:10,965]: INFO: DataLoader: Loading 'C:\Users\larsc\PycharmProjects\RPG3/data/items/weapon_data.json'
+[2023-05-30 21:04:10,965]: INFO: DataLoader: Loading 'data/player_classes/class_data.json'
+[2023-05-30 21:04:10,965]: INFO: DataLoader: Loading 'data/world_data/world_data.json'
+[2023-05-30 21:04:10,965]: INFO: Game_Loop: game data successfully loaded (3.5 ms)
+[2023-05-30 21:04:10,965]: INFO: Game_Loop: game data successfully loaded (3.5 ms)
+[2023-05-30 21:04:10,967]: INFO: Level: cave_level_1: loading level...
+[2023-05-30 21:04:10,967]: INFO: Level: cave_level_1: generated loot (0.06 ms)
+[2023-05-30 21:04:10,967]: INFO: Level: cave_level_1: generated enemies (0.07 ms)
+[2023-05-30 21:04:10,968]: INFO: Level: cave_level_1: loaded (0.3 ms)
+[2023-05-30 21:04:10,968]: DEBUG: Player: placeholder_weapon added to inventory player: knight_class
+[2023-05-30 21:04:10,968]: DEBUG: Player: rare_sword added to inventory player: knight_class
+[2023-05-30 21:04:10,968]: DEBUG: Player: rare_sword added to inventory player: knight_class
+[2023-05-30 21:04:10,968]: DEBUG: Player: placeholder_weapon added to inventory player: knight_class
+[2023-05-30 21:04:10,968]: DEBUG: Player: placeholder_weapon added to inventory player: knight_class
+[2023-05-30 21:04:10,968]: DEBUG: Player: rare_knights_armor added to inventory player: knight_class
+[2023-05-30 21:04:10,968]: DEBUG: Player: rare_knights_helmet added to inventory player: knight_class
+[2023-05-30 21:04:10,968]: DEBUG: Player: super_rare_knights_shield added to inventory player: knight_class
+[2023-05-30 21:04:10,969]: INFO: Game_Loop: created testing entities (1.73 ms)
+[2023-05-30 21:04:10,969]: INFO: Game_Loop: created testing entities (1.73 ms)
+[2023-05-30 21:04:11,520]: DEBUG: Player_Menu: dt_main_loop_load: 1.712ms

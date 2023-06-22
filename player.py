@@ -46,6 +46,7 @@ class Player:
         self.weapon_equiped = None
         self.armor_equiped = None
         self.helmet_equiped = None
+        self.shield_equiped = None
         # INVENTORY
         self.inventory = {
             'weapon': [],
@@ -162,6 +163,15 @@ class Player:
     def equip_first_weapon(self):
         self.weapon_equiped = self.inventory['weapon'][0]
 
+    def equip_first_armor(self):
+        self.armor_equiped = self.inventory['armor'][0]
+
+    def equip_first_helmet(self):
+        self.helmet_equiped = self.inventory['helmet'][0]
+
+    def equip_first_shield(self):
+        self.shield_equiped = self.inventory['shield'][0]
+
 
     # HEALTH FUNCTIONS
     def heal(self, healing):
@@ -212,7 +222,6 @@ class Player:
         self.ep += epAdd
 
         mpMax_old = self.mpMax
-        print(self.mpMax)
         self.mpMax = round(self.mpMax * self.mpMax_mult)
         epAdd = self.mpMax - mpMax_old
         self.mp += epAdd
