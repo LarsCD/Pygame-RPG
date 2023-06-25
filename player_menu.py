@@ -19,6 +19,7 @@ class Player_Menu:
 
         # SCENE LABELS
         self.static_text_lables = []
+        self.dynamic_text_lables = []
         self.title = ''
         self.display_start_x_pos = 128
         self.display_start_y_pos = 120
@@ -84,6 +85,7 @@ class Player_Menu:
         dt_main_loop_load = t2_main_loop_load-t1_main_loop_load
         self.log(logging.DEBUG, f'dt_main_loop_load: {round(dt_main_loop_load*1000, 3)}ms')
 
+        self.build_inventory()
 
         while self.run_display:
             t7 = time.perf_counter()
@@ -92,27 +94,22 @@ class Player_Menu:
             # self.ROOT.window.fill((64, 64, 64))   # <-- this bad boy adds 10ms of unnecessary shit >:(
             self.ROOT.window.blit(pygame.transform.scale(self.background, self.ROOT.RESOLUTION), (0, 0)) # (performance cut: ~12ms)
 
-            # prepare static text labels and put in list (performance cut: ~3.0 ms)
-            self.build_static_text_lables()
-            # prepare static text labels for player inventory (performance cut: ~9.0 ms)
-            self.build_inventory()
-            self.draw_equiped_icons()
-
-            # TODO: make function for background ^
-            # check if quit window (performance cut: ~0.02 ms)
             self.check_quit_event()
 
-            # draw all static text labels from list (performance cut: ~0.06 ms)
+            self.build_static_text_lables()
+
             self.draw_static_text_labels()
+            self.draw_dynamic_text_labels()
 
             # draw player icon (performance cut: ~0.01 ms)
-            # self.ROOT.window.blit(frame_scaled, self.frame_pos)
-            # self.ROOT.window.blit(icon_scaled, self.icon_pos)
+            self.ROOT.window.blit(frame_scaled, self.frame_pos)
+            self.ROOT.window.blit(icon_scaled, self.icon_pos)
 
             # draw health, energy and mana bars
             health_bar.update(self.ROOT.window, self.player_object.hp, self.player_object.hpMax)
             energy_bar.update(self.ROOT.window, self.player_object.ep, self.player_object.epMax)
             mana_bar.update(self.ROOT.window, self.player_object.mp, self.player_object.mpMax)
+
 
             # player interaction (performance cut: ~0.07 ms)
             if inventory_label.draw_text(self.ROOT.window):
@@ -158,14 +155,16 @@ class Player_Menu:
 
                     quantity = self.player_object.get_item_quantity(item.tag, item.item_type)
 
-                    item_label = Lable(f'{item.name}', self.text_size, item.tier_color, black, black,
-                                       ((pos_x), (pos_y)), is_clickable=True, class_method=self.Item_Display_Screen.main_loop, method_args=(self.player_object.inventory[cat_name.lower()][index]))
+                    item_object = self.player_object.inventory[cat_name.lower()][index]
+                    item_label = Lable(f'{item.name}', self.text_size, item.tier_color, 'white', 'gray',
+                                       ((pos_x), (pos_y)), bold_text=True, is_clickable=True, class_method=self.Item_Display_Screen(self.ROOT).main_loop, method_args=(item_object))
 
                     quantity_label = Lable(f'x{quantity}', self.text_size, 'white', black, black,
-                                           ((pos_x+offset_x), (pos_y)), is_clickable=False)
+                                           ((pos_x+offset_x), (pos_y)), bold_text=True, is_clickable=False)
 
-                    self.static_text_lables.append(item_label)
-                    self.static_text_lables.append(quantity_label)
+                    self.dynamic_text_lables.append(item_label)
+                    self.dynamic_text_lables.append(quantity_label)
+
 
     def build_static_text_lables(self):
         def_color = self.ROOT.lable_hover_col
@@ -176,8 +175,6 @@ class Player_Menu:
                             is_clickable=False)
         player_name = Lable(f'{str(self.player_object.player_name).upper()}', 23, 'white', black, black,
                             (self.name_pos_x, self.name_pos_y), is_clickable=False, bold_text=True)
-
-
 
         self.static_text_lables.append(title_label)
         self.static_text_lables.append(player_name)
@@ -197,7 +194,6 @@ class Player_Menu:
             weapon_frame = pygame.image.load(self.player_object.weapon_equiped.tier_icon).convert_alpha()
             weapon_frame_scaled = pygame.transform.scale(weapon_frame, self.equiped_icon_size)
             self.ROOT.window.blit(weapon_frame_scaled, self.equiped_weapon_pos)
-
 
         # ARMOR
         if self.player_object.armor_equiped != None:
@@ -269,6 +265,10 @@ class Player_Menu:
         for label in self.static_text_lables:
             label.draw_text(self.ROOT.window)
         self.static_text_lables = []
+
+    def draw_dynamic_text_labels(self):
+        for label in self.dynamic_text_lables:
+            label.draw_text(self.ROOT.window)
 
     def set_background_color(self):
         if self.bg_color != None:

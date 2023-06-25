@@ -10,7 +10,7 @@
       "tier": 2,
       "damage": [5,7],
       "value": 7,
-      "is_stackable": true
+      "is_stackable": false
     }
   },
   "weapons":
@@ -24,7 +24,7 @@
       "tier": 3,
       "damage": [28,35],
       "value": 120,
-      "is_stackable": true
+      "is_stackable": false
     }
   }
 }

@@ -88,9 +88,9 @@ class Lable:
                 self.color = self.def_color
                 self.text_surface = self.font_text.render(self.text, False, self.color)
 
-        # if self.action:
-        #     if self.class_method != None:
-        #         self.run_method()
+        if self.action:
+            if self.class_method != None:
+                self.run_method()
 
         # display on screen
         surface.blit(self.text_surface, (self.rect.x, self.rect.y))

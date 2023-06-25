@@ -40,11 +40,9 @@ class Player_Inventory:
     def main_loop(self, player_object):
         self.run_display = True
         self.build_static_text_lables()
-        def test(text):
-            print(str(text))
         back_label = Lable('BACK', 20, 'white', 'gray', (153, 0, 28),
                            ((self.ROOT.DISPLAY_WIDTH / 2), (self.ROOT.DISPLAY_HEIGHT / 2) + 240),
-                           is_centered=True, is_clickable=True, class_method=test, method_args=('YES'))
+                           is_centered=True, is_clickable=True)
 
 
         while self.run_display:
