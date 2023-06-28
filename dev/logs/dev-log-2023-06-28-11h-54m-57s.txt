@@ -1,0 +1,30 @@
+[2023-06-28 11:54:59,018]: INFO: Game_Setup: starting Game_Loop
+[2023-06-28 11:54:59,420]: INFO: Game_Loop: start Game.Loop:main_loop
+[2023-06-28 11:54:59,420]: INFO: Game_Loop: start Game.Loop:main_loop
+[2023-06-28 11:54:59,420]: INFO: Game_Loop: loading all game data...
+[2023-06-28 11:54:59,420]: INFO: Game_Loop: loading all game data...
+[2023-06-28 11:54:59,421]: INFO: DataLoader: Loading 'data/enemy/enemy_data.json'
+[2023-06-28 11:54:59,421]: INFO: DataLoader: Loading 'data/items/armor_data.json'
+[2023-06-28 11:54:59,421]: INFO: DataLoader: Loading 'data/items/helmet_data.json'
+[2023-06-28 11:54:59,429]: INFO: DataLoader: Loading 'data/items/potion_data.json'
+[2023-06-28 11:54:59,429]: INFO: DataLoader: Loading 'data/items/shield_data.json'
+[2023-06-28 11:54:59,429]: INFO: DataLoader: Loading 'C:\Users\larsc\PycharmProjects\RPG3/data/items/weapon_data.json'
+[2023-06-28 11:54:59,429]: INFO: DataLoader: Loading 'data/player_classes/class_data.json'
+[2023-06-28 11:54:59,430]: INFO: DataLoader: Loading 'data/world_data/world_data.json'
+[2023-06-28 11:54:59,430]: INFO: Game_Loop: game data successfully loaded (10.22 ms)
+[2023-06-28 11:54:59,430]: INFO: Game_Loop: game data successfully loaded (10.22 ms)
+[2023-06-28 11:54:59,432]: INFO: Level: cave_level_1: loading level...
+[2023-06-28 11:54:59,432]: INFO: Level: cave_level_1: generated loot (0.06 ms)
+[2023-06-28 11:54:59,432]: INFO: Level: cave_level_1: generated enemies (0.05 ms)
+[2023-06-28 11:54:59,432]: INFO: Level: cave_level_1: loaded (0.25 ms)
+[2023-06-28 11:54:59,432]: DEBUG: Player: rare_sword added to inventory player: knight_class
+[2023-06-28 11:54:59,432]: DEBUG: Player: placeholder_weapon added to inventory player: knight_class
+[2023-06-28 11:54:59,432]: WARNING: Player: rare_sword cannot be added to inventory player: knight_class (not stackable)
+[2023-06-28 11:54:59,432]: WARNING: Player: placeholder_weapon cannot be added to inventory player: knight_class (not stackable)
+[2023-06-28 11:54:59,432]: WARNING: Player: placeholder_weapon cannot be added to inventory player: knight_class (not stackable)
+[2023-06-28 11:54:59,432]: DEBUG: Player: rare_knights_armor added to inventory player: knight_class
+[2023-06-28 11:54:59,433]: DEBUG: Player: rare_knights_helmet added to inventory player: knight_class
+[2023-06-28 11:54:59,433]: DEBUG: Player: super_rare_knights_shield added to inventory player: knight_class
+[2023-06-28 11:54:59,433]: INFO: Game_Loop: created testing entities (1.36 ms)
+[2023-06-28 11:54:59,433]: INFO: Game_Loop: created testing entities (1.36 ms)
+[2023-06-28 11:54:59,915]: DEBUG: Player_Menu: dt_main_loop_load: 2.5ms

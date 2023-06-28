@@ -14,16 +14,25 @@ class Player_Inventory:
         self.default_bg_color = self.ROOT.default_bg_color
         self.bg_color = self.ROOT.bg_color
         self.BLACK = (0, 0, 0)
+        self.highlight_color = (38, 162, 140)
 
         # SCENE LABELS
         self.static_text_lables = []
+        self.dynamic_text_lables = []
+
         self.title = 'PLAYER INVENTORY'
         self.display_start_x_pos = 128
         self.display_start_y_pos = 120
         self.display_sep_space = 300
         self.text_size = 15
         self.name_pos_x = 135
-        self.background = pygame.image.load("assets/images/menu_background_1.png")
+        self.background = pygame.image.load("assets/images/inventory_background_1.png")
+
+        # PLAYER
+        self.player_object = None
+
+        # INVENTORY LOGIC
+        self.current_inventory_category = 'weapon'
 
         # ICON DATA
         self.default_icon_size = (64, 64)
@@ -38,17 +47,20 @@ class Player_Inventory:
 
 
     def main_loop(self, player_object):
+        self.player_object = player_object
         self.run_display = True
-        self.build_static_text_lables()
-        back_label = Lable('BACK', 20, 'white', 'gray', (153, 0, 28),
-                           ((self.ROOT.DISPLAY_WIDTH / 2), (self.ROOT.DISPLAY_HEIGHT / 2) + 240),
-                           is_centered=True, is_clickable=True)
 
+        back_label = Lable('BACK', 25, 'white', 'gray', (153, 0, 28),
+                           (1090, 620), is_clickable=True, bold_text=True)
 
         while self.run_display:
-            self.ROOT.window.blit(pygame.transform.scale(self.background, self.ROOT.RESOLUTION), (0, 0))
             self.check_quit_event()
-            # self.set_background_color()
+
+            self.build_static_text_lables()
+
+            # display background
+            self.ROOT.window.blit(pygame.transform.scale(self.background, self.ROOT.RESOLUTION), (0, 0))
+
             self.draw_static_text_labels()
 
             if back_label.draw_text(self.ROOT.window):
@@ -61,6 +73,26 @@ class Player_Inventory:
             pygame.display.update()
             self.ROOT.clock.tick(self.ROOT.fps)
 
+    def check_if_current_cat(self, category):
+        if category == self.current_inventory_category:
+            return 1
+        else:
+            return 0
+
+    def build_categories(self):
+        for category in self.player_object.inventory_cat_names:
+
+            # set text color
+            main_text_color = 'white'
+            if check_if_current_cat(category):
+                main_text_color = self.highlight_color
+
+            # get category name
+            cat_name = self.player_object.inventory_cat_names[category]
+
+            cat_label = Lable(f'{cat_name}', self.cat_text_size, item.tier_color, 'white', 'gray',
+                               ((pos_x), (pos_y)), bold_text=True, is_clickable=True,
+                               class_method=self.Item_Display_Screen(self.ROOT).main_loop, method_args=(item_object))
 
     def set_background_color(self):
         if self.bg_color != None:

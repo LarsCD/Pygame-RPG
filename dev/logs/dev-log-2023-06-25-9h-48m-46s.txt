@@ -1,0 +1,99 @@
+[2023-06-25 09:48:49,660]: INFO: Game_Setup: starting Options
+[2023-06-25 09:48:52,310]: INFO: Options: exiting Options
+[2023-06-25 09:48:53,455]: INFO: Game_Setup: starting About
+[2023-06-25 09:49:06,830]: INFO: About: exiting About
+[2023-06-25 09:49:08,871]: INFO: Game_Setup: starting Options
+[2023-06-25 09:49:10,216]: INFO: Options: resolution changed: 1280x720
+[2023-06-25 09:49:11,820]: INFO: Options: resolution changed: 1280x720
+[2023-06-25 09:49:11,954]: INFO: Options: resolution changed: 1280x720
+[2023-06-25 09:49:12,154]: INFO: Options: resolution changed: 1280x720
+[2023-06-25 09:49:12,286]: INFO: Options: resolution changed: 1280x720
+[2023-06-25 09:49:14,392]: INFO: Options: resolution changed: 1280x720
+[2023-06-25 09:49:15,929]: INFO: Options: exiting Options
+[2023-06-25 09:49:17,007]: INFO: Game_Setup: starting Game_Loop
+[2023-06-25 09:49:17,423]: INFO: Game_Loop: start Game.Loop:main_loop
+[2023-06-25 09:49:17,423]: INFO: Game_Loop: start Game.Loop:main_loop
+[2023-06-25 09:49:17,423]: INFO: Game_Loop: loading all game data...
+[2023-06-25 09:49:17,423]: INFO: Game_Loop: loading all game data...
+[2023-06-25 09:49:17,424]: INFO: DataLoader: Loading 'data/enemy/enemy_data.json'
+[2023-06-25 09:49:17,424]: INFO: DataLoader: Loading 'data/items/armor_data.json'
+[2023-06-25 09:49:17,425]: INFO: DataLoader: Loading 'data/items/helmet_data.json'
+[2023-06-25 09:49:17,425]: INFO: DataLoader: Loading 'data/items/potion_data.json'
+[2023-06-25 09:49:17,425]: INFO: DataLoader: Loading 'data/items/shield_data.json'
+[2023-06-25 09:49:17,426]: INFO: DataLoader: Loading 'C:\Users\larsc\PycharmProjects\RPG3/data/items/weapon_data.json'
+[2023-06-25 09:49:17,426]: INFO: DataLoader: Loading 'data/player_classes/class_data.json'
+[2023-06-25 09:49:17,426]: INFO: DataLoader: Loading 'data/world_data/world_data.json'
+[2023-06-25 09:49:17,426]: INFO: Game_Loop: game data successfully loaded (3.14 ms)
+[2023-06-25 09:49:17,426]: INFO: Game_Loop: game data successfully loaded (3.14 ms)
+[2023-06-25 09:49:17,428]: INFO: Level: cave_level_1: loading level...
+[2023-06-25 09:49:17,429]: INFO: Level: cave_level_1: generated loot (0.06 ms)
+[2023-06-25 09:49:17,429]: INFO: Level: cave_level_1: generated enemies (0.07 ms)
+[2023-06-25 09:49:17,429]: INFO: Level: cave_level_1: loaded (0.29 ms)
+[2023-06-25 09:49:17,429]: DEBUG: Player: rare_sword added to inventory player: knight_class
+[2023-06-25 09:49:17,429]: DEBUG: Player: placeholder_weapon added to inventory player: knight_class
+[2023-06-25 09:49:17,429]: WARNING: Player: rare_sword cannot be added to inventory player: knight_class (not stackable)
+[2023-06-25 09:49:17,429]: WARNING: Player: placeholder_weapon cannot be added to inventory player: knight_class (not stackable)
+[2023-06-25 09:49:17,430]: WARNING: Player: placeholder_weapon cannot be added to inventory player: knight_class (not stackable)
+[2023-06-25 09:49:17,430]: DEBUG: Player: rare_knights_armor added to inventory player: knight_class
+[2023-06-25 09:49:17,430]: DEBUG: Player: rare_knights_helmet added to inventory player: knight_class
+[2023-06-25 09:49:17,430]: DEBUG: Player: super_rare_knights_shield added to inventory player: knight_class
+[2023-06-25 09:49:17,430]: INFO: Game_Loop: created testing entities (1.74 ms)
+[2023-06-25 09:49:17,430]: INFO: Game_Loop: created testing entities (1.74 ms)
+[2023-06-25 09:49:21,663]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:22,067]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:22,372]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:22,570]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:22,739]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:22,874]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:23,039]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:23,241]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:23,373]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:23,541]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:23,706]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:23,872]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:24,041]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:24,208]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:24,341]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:24,539]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:24,706]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:24,875]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:25,042]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:25,177]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:25,343]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:25,509]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:25,676]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:25,843]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:26,012]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:26,211]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:26,378]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:26,543]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:26,711]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:26,875]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:27,017]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:27,451]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:27,754]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:28,055]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:28,221]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:28,553]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:28,687]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:28,854]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:29,056]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:29,221]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:29,389]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:29,557]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:29,722]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:29,922]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:30,223]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:30,392]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:30,592]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:30,756]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:30,924]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:31,158]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:31,391]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:32,097]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:32,228]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:32,530]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:32,935]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:33,939]: DEBUG: Player: player: knight_class took damage (-10 dmg)
+[2023-06-25 09:49:37,621]: DEBUG: Player_Menu: dt_main_loop_load: 2.824ms
+[2023-06-25 09:49:44,809]: DEBUG: Player_Menu: dt_main_loop_load: 2.805ms

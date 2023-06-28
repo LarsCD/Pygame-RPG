@@ -7,7 +7,7 @@
     "default_weapon": "placeholder_weapon",
     "base_stats":
     {
-      "hpMax": 20,
+      "hpMax": 25,
       "atk": [2,5]
     },
     "stat_multipliers":
@@ -16,7 +16,7 @@
     },
     "level_up_multipliers":
     {
-      "hpMax_multiplier": 1.10,
+      "hpMax_multiplier": 1.05,
       "atk_m_multiplier": 1.02
     }
   }

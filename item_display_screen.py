@@ -23,7 +23,7 @@ class Item_Display_Screen:
         self.display_sep_space = 300
         self.text_size = 15
         self.name_pos_x = 135
-        self.background = pygame.image.load("assets/images/menu_background_1.png")
+        self.background = pygame.image.load("assets/images/item_background_1.png")
 
         # ITEM
         self.weapon_object = None

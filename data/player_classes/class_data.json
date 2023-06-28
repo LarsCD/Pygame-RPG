@@ -19,11 +19,11 @@
     "intelligence": 3,
     "stealth": 2,
     "sorcery": 1,
-    "hp_mult": 1.3,
+    "hp_mult": 1.2,
     "xp_mult": 0.9,
     "ep_mult": 1.5,
     "mp_mult": 0.3,
-    "hpMax_mult": 1.050,
+    "hpMax_mult": 1.020,
     "xpMax_mult": 1.020,
     "epMax_mult": 1.080,
     "mpMax_mult": 1.050

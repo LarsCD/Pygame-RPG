@@ -54,6 +54,7 @@ class Player:
             'armor': [],
             'helmet': [],
             'shield': [],
+            'key_item': [],
         }
         self.inventory_cat_names = {
             'weapon': 'Weapons',
@@ -61,6 +62,7 @@ class Player:
             'armor': 'Armor',
             'helmet': 'Helmet',
             'shield': 'Shield',
+            'key_item': 'Keys',
         }
         self.spells = {
             'attack_spell': []
