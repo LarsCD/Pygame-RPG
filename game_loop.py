@@ -122,9 +122,9 @@ class Game_Loop:
         self.player_object.give_item(shield_1)
 
         self.player_object.equip_first_weapon()
-        # self.player_object.equip_first_armor()
+        self.player_object.equip_first_armor()
         self.player_object.equip_first_helmet()
-        # self.player_object.equip_first_shield()
+        self.player_object.equip_first_shield()
 
         enemy_1 = level_1.enemies[1]
 

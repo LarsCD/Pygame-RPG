@@ -59,9 +59,9 @@ class Player:
         self.inventory_cat_names = {
             'weapon': 'Weapons',
             'potion': 'Potions',
-            'armor': 'Armor',
-            'helmet': 'Helmet',
-            'shield': 'Shield',
+            'armor': 'Armors',
+            'helmet': 'Helmets',
+            'shield': 'Shields',
             'key_item': 'Keys',
         }
         self.spells = {

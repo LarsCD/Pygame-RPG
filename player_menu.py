@@ -92,7 +92,6 @@ class Player_Menu:
         xp_bar = Custom_bar(self.player_object.xp, self.player_object.xpMax, (64, 320),
                             220, self.bar_text_size, (102, 255, 227), (194, 194, 209), title='XP ')
 
-
         t2_main_loop_load = time.perf_counter()
         dt_main_loop_load = t2_main_loop_load-t1_main_loop_load
         self.log(logging.DEBUG, f'dt_main_loop_load: {round(dt_main_loop_load*1000, 3)}ms')
@@ -155,7 +154,6 @@ class Player_Menu:
 
         n = 0
         item_count = 0
-
 
         for i, cat_name in enumerate(self.player_object.inventory):
             n += 1

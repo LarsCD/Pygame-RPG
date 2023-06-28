@@ -45,9 +45,9 @@ class Player_Inventory:
             'key_item': (1023, 70),
         }
 
-        self.item_text_size = 20
-        self.item_begin_pos_x = 100
-        self.item_begin_pos_y = 200
+        self.item_text_size = 15
+        self.item_begin_pos_x = 120
+        self.item_begin_pos_y = 140
 
         # ICON DATA
         self.default_icon_size = (64, 64)
@@ -71,14 +71,12 @@ class Player_Inventory:
 
         self.dynamic_category_lables = []
         self.build_categories()
-
         self.build_items()
 
         while self.run_display:
             # self.log(logging.DEBUG, f'self.current_inventory_category: {self.current_inventory_category}')
 
             self.check_quit_event()
-
             self.build_static_text_lables()
 
             # display background
@@ -98,32 +96,38 @@ class Player_Inventory:
             pygame.display.update()
             self.ROOT.clock.tick(self.ROOT.fps)
 
+
     def check_if_current_cat(self, category):
         if category == self.current_inventory_category:
             return 1
         else:
             return 0
 
+
     def change_current_cat(self, category):
         self.current_inventory_category = category
+        self.dynamic_item_labels = []
+        self.build_items()
+
 
     def update_category_labels(self):
         cat_lookup_table = {
             'Weapons': 'weapon',
             'Potions': 'potion',
-            'Armor': 'armor',
-            'Helmet': 'helmet',
-            'Shield': 'shield',
+            'Armors': 'armor',
+            'Helmets': 'helmet',
+            'Shields': 'shield',
             'Keys': 'key_item',
         }
 
         for i, _ in enumerate(self.dynamic_category_lables):
             LABEL = self.dynamic_category_lables[i]
-            cat_index = cat_lookup_table[LABEL.text]
+            cat_index = cat_lookup_table[str(LABEL.text).capitalize()]
             if self.check_if_current_cat(cat_index):
                 LABEL.def_color = self.highlight_color
             else:
                 LABEL.def_color = 'white'
+
 
     def build_categories(self):
         for category in self.player_object.inventory_cat_names:
@@ -136,7 +140,7 @@ class Player_Inventory:
             # get category name
             cat_name = self.player_object.inventory_cat_names[category]
 
-            category_label = Label(f'{cat_name}', self.cat_text_size, main_text_color, 'white', 'gray',
+            category_label = Label(f'{cat_name.upper()}', self.cat_text_size, main_text_color, 'white', 'gray',
                                    (self.cat_positions[category]), bold_text=True, is_clickable=True,
                                    class_method=self.change_current_cat, method_args=(category))
 
@@ -147,9 +151,10 @@ class Player_Inventory:
         item_offset_y = 5
         quantity_offset_x = 300
         column_offset_x = 333
-        column_counter = 1
+        column_counter = 0
         max_column_items = 17
         column_item_counter = 0
+        max_item_name_len = 22
 
 
         for index, item in enumerate(self.player_object.inventory[self.current_inventory_category]):
@@ -168,8 +173,13 @@ class Player_Inventory:
             # get item quantity
             quantity = self.player_object.get_item_quantity(item.tag, item.item_type)
 
+            # get formatted name
+            ITEM_NAME = item.name
+            if len(item.name) >= max_item_name_len:
+                ITEM_NAME = str(item.name[:(max_item_name_len-3)] + '...')
+
             # bake labels
-            item_label = Label(f'{item.name}', self.item_text_size, item.tier_color, 'white', 'gray',
+            item_label = Label(f'{ITEM_NAME.upper()}', self.item_text_size, item.tier_color, 'white', 'gray',
                                ((pos_x), (pos_y)), bold_text=True, is_clickable=True,
                                class_method=self.Item_Display_Screen(self.ROOT).main_loop, method_args=(item_object))
 
@@ -179,7 +189,6 @@ class Player_Inventory:
             # save labels
             self.dynamic_item_labels.append(item_label)
             self.dynamic_item_labels.append(quantity_label)
-
 
 
     def set_background_color(self):
