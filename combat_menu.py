@@ -1,7 +1,7 @@
 import random
 
 import pygame
-from assets.custom_pygame_assets import Lable, Health_bar, Custom_bar, Highlight_marker
+from assets.custom_pygame_assets import Label, Health_bar, Custom_bar, Highlight_marker
 from dev.dev_screen import DevScreen
 
 '''
@@ -51,13 +51,13 @@ class Combat_Menu:
 
 
         # MENU
-        damage_button = Lable('DAMAGE', 25, 'white', 'red', 'gray',
+        damage_button = Label('DAMAGE', 25, 'white', 'red', 'gray',
                               (self.right_down_screen_1_x, 590), bold_text=True)
-        heal_button = Lable('HEAL', 25, 'white', 'green', 'gray',
+        heal_button = Label('HEAL', 25, 'white', 'green', 'gray',
                             (self.right_down_screen_1_x, 620), bold_text=True)
-        heal_button = Lable('MANA', 25, 'white', 'green', 'gray',
+        heal_button = Label('MANA', 25, 'white', 'green', 'gray',
                             (self.right_down_screen_1_x, 620), bold_text=True)
-        back_label = Lable('BACK', 25, 'white', 'gray', (153, 0, 28),
+        back_label = Label('BACK', 25, 'white', 'gray', (153, 0, 28),
                            (self.right_up_screen_x, 460), is_clickable=True, bold_text=True)
 
         # PLAYER
@@ -139,9 +139,9 @@ class Combat_Menu:
 
 
     def build_static_text_lables(self):
-        level_label = Lable(f'LEVEL', 20, 'gray', 'black', 'black',
+        level_label = Label(f'LEVEL', 20, 'gray', 'black', 'black',
                             (50, 500), is_clickable=False, bold_text=True)
-        level_label_value = Lable(f'{self.player_object.level}', 20, 'white', 'black', 'black',
+        level_label_value = Label(f'{self.player_object.level}', 20, 'white', 'black', 'black',
                                   (150, 500), is_clickable=False, bold_text=True)
 
 
@@ -151,27 +151,27 @@ class Combat_Menu:
 
 
     def build_attr_labels(self):
-        strg_label = Lable(f'STR', 20, 'gray', 'black', 'black',
-                            (self.left_down_screen_2_x, 575), is_clickable=False, bold_text=True)
-        agil_label = Lable(f'AGI', 20, 'gray', 'black', 'black',
-                            (self.left_down_screen_2_x, 600), is_clickable=False, bold_text=True)
-        intl_label = Lable(f'INT', 20, 'gray', 'black', 'black',
-                            (self.left_down_screen_2_x, 625), is_clickable=False, bold_text=True)
-        slth_label = Lable(f'STL', 20, 'gray', 'black', 'black',
-                            (self.left_down_screen_2_x, 650), is_clickable=False, bold_text=True)
-        sorc_label = Lable(f'SOR', 20, 'gray', 'black', 'black',
-                            (self.left_down_screen_2_x, 675), is_clickable=False, bold_text=True)
+        strg_label = Label(f'STR', 20, 'gray', 'black', 'black',
+                           (self.left_down_screen_2_x, 575), is_clickable=False, bold_text=True)
+        agil_label = Label(f'AGI', 20, 'gray', 'black', 'black',
+                           (self.left_down_screen_2_x, 600), is_clickable=False, bold_text=True)
+        intl_label = Label(f'INT', 20, 'gray', 'black', 'black',
+                           (self.left_down_screen_2_x, 625), is_clickable=False, bold_text=True)
+        slth_label = Label(f'STL', 20, 'gray', 'black', 'black',
+                           (self.left_down_screen_2_x, 650), is_clickable=False, bold_text=True)
+        sorc_label = Label(f'SOR', 20, 'gray', 'black', 'black',
+                           (self.left_down_screen_2_x, 675), is_clickable=False, bold_text=True)
 
-        strg_value_label = Lable(f'{self.player_object.strength}', 20, 'white', 'black', 'black',
-                            (self.left_down_screen_2_x + 65, 575), is_clickable=False, bold_text=True)
-        agil_value_label = Lable(f'{self.player_object.agility}', 20, 'white', 'black', 'black',
-                            (self.left_down_screen_2_x + 65, 600), is_clickable=False, bold_text=True)
-        intl_value_label = Lable(f'{self.player_object.intelligence}', 20, 'white', 'black', 'black',
-                            (self.left_down_screen_2_x + 65, 625), is_clickable=False, bold_text=True)
-        slth_value_label = Lable(f'{self.player_object.stealth}', 20, 'white', 'black', 'black',
-                            (self.left_down_screen_2_x + 65, 650), is_clickable=False, bold_text=True)
-        sorc_value_label = Lable(f'{self.player_object.sorcery}', 20, 'white', 'black', 'black',
-                            (self.left_down_screen_2_x + 65, 675), is_clickable=False, bold_text=True)
+        strg_value_label = Label(f'{self.player_object.strength}', 20, 'white', 'black', 'black',
+                                 (self.left_down_screen_2_x + 65, 575), is_clickable=False, bold_text=True)
+        agil_value_label = Label(f'{self.player_object.agility}', 20, 'white', 'black', 'black',
+                                 (self.left_down_screen_2_x + 65, 600), is_clickable=False, bold_text=True)
+        intl_value_label = Label(f'{self.player_object.intelligence}', 20, 'white', 'black', 'black',
+                                 (self.left_down_screen_2_x + 65, 625), is_clickable=False, bold_text=True)
+        slth_value_label = Label(f'{self.player_object.stealth}', 20, 'white', 'black', 'black',
+                                 (self.left_down_screen_2_x + 65, 650), is_clickable=False, bold_text=True)
+        sorc_value_label = Label(f'{self.player_object.sorcery}', 20, 'white', 'black', 'black',
+                                 (self.left_down_screen_2_x + 65, 675), is_clickable=False, bold_text=True)
 
         self.static_text_lables.append(strg_label)
         self.static_text_lables.append(agil_label)
@@ -186,12 +186,12 @@ class Combat_Menu:
 
 
     def build_enemy_labels(self):
-        name_label = Lable(f'{self.enemy_object.name}', 25, 'white', 'black', 'black',
+        name_label = Label(f'{self.enemy_object.name}', 25, 'white', 'black', 'black',
                            (50, 25), is_clickable=False, bold_text=True)
-        level_label = Lable(f'LEVEL', 20, 'gray', 'black', 'black',
-                                  (50, 100), is_clickable=False, bold_text=True)
-        level_label_value = Lable(f'{self.enemy_object.level}', 20, 'white', 'black', 'black',
-                           (150, 100), is_clickable=False, bold_text=True)
+        level_label = Label(f'LEVEL', 20, 'gray', 'black', 'black',
+                            (50, 100), is_clickable=False, bold_text=True)
+        level_label_value = Label(f'{self.enemy_object.level}', 20, 'white', 'black', 'black',
+                                  (150, 100), is_clickable=False, bold_text=True)
 
         self.static_text_lables.append(name_label)
         self.static_text_lables.append(level_label)

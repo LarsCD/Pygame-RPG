@@ -8,7 +8,7 @@ from datetime import datetime
 from data_loader import DataLoader
 from dev.dev_logger import DevLogger
 from entity_loader import Entity_Loader
-from assets.custom_pygame_assets import Lable
+from assets.custom_pygame_assets import Label
 from item_display_screen import Item_Display_Screen
 from player_menu import Player_Menu
 from dev.dev_logger import DevLogger
@@ -134,35 +134,35 @@ class Game_Loop:
         #### ---------------------------- TESTING ---------------------------- ####
 
         # BUTTONS
-        back_label = Lable('MAIN MENU', 20, self.lable_col, self.lable_click_col, (153, 0, 28),
-                            ((self.DISPLAY_WIDTH / 2), (self.DISPLAY_HEIGHT / 2) + 240),
-                            is_centered=True, is_clickable=True)
-        display_item = Lable(f'View {str(armor_1.name).upper()} ({armor_1.tag})', 20, self.lable_col,
+        back_label = Label('MAIN MENU', 20, self.lable_col, self.lable_click_col, (153, 0, 28),
+                           ((self.DISPLAY_WIDTH / 2), (self.DISPLAY_HEIGHT / 2) + 240),
+                           is_centered=True, is_clickable=True)
+        display_item = Label(f'View {str(armor_1.name).upper()} ({armor_1.tag})', 20, self.lable_col,
                              self.lable_click_col, self.lable_hover_col, (self.Game_Setup.DISPLAY_WIDTH * 0.1, 200),
                              is_clickable=True)
-        display_item_2 = Lable(f'View {str(helmet_1.name).upper()} ({helmet_1.tag})', 20, self.lable_col,
+        display_item_2 = Label(f'View {str(helmet_1.name).upper()} ({helmet_1.tag})', 20, self.lable_col,
                                self.lable_click_col,
                                self.lable_hover_col, (self.Game_Setup.DISPLAY_WIDTH * 0.1, 225), is_clickable=True)
 
-        display_item_3 = Lable(f'View {str(shield_1.name).upper()} ({shield_1.tag})', 20, self.lable_col,
+        display_item_3 = Label(f'View {str(shield_1.name).upper()} ({shield_1.tag})', 20, self.lable_col,
                                self.lable_click_col,
                                self.lable_hover_col, (self.Game_Setup.DISPLAY_WIDTH * 0.1, 275), is_clickable=True)
 
-        display_item_4 = Lable(f'View {str(potion_2.name).upper()} ({potion_2.tag})', 20, self.lable_col,
+        display_item_4 = Label(f'View {str(potion_2.name).upper()} ({potion_2.tag})', 20, self.lable_col,
                                self.lable_click_col,
                                self.lable_hover_col, (self.Game_Setup.DISPLAY_WIDTH * 0.1, 300), is_clickable=True)
 
-        display_item_5 = Lable(f'View {str(potion_3.name).upper()} ({potion_3.tag})', 20, self.lable_col,
+        display_item_5 = Label(f'View {str(potion_3.name).upper()} ({potion_3.tag})', 20, self.lable_col,
                                self.lable_click_col,
                                self.lable_hover_col, (self.Game_Setup.DISPLAY_WIDTH * 0.1, 325), is_clickable=True)
 
-        display_player = Lable(f'View PLAYER ({self.player_object.player_class_name})', 20, self.lable_col,
+        display_player = Label(f'View PLAYER ({self.player_object.player_class_name})', 20, self.lable_col,
                                self.lable_click_col,
                                self.lable_hover_col, (self.Game_Setup.DISPLAY_WIDTH * 0.1, 400), is_clickable=True)
 
-        combat_menu = Lable(f'View COMBAT MENU', 20, self.lable_col,
-                               self.lable_click_col,
-                               self.lable_hover_col, (self.Game_Setup.DISPLAY_WIDTH * 0.1, 450), is_clickable=True)
+        combat_menu = Label(f'View COMBAT MENU', 20, self.lable_col,
+                            self.lable_click_col,
+                            self.lable_hover_col, (self.Game_Setup.DISPLAY_WIDTH * 0.1, 450), is_clickable=True)
 
 
         while self.run_display:
@@ -252,7 +252,7 @@ class Game_Loop:
             self.window.fill(self.default_bg_color)
 
     def build_static_text_lables(self):
-        play_label = Lable('PLAYING GAME...', 40, 'white', 'gray', 'green',
+        play_label = Label('PLAYING GAME...', 40, 'white', 'gray', 'green',
                            (self.Game_Setup.DISPLAY_WIDTH * 0.1, self.Game_Setup.DISPLAY_HEIGHT * 0.1), is_clickable=False)
         # package labels
         self.static_text_lables.append(play_label)

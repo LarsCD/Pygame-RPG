@@ -1,7 +1,7 @@
 import pygame
 import logging
 
-from assets.custom_pygame_assets import Lable
+from assets.custom_pygame_assets import Label
 from dev.dev_logger import DevLogger
 from dev.dev_screen import DevScreen
 
@@ -47,7 +47,7 @@ class Item_Display_Screen:
         self.run_display = True
         self.build_static_text_lables()
 
-        back_label = Lable('BACK', 20, 'white', 'gray', (153, 0, 28),
+        back_label = Label('BACK', 20, 'white', 'gray', (153, 0, 28),
                            ((self.ROOT.DISPLAY_WIDTH / 2), (self.ROOT.DISPLAY_HEIGHT / 2) + 240),
                            is_centered=True, is_clickable=True)
 
@@ -90,12 +90,12 @@ class Item_Display_Screen:
         def_color = self.ROOT.lable_hover_col
         black = (0, 0, 0)
         # build static labels
-        title_label = Lable(self.title, self.text_size, self.ROOT.lable_col, self.ROOT.lable_click_col,
+        title_label = Label(self.title, self.text_size, self.ROOT.lable_col, self.ROOT.lable_click_col,
                             self.ROOT.lable_hover_col, (5, 5),
                             is_clickable=False)
-        weapon_name = Lable(f'{str(self.weapon_object.name).upper()}', 35, 'white', black, black,
+        weapon_name = Label(f'{str(self.weapon_object.name).upper()}', 35, 'white', black, black,
                             (self.name_pos_x + self.default_icon_size[1], 40), is_clickable=False)
-        tier_text = Lable(str(self.weapon_object.tier_name).upper(), 20, self.weapon_object.tier_color,
+        tier_text = Label(str(self.weapon_object.tier_name).upper(), 20, self.weapon_object.tier_color,
                           black, black, (self.name_pos_x + self.default_icon_size[1], self.tier_name_pos_y),
                           is_clickable=False)
 
@@ -111,10 +111,10 @@ class Item_Display_Screen:
         n = 0
         black = (0, 0, 0)
         for attr, value in self.weapon_object.__dict__.items():
-            attr_label = Lable(f'{attr}', self.text_size, self.ROOT.lable_hover_col, black, black,
+            attr_label = Label(f'{attr}', self.text_size, self.ROOT.lable_hover_col, black, black,
                                (self.display_start_x_pos, self.display_start_y_pos + (n * (self.text_size + 5))),
                                is_clickable=False)
-            value_label = Lable(f'{value}', self.text_size, 'white', black, black,
+            value_label = Label(f'{value}', self.text_size, 'white', black, black,
                                 (self.display_start_x_pos + self.display_sep_space,
                                  self.display_start_y_pos + (n * (self.text_size + 5))), is_clickable=False)
             self.static_text_lables.append(attr_label)

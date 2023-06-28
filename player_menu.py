@@ -1,7 +1,7 @@
 import pygame
 import time
 import logging
-from assets.custom_pygame_assets import Lable, Health_bar, Custom_bar
+from assets.custom_pygame_assets import Label, Health_bar, Custom_bar
 from item_display_screen import Item_Display_Screen
 from player_inventory import Player_Inventory
 from dev.dev_logger import DevLogger
@@ -30,7 +30,7 @@ class Player_Menu:
         self.background = pygame.image.load("assets/images/menu_background_1.png")
 
         self.attr_start_pos_x = 70
-        self.attr_start_pos_y = 350
+        self.attr_start_pos_y = 400
 
         self.bar_text_size = 28
         self.attr_text_size = 22
@@ -77,10 +77,10 @@ class Player_Menu:
         frame_scaled = pygame.transform.scale(frame, self.default_frame_size)
 
 
-        inventory_label = Lable(f'OPEN INVENTORY', 25, 'white', 'black', 'black',
+        inventory_label = Label(f'OPEN INVENTORY', 25, 'white', 'black', 'black',
                                 ((900), (80)), bold_text=True, is_clickable=True)
 
-        back_label = Lable('BACK', 20, 'white', 'gray', (153, 0, 28),
+        back_label = Label('BACK', 20, 'white', 'gray', (153, 0, 28),
                            (930, 590), bold_text=True)
 
         health_bar = Health_bar(self.player_object.hp, self.player_object.hpMax, (64, 215), 220, self.bar_text_size,
@@ -89,6 +89,10 @@ class Player_Menu:
                                 (255,178,0), (194, 194, 209), title='EP ')
         mana_bar = Custom_bar(self.player_object.mp, self.player_object.mpMax, (64, 285), 220, self.bar_text_size,
                               (23,93,255), (194, 194, 209), title='MP ')
+        xp_bar = Custom_bar(self.player_object.xp, self.player_object.xpMax, (64, 320),
+                            220, self.bar_text_size, (102, 255, 227), (194, 194, 209), title='XP ')
+
+
         t2_main_loop_load = time.perf_counter()
         dt_main_loop_load = t2_main_loop_load-t1_main_loop_load
         self.log(logging.DEBUG, f'dt_main_loop_load: {round(dt_main_loop_load*1000, 3)}ms')
@@ -119,6 +123,7 @@ class Player_Menu:
             health_bar.update(self.ROOT.window, self.player_object.hp, self.player_object.hpMax)
             energy_bar.update(self.ROOT.window, self.player_object.ep, self.player_object.epMax)
             mana_bar.update(self.ROOT.window, self.player_object.mp, self.player_object.mpMax)
+            xp_bar.update(self.ROOT.window, self.player_object.xp, self.player_object.xpMax)
 
 
             # player interaction (performance cut: ~0.07 ms)
@@ -175,10 +180,10 @@ class Player_Menu:
                         ITEM_NAME = str(item.name[:max_item_name_len]+'...')
 
                     item_object = self.player_object.inventory[cat_name.lower()][index]
-                    item_label = Lable(f'{ITEM_NAME}', self.item_text_size, item.tier_color, 'white', 'gray',
+                    item_label = Label(f'{ITEM_NAME}', self.item_text_size, item.tier_color, 'white', 'gray',
                                        ((pos_x), (pos_y)), bold_text=True, is_clickable=True, class_method=self.Item_Display_Screen(self.ROOT).main_loop, method_args=(item_object))
 
-                    quantity_label = Lable(f'x{quantity}', self.item_text_size, 'white', 'black', 'black',
+                    quantity_label = Label(f'x{quantity}', self.item_text_size, 'white', 'black', 'black',
                                            ((pos_x+offset_x), (pos_y)), bold_text=True, is_clickable=False)
 
                     self.dynamic_text_lables.append(item_label)
@@ -189,10 +194,10 @@ class Player_Menu:
         def_color = self.ROOT.lable_hover_col
         black = (0, 0, 0)
         # build static labels
-        title_label = Lable(self.title, self.text_size, self.ROOT.lable_col, self.ROOT.lable_click_col,
+        title_label = Label(self.title, self.text_size, self.ROOT.lable_col, self.ROOT.lable_click_col,
                             self.ROOT.lable_hover_col, (5, 5),
                             is_clickable=False)
-        player_name = Lable(f'{str(self.player_object.player_name).upper()}', 23, 'white', black, black,
+        player_name = Label(f'{str(self.player_object.player_name).upper()}', 23, 'white', black, black,
                             (self.name_pos_x, self.name_pos_y), is_clickable=False, bold_text=True)
 
         self.static_text_lables.append(title_label)
@@ -269,10 +274,10 @@ class Player_Menu:
             pos_x = self.display_start_x_pos
             pos_y = self.display_start_y_pos + (n * (self.text_size + offset_y))
 
-            attr_label = Lable(f'{attr}', self.text_size, self.ROOT.lable_hover_col, black, black,
+            attr_label = Label(f'{attr}', self.text_size, self.ROOT.lable_hover_col, black, black,
                                (pos_x + offset_x, pos_y),
                                is_clickable=False)
-            value_label = Lable(f'{value}', self.text_size, 'white', black, black,
+            value_label = Label(f'{value}', self.text_size, 'white', black, black,
                                 (self.display_start_x_pos + self.display_sep_space + offset_x,
                                  self.display_start_y_pos + (n * (self.text_size + 5))), is_clickable=False)
             self.static_text_lables.append(attr_label)
@@ -281,28 +286,28 @@ class Player_Menu:
             m += 1
 
     def build_attr_labels(self):
-        strg_label = Lable(f'STRENGTH', self.attr_text_size, 'gray', 'black', 'black',
-                            (self.attr_start_pos_x, self.attr_start_pos_y), is_clickable=False, bold_text=True)
-        agil_label = Lable(f'AGILITY', self.attr_text_size, 'gray', 'black', 'black',
-                            (self.attr_start_pos_x, self.attr_start_pos_y + 25), is_clickable=False, bold_text=True)
-        intl_label = Lable(f'INTELIGENCE', self.attr_text_size, 'gray', 'black', 'black',
-                            (self.attr_start_pos_x, self.attr_start_pos_y + 50), is_clickable=False, bold_text=True)
-        slth_label = Lable(f'STEALTH', self.attr_text_size, 'gray', 'black', 'black',
-                            (self.attr_start_pos_x, self.attr_start_pos_y + 75), is_clickable=False, bold_text=True)
-        sorc_label = Lable(f'SORCERY', self.attr_text_size, 'gray', 'black', 'black',
-                            (self.attr_start_pos_x, self.attr_start_pos_y + 100), is_clickable=False, bold_text=True)
+        strg_label = Label(f'STRENGTH', self.attr_text_size, 'gray', 'black', 'black',
+                           (self.attr_start_pos_x, self.attr_start_pos_y), is_clickable=False, bold_text=True)
+        agil_label = Label(f'AGILITY', self.attr_text_size, 'gray', 'black', 'black',
+                           (self.attr_start_pos_x, self.attr_start_pos_y + 25), is_clickable=False, bold_text=True)
+        intl_label = Label(f'INTELIGENCE', self.attr_text_size, 'gray', 'black', 'black',
+                           (self.attr_start_pos_x, self.attr_start_pos_y + 50), is_clickable=False, bold_text=True)
+        slth_label = Label(f'STEALTH', self.attr_text_size, 'gray', 'black', 'black',
+                           (self.attr_start_pos_x, self.attr_start_pos_y + 75), is_clickable=False, bold_text=True)
+        sorc_label = Label(f'SORCERY', self.attr_text_size, 'gray', 'black', 'black',
+                           (self.attr_start_pos_x, self.attr_start_pos_y + 100), is_clickable=False, bold_text=True)
 
         sep_space = 250
-        strg_value_label = Lable(f'{self.player_object.strength}', self.attr_text_size, 'white', 'black', 'black',
-                            (self.attr_start_pos_x + sep_space, self.attr_start_pos_y), is_clickable=False, bold_text=True)
-        agil_value_label = Lable(f'{self.player_object.agility}', self.attr_text_size, 'white', 'black', 'black',
-                            (self.attr_start_pos_x + sep_space, self.attr_start_pos_y + 25), is_clickable=False, bold_text=True)
-        intl_value_label = Lable(f'{self.player_object.intelligence}', self.attr_text_size, 'white', 'black', 'black',
-                            (self.attr_start_pos_x + sep_space, self.attr_start_pos_y + 50), is_clickable=False, bold_text=True)
-        slth_value_label = Lable(f'{self.player_object.stealth}', self.attr_text_size, 'white', 'black', 'black',
-                            (self.attr_start_pos_x + sep_space, self.attr_start_pos_y + 75), is_clickable=False, bold_text=True)
-        sorc_value_label = Lable(f'{self.player_object.sorcery}', self.attr_text_size, 'white', 'black', 'black',
-                            (self.attr_start_pos_x + sep_space, self.attr_start_pos_y + 100), is_clickable=False, bold_text=True)
+        strg_value_label = Label(f'{self.player_object.strength}', self.attr_text_size, 'white', 'black', 'black',
+                                 (self.attr_start_pos_x + sep_space, self.attr_start_pos_y), is_clickable=False, bold_text=True)
+        agil_value_label = Label(f'{self.player_object.agility}', self.attr_text_size, 'white', 'black', 'black',
+                                 (self.attr_start_pos_x + sep_space, self.attr_start_pos_y + 25), is_clickable=False, bold_text=True)
+        intl_value_label = Label(f'{self.player_object.intelligence}', self.attr_text_size, 'white', 'black', 'black',
+                                 (self.attr_start_pos_x + sep_space, self.attr_start_pos_y + 50), is_clickable=False, bold_text=True)
+        slth_value_label = Label(f'{self.player_object.stealth}', self.attr_text_size, 'white', 'black', 'black',
+                                 (self.attr_start_pos_x + sep_space, self.attr_start_pos_y + 75), is_clickable=False, bold_text=True)
+        sorc_value_label = Label(f'{self.player_object.sorcery}', self.attr_text_size, 'white', 'black', 'black',
+                                 (self.attr_start_pos_x + sep_space, self.attr_start_pos_y + 100), is_clickable=False, bold_text=True)
 
         self.static_text_lables.append(strg_label)
         self.static_text_lables.append(agil_label)

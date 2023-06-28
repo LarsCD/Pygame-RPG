@@ -14,14 +14,14 @@ pygame.init()
 
 run = True
 
-text_button = custom_pygame_assets.Lable('Test', 40, 'purple', 'gray', 'white', (W / 1.5, H / 1.5), is_centered=True, is_clickable=True, bold_text=True)
-text_lable_1 = custom_pygame_assets.Lable('Version: 0.0.1', 15, 'gray', 'gray', 'white', (5, 5), is_clickable=False)
-text_lable_2 = custom_pygame_assets.Lable('HP ', 20, 'purple', 'gray', 'white', (5, 100), bold_text=False)
-text_lable_3 = custom_pygame_assets.Lable('[//////////////.....]', 20, 'red', 'white', 'blue', (50, 100), is_clickable=False)
-text_lable_7 = custom_pygame_assets.Lable(r'----------------------------------------', 20, 'white', 'white', 'blue', (5, 180), is_clickable=False)
-text_lable_4 = custom_pygame_assets.Lable('Blob', 20, 'purple', 'gray', 'white', (5, 200), is_clickable=False)
-text_lable_5 = custom_pygame_assets.Lable(r'Blobs will cause trouble everywhere they can,', 20, 'white', 'gray', 'green', (5, 230), is_clickable=False)
-text_lable_6 = custom_pygame_assets.Lable(r'resulting in chaos around the farlands.', 20, 'white', 'gray', 'green', (5, 250), is_clickable=False)
+text_button = custom_pygame_assets.Label('Test', 40, 'purple', 'gray', 'white', (W / 1.5, H / 1.5), is_centered=True, is_clickable=True, bold_text=True)
+text_lable_1 = custom_pygame_assets.Label('Version: 0.0.1', 15, 'gray', 'gray', 'white', (5, 5), is_clickable=False)
+text_lable_2 = custom_pygame_assets.Label('HP ', 20, 'purple', 'gray', 'white', (5, 100), bold_text=False)
+text_lable_3 = custom_pygame_assets.Label('[//////////////.....]', 20, 'red', 'white', 'blue', (50, 100), is_clickable=False)
+text_lable_7 = custom_pygame_assets.Label(r'----------------------------------------', 20, 'white', 'white', 'blue', (5, 180), is_clickable=False)
+text_lable_4 = custom_pygame_assets.Label('Blob', 20, 'purple', 'gray', 'white', (5, 200), is_clickable=False)
+text_lable_5 = custom_pygame_assets.Label(r'Blobs will cause trouble everywhere they can,', 20, 'white', 'gray', 'green', (5, 230), is_clickable=False)
+text_lable_6 = custom_pygame_assets.Label(r'resulting in chaos around the farlands.', 20, 'white', 'gray', 'green', (5, 250), is_clickable=False)
 
 
 

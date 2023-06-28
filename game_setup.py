@@ -1,5 +1,5 @@
 import pygame
-from assets.custom_pygame_assets import Lable, Screen_Effect
+from assets.custom_pygame_assets import Label, Screen_Effect
 from game_loop import Game_Loop
 import logging
 from dev.dev_logger import DevLogger
@@ -58,14 +58,14 @@ class Game_Setup:
         # setup
         self.build_static_text_lables()
 
-        play_label = Lable('PLAY GAME', 60, self.lable_col, self.lable_click_col, self.lable_hover_col,
-                              ((self.DISPLAY_WIDTH / 2), (self.DISPLAY_HEIGHT / 2)-30), is_centered=True)
-        options_label = Lable('OPTIONS', 40, self.lable_col, self.lable_click_col, self.lable_hover_col,
+        play_label = Label('PLAY GAME', 60, self.lable_col, self.lable_click_col, self.lable_hover_col,
+                           ((self.DISPLAY_WIDTH / 2), (self.DISPLAY_HEIGHT / 2)-30), is_centered=True)
+        options_label = Label('OPTIONS', 40, self.lable_col, self.lable_click_col, self.lable_hover_col,
                               ((self.DISPLAY_WIDTH / 2), (self.DISPLAY_HEIGHT / 2)+60), is_centered=True)
-        about_label = Lable('ABOUT', 40, self.lable_col, self.lable_click_col, self.lable_hover_col,
-                              ((self.DISPLAY_WIDTH / 2), (self.DISPLAY_HEIGHT / 2) + 105), is_centered=True)
-        exit_label = Lable('EXIT', 30, self.lable_col, self.lable_click_col, (153, 0, 28),
-                            (int(self.DISPLAY_WIDTH / 2), int(self.DISPLAY_HEIGHT*0.9)), is_centered=True)
+        about_label = Label('ABOUT', 40, self.lable_col, self.lable_click_col, self.lable_hover_col,
+                            ((self.DISPLAY_WIDTH / 2), (self.DISPLAY_HEIGHT / 2) + 105), is_centered=True)
+        exit_label = Label('EXIT', 30, self.lable_col, self.lable_click_col, (153, 0, 28),
+                           (int(self.DISPLAY_WIDTH / 2), int(self.DISPLAY_HEIGHT*0.9)), is_centered=True)
         fader_effect = Screen_Effect()
         while self.running:
             self.window.blit(pygame.transform.scale(self.background, self.RESOLUTION), (0, 0))
@@ -111,9 +111,9 @@ class Game_Setup:
             self.window.fill(self.default_bg_color)
 
     def build_static_text_lables(self):
-        title_label = Lable('MAIN MENU', 25, self.lable_col, self.lable_click_col, self.lable_hover_col, (200, 30),
+        title_label = Label('MAIN MENU', 25, self.lable_col, self.lable_click_col, self.lable_hover_col, (200, 30),
                             is_clickable=False)
-        about_7 = Lable('BY: LarsCD', 25, 'white', self.lable_click_col, self.lable_hover_col, (200, int(self.DISPLAY_HEIGHT*0.93)),
+        about_7 = Label('BY: LarsCD', 25, 'white', self.lable_click_col, self.lable_hover_col, (200, int(self.DISPLAY_HEIGHT * 0.93)),
                         is_clickable=False)
         # package labels
         self.static_text_lables.append(title_label)
@@ -148,10 +148,10 @@ class Options:
     def main_loop(self):
         self.run_display = True
         self.build_static_text_lables()
-        back_label = Lable('MAIN MENU', 20, 'white', 'gray', (153, 0, 28),
-                                        ((self.ROOT.DISPLAY_WIDTH / 2), (self.ROOT.DISPLAY_HEIGHT / 2) + 240),
-                                        is_centered=True, is_clickable=True)
-        reso_3 = Lable('1280x720', 25, self.ROOT.lable_col, self.ROOT.lable_click_col, self.ROOT.lable_hover_col,(200, 180))
+        back_label = Label('MAIN MENU', 20, 'white', 'gray', (153, 0, 28),
+                           ((self.ROOT.DISPLAY_WIDTH / 2), (self.ROOT.DISPLAY_HEIGHT / 2) + 240),
+                           is_centered=True, is_clickable=True)
+        reso_3 = Label('1280x720', 25, self.ROOT.lable_col, self.ROOT.lable_click_col, self.ROOT.lable_hover_col, (200, 180))
 
         while self.run_display:
             self.ROOT.window.blit(self.ROOT.background, (0, 0))
@@ -179,10 +179,10 @@ class Options:
             self.ROOT.window.fill(self.default_bg_color)
 
     def build_static_text_lables(self):
-        title_label = Lable('OPTIONS', 25, self.ROOT.lable_col, self.ROOT.lable_click_col, self.ROOT.lable_hover_col, (200, 30),
+        title_label = Label('OPTIONS', 25, self.ROOT.lable_col, self.ROOT.lable_click_col, self.ROOT.lable_hover_col, (200, 30),
                             is_clickable=False)
-        reso_label = Lable('RESOLUTION: ', 25, self.ROOT.lable_col, self.ROOT.lable_click_col, self.ROOT.lable_hover_col, (200, 145),
-                            is_clickable=False)
+        reso_label = Label('RESOLUTION: ', 25, self.ROOT.lable_col, self.ROOT.lable_click_col, self.ROOT.lable_hover_col, (200, 145),
+                           is_clickable=False)
         # package labels
         self.static_text_lables.append(title_label)
         self.static_text_lables.append(reso_label)
@@ -217,7 +217,7 @@ class About:
     def main_loop(self):
         self.run_display = True
         self.build_static_text_lables()
-        back_label = Lable('MAIN MENU', 20, 'white', 'gray', (153, 0, 28),
+        back_label = Label('MAIN MENU', 20, 'white', 'gray', (153, 0, 28),
                            ((self.ROOT.DISPLAY_WIDTH / 2), (self.ROOT.DISPLAY_HEIGHT / 2) + 240),
                            is_centered=True, is_clickable=True)
 
@@ -245,22 +245,22 @@ class About:
         # "My eyes burn looking at this but Im not gonna change it lol" ~L
         def_color = self.ROOT.lable_hover_col
         black = (0, 0, 0)
-        title_label = Lable(self.title, 25, self.ROOT.lable_col, self.ROOT.lable_click_col,
+        title_label = Label(self.title, 25, self.ROOT.lable_col, self.ROOT.lable_click_col,
                             self.ROOT.lable_hover_col, (200, 30),
                             is_clickable=False)
-        about_1 = Lable('This is an RPG game where you play as a ', 25, def_color, black, black, (200, 120),
-                            is_clickable=False)
-        about_2 = Lable('character exploring the world and fighting', 25, def_color, black, black, (200, 150),
+        about_1 = Label('This is an RPG game where you play as a ', 25, def_color, black, black, (200, 120),
                         is_clickable=False)
-        about_3 = Lable('enemies. For now you can only play as a select ', 25, def_color, black, black, (200, 180),
+        about_2 = Label('character exploring the world and fighting', 25, def_color, black, black, (200, 150),
                         is_clickable=False)
-        about_4 = Lable('few classes like Knight and Sorcerer. More ', 25, def_color, black, black, (200, 210),
+        about_3 = Label('enemies. For now you can only play as a select ', 25, def_color, black, black, (200, 180),
                         is_clickable=False)
-        about_5 = Lable('content will be added to enhance the ', 25, def_color, black, black, (200, 240),
+        about_4 = Label('few classes like Knight and Sorcerer. More ', 25, def_color, black, black, (200, 210),
                         is_clickable=False)
-        about_6 = Lable('gaming experience.', 25, def_color, black, black, (200, 270),
+        about_5 = Label('content will be added to enhance the ', 25, def_color, black, black, (200, 240),
                         is_clickable=False)
-        about_7 = Lable('BY: LarsCD', 25, 'white', black, black, (200, int(self.ROOT.DISPLAY_HEIGHT*0.93)),
+        about_6 = Label('gaming experience.', 25, def_color, black, black, (200, 270),
+                        is_clickable=False)
+        about_7 = Label('BY: LarsCD', 25, 'white', black, black, (200, int(self.ROOT.DISPLAY_HEIGHT * 0.93)),
                         is_clickable=False)
         # package labels
         self.static_text_lables.append(title_label)

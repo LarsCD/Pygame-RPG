@@ -3,7 +3,7 @@ import logging
 import time
 from datetime import datetime
 
-from assets.custom_pygame_assets import Lable
+from assets.custom_pygame_assets import Label
 from dev.dev_logger import DevLogger
 
 
@@ -79,16 +79,16 @@ class DevScreen:
 
 
     def draw_dev_screen(self):
-        title_label = Lable(f'{self.ROOT.game_name} {self.ROOT.game_version} - by: LarsCD', 15,
-              self.color, 'black', 'black', (0, 0), is_clickable=False)
+        title_label = Label(f'{self.ROOT.game_name} {self.ROOT.game_version} - by: LarsCD', 15,
+                            self.color, 'black', 'black', (0, 0), is_clickable=False)
 
-        fps_label = Lable(f'fps: {round(self.fps, 1)} Hz  ({round((1/self.fps+0.1)*1000, 2)}ms)', 15,
+        fps_label = Label(f'fps: {round(self.fps, 1)} Hz  ({round((1 / self.fps + 0.1) * 1000, 2)}ms)', 15,
                           self.color, 'black', 'black', (0, 25), is_clickable=False)
-        mouse_label = Lable(f'mouse pos: {str(self.mouse_pos)}', 15,
-                          self.color, 'black', 'black', (0, 50), is_clickable=False)
+        mouse_label = Label(f'mouse pos: {str(self.mouse_pos)}', 15,
+                            self.color, 'black', 'black', (0, 50), is_clickable=False)
 
-        game_time_label = Lable(f'Game time: {str(self.game_time)}', 15,
-                            self.color, 'black', 'black', (0, 75), is_clickable=False)
+        game_time_label = Label(f'Game time: {str(self.game_time)}', 15,
+                                self.color, 'black', 'black', (0, 75), is_clickable=False)
 
         # drawing all labels on the screen
         title_label.draw_text(self.ROOT.window)
