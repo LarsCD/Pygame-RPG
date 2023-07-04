@@ -13,6 +13,7 @@
       "is_stackable": false
     }
   },
+
   "weapons":
   {
     "rare_sword":
@@ -24,6 +25,66 @@
       "tier": 3,
       "damage": [28,35],
       "value": 120,
+      "is_stackable": false
+    },
+
+    "ork_small_axe":
+    {
+      "tag": "ork_small_axe",
+      "name": "Small Orkian Axe",
+      "item_type": "weapon",
+      "weapon_type": "blunt",
+      "tier": 2,
+      "damage": [6,12],
+      "value": 75,
+      "is_stackable": false
+    },
+
+    "ork_axe":
+    {
+      "tag": "ork_axe",
+      "name": "Orkian Axe",
+      "item_type": "weapon",
+      "weapon_type": "blunt",
+      "tier": 3,
+      "damage": [20,25],
+      "value": 125,
+      "is_stackable": false
+    },
+
+    "ork_battle_axe":
+    {
+      "tag": "ork_battle_axe",
+      "name": "Orkian Battle Axe",
+      "item_type": "weapon",
+      "weapon_type": "blunt",
+      "tier": 4,
+      "damage": [35,42],
+      "value": 200,
+      "is_stackable": false
+    },
+
+    "ork_double_battle_axe":
+    {
+      "tag": "ork_double_battle_axe",
+      "name": "Double Orkian Battle Axe",
+      "item_type": "weapon",
+      "weapon_type": "blunt",
+      "tier": 5,
+      "damage": [50,60],
+      "value": 450,
+      "is_stackable": false
+    },
+
+    "ork_gold_double_battle_axe":
+    {
+      "tag": "ork_gold_double_battle_axe",
+      "name": "Golden Double Orkian Battle Axe",
+      "item_type": "weapon",
+      "weapon_type": "blunt",
+      "tier": 6,
+      "damage": [70,80],
+      "value": 900,
       "is_stackable": false
     }
   }

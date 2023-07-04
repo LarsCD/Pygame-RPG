@@ -1,4 +1,5 @@
 import logging
+from operator import itemgetter
 from dev.dev_logger import DevLogger
 
 class Player:
@@ -134,7 +135,7 @@ class Player:
             else:
                 self.inventory['shield'].append(item_object)
                 self.logger.log(logging.DEBUG, f'{item_object.tag} added to inventory player: {self.player_class_tag}')
-
+        self.sort_inventory()
 
 
     def remove_item(self, item_tag, item_type):
@@ -153,6 +154,14 @@ class Player:
                     del self.inventory[item_type][index]
                     self.logger.log(logging.DEBUG,f'{item_tag} removed from inventory player: {self.player_class_tag}')
                     break
+        self.sort_inventory()
+
+
+    def sort_inventory(self):
+        # sets order of items from low to high tier (with fuckin magic...)
+        for category in self.inventory:
+            new_categorized_inventory = sorted(self.inventory[category], key=lambda x: x.tier, reverse=False)
+            self.inventory[category] = new_categorized_inventory
 
 
     def get_item_quantity(self, item_tag, item_type):
@@ -161,6 +170,16 @@ class Player:
             if item.tag == item_tag:
                 quantity += 1
         return quantity
+
+
+    def equip(self, category, index):
+        if index+1 > len(self.inventory[category]) or index < 0:
+            self.logger.log(logging.WARNING,
+                            f'index {index} in category {category} can not be equiped (does not exist)')
+        else:
+            self.weapon_equiped = self.inventory[category][index]
+            self.logger.log(logging.DEBUG,
+                            f'{self.player_class_tag} equiped {self.inventory[category][index].tag}')
 
     def equip_first_weapon(self):
         self.weapon_equiped = self.inventory['weapon'][0]

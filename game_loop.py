@@ -121,10 +121,16 @@ class Game_Loop:
         self.player_object.give_item(helmet_1)
         self.player_object.give_item(shield_1)
 
+        for weapon in self.static_item_data['weapon_data']['weapons']:
+            weapon_object = self.Entity_Loader.create_item(self.static_item_data['weapon_data']['weapons'][weapon])
+            self.player_object.give_item(weapon_object)
+
         self.player_object.equip_first_weapon()
         self.player_object.equip_first_armor()
         self.player_object.equip_first_helmet()
         self.player_object.equip_first_shield()
+
+        self.player_object.equip('weapon', 6)
 
         enemy_1 = level_1.enemies[1]
 

@@ -10,7 +10,10 @@
       {
         "weapons":
         [
-          {"tag": "rare_sword", "category": "weapons", "chance": 1.00, "quantity":  1}
+          {"tag": "rare_sword", "category": "weapons", "chance": 1.00, "quantity":  1},
+          {"tag": "ork_small_axe", "category": "weapons", "chance": 0.8, "quantity":  1},
+          {"tag": "ork_axe", "category": "weapons", "chance": 0.5, "quantity":  1},
+          {"tag": "ork_battle_axe", "category": "weapons", "chance": 0.1, "quantity":  1}
         ],
         "healing_potions":
         [

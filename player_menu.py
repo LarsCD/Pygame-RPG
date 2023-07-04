@@ -70,11 +70,11 @@ class Player_Menu:
         self.static_text_lables = []
         self.player_object = player_object
 
-        icon = pygame.image.load(self.player_object.image).convert_alpha()
-        icon_scaled = pygame.transform.scale(icon, self.default_icon_size)
-
-        frame = pygame.image.load(self.player_object.frame).convert_alpha()
-        frame_scaled = pygame.transform.scale(frame, self.default_frame_size)
+        # icon = pygame.image.load(self.player_object.image).convert_alpha()
+        # icon_scaled = pygame.transform.scale(icon, self.default_icon_size)
+        #
+        # frame = pygame.image.load(self.player_object.frame).convert_alpha()
+        # frame_scaled = pygame.transform.scale(frame, self.default_frame_size)
 
 
         inventory_label = Label(f'OPEN INVENTORY', 25, 'white', 'black', 'black',

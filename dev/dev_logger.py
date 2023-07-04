@@ -6,7 +6,7 @@ time_start = datetime.today()
 logger_enabled = True
 
 class DevLogger:
-    def __init__(self, logging_class, log_level=logging.DEBUG, print_level=logging.DEBUG):
+    def __init__(self, logging_class, log_level=logging.INFO, print_level=logging.INFO):
         self.logger_enabled = logger_enabled
         # logging details
         logging.basicConfig(level=print_level)

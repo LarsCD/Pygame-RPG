@@ -59,6 +59,8 @@ class Combat_Menu:
                             (self.right_down_screen_1_x, 620), bold_text=True)
         back_label = Label('BACK', 25, 'white', 'gray', (153, 0, 28),
                            (self.right_up_screen_x, 460), is_clickable=True, bold_text=True)
+        loot_label = Label('LOOT', 25, 'white', 'gray', (153, 0, 28),
+                           (self.right_up_screen_x, 490), is_clickable=True, bold_text=True)
 
         # PLAYER
         health_bar = Health_bar(self.player_object.hp, self.player_object.hpMax, (self.left_down_screen_1_x, 600),
@@ -74,7 +76,8 @@ class Combat_Menu:
         enemy_health_bar = Health_bar(self.enemy_object.hp, self.enemy_object.hpMax, (50, 60),
                                 250, 25, (255, 0, 0), (194, 194, 209), show_numbers=True)
 
-        damage_marker = Highlight_marker('-20 DMG', 20, (255, 0, 0), (640, 360), 1, (0, 1), 2, spread=50)
+        damage_marker = Highlight_marker('-20 DMG', 20, (255, 0, 0), (640, 360), 1.5, (0, 1), 1.5, spread=50)
+        loot_marker = Highlight_marker('+ RARE SWORD (1)', 20, (77, 166, 255), (40, 440), 2, (0, 1), 1)
 
         while self.run_display:
             self.ROOT.window.fill((0, 0, 0))
@@ -108,9 +111,12 @@ class Combat_Menu:
                 damage_marker.animate((300, 250), color=[250, 0, 0], vari_red=100, vari_grn=10, vari_blu=20)
             if heal_button.draw_text(self.ROOT.window):
                 self.player_object.heal(10)
+            if loot_label.draw_text(self.ROOT.window):
+                loot_marker.animate((40, 440), color=[77, 166, 255])
 
             # draw marker
             damage_marker.update(self.ROOT.window)
+            loot_marker.update(self.ROOT.window)
 
             # MENU
             if back_label.draw_text(self.ROOT.window):
