@@ -3,7 +3,7 @@ from datetime import datetime
 
 time_start = datetime.today()
 
-logger_enabled = True
+logger_enabled = False
 
 class DevLogger:
     def __init__(self, logging_class, log_level=logging.INFO, print_level=logging.INFO):

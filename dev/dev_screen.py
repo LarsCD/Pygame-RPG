@@ -104,7 +104,7 @@ class DevScreen:
 
 
     def calc_game_time(self):
-        self.game_time = (datetime.now() - self.ROOT.start_game )
+        self.game_time = (datetime.now() - self.ROOT.start_game)
 
 
 

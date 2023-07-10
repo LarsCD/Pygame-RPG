@@ -3,14 +3,14 @@ import random
 import pygame
 from assets.custom_pygame_assets import Label, Health_bar, Custom_bar, Highlight_marker
 from dev.dev_screen import DevScreen
-from combat_calculations import Calculations
+from combat_menu import Combat_Menu
 
 '''
 NOTES: 
 background resolution = 936x544
 '''
 
-class Combat_Menu:
+class World_menu:
     def __init__(self, ROOT):
         self.ROOT = ROOT
         self.run_display = True
@@ -28,20 +28,17 @@ class Combat_Menu:
 
         # SCENE LABELS
         self.static_text_lables = []
-        self.title = 'COMBAT_MENU'
+        self.title = 'OVERWORLD_MENU'
         self.background = pygame.image.load("assets/images/test_map.png")
         self.menu_background = pygame.image.load("assets/images/combat_background_1.png")
 
         # MODULES
+        self.Combat_Menu = Combat_Menu(self.ROOT)
         self.DevScreen = DevScreen(self.ROOT)
-
 
         # PLAYER
         self.player_object = None
-        self.player_alive = True
-
-        # ENEMY
-        self.enemy_alive = True
+        self.enemy_object = None
 
 
     def main_loop(self, player_object, enemy_object):
@@ -51,23 +48,11 @@ class Combat_Menu:
         self.run_display = True
 
 
-        damage = Calculations().damage(player_object.level, player_object.weapon_equiped.damage, player_object.strength, 100, 1)
-        print(f'damage={damage}')
-        XP = Calculations().XP(enemy_object.level, player_object.level, 1, 2)
-        print(f'XP={XP}')
-
-
 
         # MENU
-        damage_button = Label('DAMAGE', 25, 'white', 'red', 'gray',
-                              (self.right_down_screen_1_x, 590), bold_text=True)
-        heal_button = Label('HEAL', 25, 'white', 'green', 'gray',
-                            (self.right_down_screen_1_x, 620), bold_text=True)
-        heal_button = Label('MANA', 25, 'white', 'green', 'gray',
-                            (self.right_down_screen_1_x, 620), bold_text=True)
         back_label = Label('BACK', 25, 'white', 'gray', (153, 0, 28),
                            (self.right_up_screen_x, 460), is_clickable=True, bold_text=True)
-        world_switch = Label('WORLD', 25, 'green', 'gray', (153, 0, 28),
+        combat_switch = Label('COMBAT', 25, 'red', 'gray', (153, 0, 28),
                            (self.right_up_screen_x, 430), is_clickable=True, bold_text=True)
         loot_label = Label('LOOT', 25, 'white', 'gray', (153, 0, 28),
                            (self.right_up_screen_x, 490), is_clickable=True, bold_text=True)
@@ -82,16 +67,11 @@ class Combat_Menu:
         xp_bar = Custom_bar(self.player_object.xp, self.player_object.xpMax, (121, 580),
                               250, 15, (102, 255, 227), (194, 194, 209), show_numbers=False)
 
-        # ENEMY
-        enemy_health_bar = Health_bar(self.enemy_object.hp, self.enemy_object.hpMax, (50, 60),
-                                250, 25, (255, 0, 0), (194, 194, 209), show_numbers=True)
-
-        damage_marker = Highlight_marker('-20 DMG', 20, (255, 0, 0), (640, 360), 1.5, (0, 1), 1.5, spread=50)
         loot_marker = Highlight_marker('+ RARE SWORD (1)', 20, (77, 166, 255), (40, 440), 1.5, (0, 1), 1)
 
         while self.run_display:
             self.ROOT.window.fill((0, 0, 0))
-            self.background.set_alpha(128)
+            # self.background.set_alpha(128)
             self.ROOT.window.blit(pygame.transform.scale(self.background, self.scene_background_reso), (0, -1))
             self.ROOT.window.blit(pygame.transform.scale(self.menu_background, self.ROOT.RESOLUTION), (0, 0))
 
@@ -99,39 +79,27 @@ class Combat_Menu:
 
             self.build_static_text_lables()
             self.build_attr_labels()
-            self.build_enemy_labels()
 
             self.draw_static_text_labels()
 
 
             # PLAYER
             health_bar.update(self.ROOT.window, self.player_object.hp, self.player_object.hpMax)
-            energy_bar.update(self.ROOT.window, self.player_object.ep, self.player_object.epMax)
-            mana_bar.update(self.ROOT.window, self.player_object.mp, self.player_object.mpMax)
+            # energy_bar.update(self.ROOT.window, self.player_object.ep, self.player_object.epMax)
+            # mana_bar.update(self.ROOT.window, self.player_object.mp, self.player_object.mpMax)
             xp_bar.update(self.ROOT.window, self.player_object.xp, self.player_object.xpMax)
 
-            # ENEMY
-            enemy_health_bar.update(self.ROOT.window, self.enemy_object.hp, self.enemy_object.hpMax)
-
             # PLAYER INTERACTION
-            if self.player_object.hp <= 0:
-                self.player_object.heal_full()
-            if damage_button.draw_text(self.ROOT.window):
-                self.player_object.take_damage(10)
-                damage_marker.animate((300, 250), color=[250, 0, 0], vari_red=100, vari_grn=10, vari_blu=20)
-            if heal_button.draw_text(self.ROOT.window):
-                self.player_object.heal(10)
             if loot_label.draw_text(self.ROOT.window):
                 random_item = self.player_object.inventory['weapon'][random.randint(0, len(self.player_object.inventory['weapon'])-1)]
                 loot_marker.animate((40, 440), text=f'+ 1 {random_item.name} (1)', color=list(random_item.tier_color))
 
             # draw marker
-            damage_marker.update(self.ROOT.window)
             loot_marker.update(self.ROOT.window)
 
             # MENU
-            if world_switch.draw_text(self.ROOT.window):
-                self.run_display = False
+            if combat_switch.draw_text(self.ROOT.window):
+                self.Combat_Menu.main_loop(self.player_object, self.enemy_object)
             if back_label.draw_text(self.ROOT.window):
                 self.run_display = False
 
@@ -140,14 +108,6 @@ class Combat_Menu:
 
             pygame.display.update()
             self.ROOT.clock.tick(self.ROOT.fps)
-
-
-
-    def check_alive(self):
-        if self.player_object.is_dead:
-            self.player_alive = False
-        if not self.enemy_object.state_alive:
-            self.enemy_alive = False
 
 
     def set_background_color(self):
@@ -204,17 +164,6 @@ class Combat_Menu:
         self.static_text_lables.append(sorc_value_label)
 
 
-    def build_enemy_labels(self):
-        name_label = Label(f'{self.enemy_object.name}', 25, 'white', 'black', 'black',
-                           (50, 25), is_clickable=False, bold_text=True)
-        level_label = Label(f'LEVEL', 20, 'gray', 'black', 'black',
-                            (50, 100), is_clickable=False, bold_text=True)
-        level_label_value = Label(f'{self.enemy_object.level}', 20, 'white', 'black', 'black',
-                                  (150, 100), is_clickable=False, bold_text=True)
-
-        self.static_text_lables.append(name_label)
-        self.static_text_lables.append(level_label)
-        self.static_text_lables.append(level_label_value)
 
 
     def draw_static_text_labels(self):

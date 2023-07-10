@@ -9,13 +9,13 @@ class Enemy:
         # level up data
         self.level = 0
         self.hpMax_multiplier = metadata['level_up_multipliers']['hpMax_multiplier']
-        self.atk_m_multiplier = metadata['level_up_multipliers']['atk_m_multiplier']
+        self.strength_m_multiplier = metadata['level_up_multipliers']['strength_m_multiplier']
         # stats data
         self.hp = metadata['base_stats']['hpMax']
         self.hpMax = self.hp
-        self.atk = metadata['base_stats']['atk']
+        self.strength = metadata['base_stats']['strength']
         # stat multipliers
-        self.atk_multiplier = metadata['stat_multipliers']['atk_multiplier']
+        self.strength_multiplier = metadata['stat_multipliers']['strength_multiplier']
         # states
         self.state_alive = True
         # inventory data
@@ -47,7 +47,7 @@ class Enemy:
         self.hpMax = round(self.hpMax*self.hpMax_multiplier)
         hpAdd = self.hpMax-hpMax_old
         self.hp += hpAdd
-        self.atk_multiplier *= self.atk_m_multiplier
+        self.strength_multiplier *= self.strength_m_multiplier
 
 
     # health methods
@@ -71,14 +71,14 @@ class Enemy:
 
     # combat methods
     def attack_bare(self):
-        damage = random.randint(self.atk[0], self.atk[1])
+        damage = random.randint(self.strength[0], self.strength[1])
         return damage
 
     def attack_weapon(self):
         if self.weapon_equipped == None:
             damage = self.attack_bare()
         else:
-            damage = round(self.weapon_equipped.use()*self.atk_multiplier)
+            damage = round(self.weapon_equipped.use()*self.strength_multiplier)
         return damage
 
 

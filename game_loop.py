@@ -15,6 +15,7 @@ from dev.dev_logger import DevLogger
 from dev.dev_screen import DevScreen
 from world.level_loader import Level_Loader
 from combat_menu import Combat_Menu
+from world_menu import World_menu
 
 
 class Game_Loop:
@@ -64,6 +65,7 @@ class Game_Loop:
         self.Item_Display_Screen = Item_Display_Screen(self)
         self.Player_Menu = Player_Menu(self)
         self.Combat_Menu = Combat_Menu(self)
+        self.World_mennu = World_menu(self)
 
         # DATA
         self.static_enemy_data = {}
@@ -132,7 +134,7 @@ class Game_Loop:
 
         self.player_object.equip('weapon', 6)
 
-        enemy_1 = level_1.enemies[1]
+        enemy_1 = level_1.enemies[2]
 
         t2 = time.perf_counter()
         dt = t2-t1
@@ -170,6 +172,10 @@ class Game_Loop:
                             self.lable_click_col,
                             self.lable_hover_col, (self.Game_Setup.DISPLAY_WIDTH * 0.1, 450), is_clickable=True)
 
+        world_menu = Label(f'View WORLD MENU', 20, self.lable_col,
+                            self.lable_click_col,
+                            self.lable_hover_col, (self.Game_Setup.DISPLAY_WIDTH * 0.1, 500), is_clickable=True)
+
 
         while self.run_display:
             self.check_quit_event()
@@ -194,6 +200,8 @@ class Game_Loop:
 
             if combat_menu.draw_text(self.window):
                 self.Combat_Menu.main_loop(self.player_object, enemy_1)
+            if world_menu.draw_text(self.window):
+                self.World_mennu.main_loop(self.player_object, enemy_1)
 
             if back_label.draw_text(self.window):
                 # quit out of game

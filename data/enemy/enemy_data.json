@@ -8,16 +8,16 @@
     "base_stats":
     {
       "hpMax": 25,
-      "atk": [2,5]
+      "strength": 5
     },
     "stat_multipliers":
     {
-      "atk_multiplier": 1.00
+      "strength_multiplier": 1.00
     },
     "level_up_multipliers":
     {
-      "hpMax_multiplier": 1.05,
-      "atk_m_multiplier": 1.02
+      "hpMax_multiplier": 1.050,
+      "strength_m_multiplier": 1.020
     }
   },
 
@@ -26,20 +26,20 @@
     "tag": "small_ork",
     "name": "Small Ork",
     "type": "None",
-    "default_weapon": "placeholder_weapon",
+    "default_weapon": "ork_axe",
     "base_stats":
     {
       "hpMax": 25,
-      "atk": [4,8]
+      "strength": 6
     },
     "stat_multipliers":
     {
-      "atk_multiplier": 1.00
+      "strength_multiplier": 1.00
     },
     "level_up_multipliers":
     {
-      "hpMax_multiplier": 1.05,
-      "atk_m_multiplier": 1.02
+      "hpMax_multiplier": 1.050,
+      "strength_m_multiplier": 1.020
     }
   }
 }

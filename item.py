@@ -23,13 +23,13 @@ class Weapon:
         self.image = str(f'assets/images/weapons/{self.tag}.png')
         self.tier_icon = str(f'assets/images/tiers/{self.tier_tag}_tier_frame.png')
 
-    def use(self):
-        if self.isEquiped:
-            return random.randint(self.damage[0], self.damage[1])
-        else:
-            logger = DevLogger(Weapon)
-            logger.log(logging.WARNING, f'{self.tag} cannot be used and returned 0; self.equipped: {self.is_equipped}')
-            return 0
+    # def use(self):
+    #     if self.isEquiped:
+    #         return random.randint(self.damage[0], self.damage[1])
+    #     else:
+    #         logger = DevLogger(Weapon)
+    #         logger.log(logging.WARNING, f'{self.tag} cannot be used and returned 0; self.equipped: {self.is_equipped}')
+    #         return 0
 
 
 class Potion:
@@ -57,16 +57,16 @@ class Potion:
         self.image = str(f'assets/images/potions/{self.tag}.png')
         self.tier_icon = str(f'assets/images/tiers/{self.tier_tag}_tier_frame.png')
 
-    def use(self):
-        if is_empty is not True:
-            self.is_empty = True
-            if self.potion_type == ['healing_potion']:
-                return self.healing
-            if self.potion_type == ['mana_potion']:
-                return self.mana
-        else:
-            logger = DevLogger(Potion)
-            logger.log(logging.WARNING, f'{self.tag} cannot be used; self.is_empty={self.is_empty})')
+    # def use(self):
+    #     if is_empty is not True:
+    #         self.is_empty = True
+    #         if self.potion_type == ['healing_potion']:
+    #             return self.healing
+    #         if self.potion_type == ['mana_potion']:
+    #             return self.mana
+    #     else:
+    #         logger = DevLogger(Potion)
+    #         logger.log(logging.WARNING, f'{self.tag} cannot be used; self.is_empty={self.is_empty})')
 
 
 class Armor:
@@ -131,13 +131,13 @@ class Shield:
         self.image = str(f'assets/images/shields/{self.tag}.png')
         self.tier_icon = str(f'assets/images/tiers/{self.tier_tag}_tier_frame.png')
 
-    def use(self):
-        if self.isEquiped:
-            return random.randint(self.block[0], self.block[1])
-        else:
-            logger = DevLogger(Shield)
-            logger.log(logging.WARNING, f'{self.tag} cannot be used and returned 0; self.equipped: {self.is_equipped}')
-            return 0
+    # def use(self):
+    #     if self.isEquiped:
+    #         return random.randint(self.block[0], self.block[1])
+    #     else:
+    #         logger = DevLogger(Shield)
+    #         logger.log(logging.WARNING, f'{self.tag} cannot be used and returned 0; self.equipped: {self.is_equipped}')
+    #         return 0
 
 
 class Tier:
@@ -155,7 +155,7 @@ class Tier:
             2: 'Uncommon',
             3: 'Rare',
             4: 'Super Rare',
-            5: 'Ultra Rare',
+            5: 'Exotic',
             6: 'Legendary'
         }
         self.tier_color_index = {

@@ -26,7 +26,8 @@
       },
       "enemies":
       [
-        {"tag":  "placeholder_enemy", "category": "enemy", "level":  [30,30], "quantity": 2}
+        {"tag":  "placeholder_enemy", "category": "enemy", "level":  [30,30], "quantity": 2},
+        {"tag":  "small_ork", "category": "enemy", "level":  [15,30], "quantity": 1}
       ],
       "path_connections": ["forest_1"]
     }

@@ -7,8 +7,8 @@
       "name": "Small Healing Potion",
       "item_type": "potion",
       "potion_type": "healing_potion",
-      "tier": 3,
-      "healing": 30,
+      "tier": 1,
+      "healing": 25,
       "value": 75,
       "is_stackable": true
     },
@@ -19,8 +19,8 @@
       "name": "Medium Healing Potion",
       "item_type": "potion",
       "potion_type": "healing_potion",
-      "tier": 4,
-      "healing": 75,
+      "tier": 2,
+      "healing": 50,
       "value": 150,
       "is_stackable": true
     }
@@ -33,9 +33,9 @@
       "name": "Small Mana Potion",
       "item_type": "potion",
       "potion_type": "mana_potion",
-      "tier": 4,
-      "mana": 45,
-      "value": 250,
+      "tier": 3,
+      "mana": 35,
+      "value": 120,
       "is_stackable": true
     }
   }
